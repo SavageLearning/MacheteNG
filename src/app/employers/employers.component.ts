@@ -21,6 +21,7 @@ export class EmployersComponent implements OnInit {
   employer: Employer = new Employer();
   employerForm: FormGroup;
   showErrors = false;
+  saveDisabled = false;
   yesNoDropDown = [new YesNoSelectItem('no', false), new YesNoSelectItem('yes', true)];
   formErrors = {
     'address1': '',
@@ -111,12 +112,14 @@ export class EmployersComponent implements OnInit {
       return;
     }
     console.log('saveEmployer: form status valid');
+    this.saveDisabled = true;
     this.showErrors = false;
     const formModel = this.employerForm.value;
     this.employersService.save(formModel)
       .subscribe(
         data => {
           console.log('employerService.save returned:', data);
+          this.saveDisabled = false;
           this.router.navigate(['/online-orders/introduction']);
         }
       );
