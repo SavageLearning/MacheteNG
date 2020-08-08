@@ -8,7 +8,7 @@ import { WorkOrderService } from './work-order/work-order.service';
 import { EmployersService } from '../employers/employers.service';
 import { AuthService } from '../shared/index';
 import { WorkAssignmentsService } from './work-assignments/work-assignments.service';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { WorkOrderServiceSpy, EmployersServiceSpy, AuthServiceSpy, WorkAssignmentsServiceSpy } from "../shared/testing";
 
 describe('OnlineOrdersService', () => {
@@ -26,7 +26,7 @@ describe('OnlineOrdersService', () => {
         { provide: WorkAssignmentsService, useClass: WorkAssignmentsServiceSpy }
       ],
       imports: [
-        HttpModule,
+        HttpClientModule,
         HttpClientTestingModule
       ]
     }).compileComponents();

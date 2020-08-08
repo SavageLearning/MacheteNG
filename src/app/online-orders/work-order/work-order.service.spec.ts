@@ -5,7 +5,7 @@ import { HttpTestingController } from '@angular/common/http/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { EmployersService } from '../../employers/employers.service';
 import { AuthService } from '../../shared/index';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceSpy, EmployersServiceSpy } from '../../shared/testing';
 
 describe('WorkOrderService', () => {
@@ -20,7 +20,7 @@ describe('WorkOrderService', () => {
         {provide: AuthService, useClass: AuthServiceSpy }
         ],
       imports: [
-        HttpModule,
+        HttpClientModule,
         HttpClientTestingModule
       ]
     });
