@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ExportsService} from './exports.service';
 import { Export } from './models/export';
 import {ExportColumn} from './models/export-column';
-import {Response} from '@angular/http';
+import {HttpResponse} from '@angular/common/http';
 import { saveAs } from 'file-saver';
 import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import * as contentDisposition from 'content-disposition';
