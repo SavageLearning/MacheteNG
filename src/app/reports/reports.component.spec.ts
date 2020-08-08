@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DialogModule, CalendarModule, DataTableModule, TabViewModule, DropdownModule } from 'primeng/primeng';
 import { ReportsComponent } from './reports.component';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ReportsService } from './reports.service';
@@ -39,7 +39,7 @@ describe('ReportsComponent', () => {
         CalendarModule,
         DialogModule,
         FormsModule,
-        HttpModule,
+        HttpClientModule,
       ],
       providers: [
         HttpClient,

@@ -6,7 +6,7 @@ import { HttpTestingController } from '@angular/common/http/testing';
 import { environment } from '../../environments/environment';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from '../shared/index';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceSpy } from '../shared/testing';
 
 describe('EmployersService', async() => {
@@ -21,7 +21,7 @@ describe('EmployersService', async() => {
         { provide: AuthService, useClass: AuthServiceSpy },
         HttpClient],
       imports: [
-        HttpModule,
+        HttpClientModule,
         HttpClientTestingModule
       ]
     });

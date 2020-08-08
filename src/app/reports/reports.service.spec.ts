@@ -1,5 +1,5 @@
 import { async, TestBed, inject } from '@angular/core/testing';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReportsService } from './reports.service';
 import { SearchOptions } from './models/search-options';
 import {Report} from './models/report';

@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ScheduleRulesService } from './schedule-rules.service';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { environment } from '../../environments/environment';
@@ -15,7 +15,7 @@ describe('ScheduleRulesService', () => {
         ScheduleRulesService        
       ],
       imports: [
-        HttpModule,
+        HttpClientModule,
         HttpClientTestingModule        
       ]
     }).compileComponents();
