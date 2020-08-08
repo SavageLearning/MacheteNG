@@ -39,9 +39,9 @@ export class AppComponent implements AfterViewInit, OnInit {
     documentClickListener: Function;
     resetMenu: boolean;
     msgs: Message[] = [];
-    @ViewChild('layoutContainer') layourContainerViewChild: ElementRef;
+    @ViewChild('layoutContainer', {static: false}) layourContainerViewChild: ElementRef;
 
-    @ViewChild('layoutMenuScroller') layoutMenuScrollerViewChild: ElementRef;
+    @ViewChild('layoutMenuScroller', {static: false}) layoutMenuScrollerViewChild: ElementRef;
 
     constructor(
         public renderer: Renderer, 

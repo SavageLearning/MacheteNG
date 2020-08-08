@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExportsComponent } from './exports.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JsonpModule } from '@angular/http';
+import { HttpClientJsonpModule } from '@angular/common/http';
 import {ExportsRoutingModule} from './exports-routing.module';
 import {
   ButtonModule, DropdownModule, DataTableModule, SharedModule, ChartModule,
@@ -15,7 +15,7 @@ import { ExportsOptionsComponent } from './exports-options.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    JsonpModule,
+    HttpClientJsonpModule,
     TabViewModule,
     ChartModule,
     DataTableModule,
