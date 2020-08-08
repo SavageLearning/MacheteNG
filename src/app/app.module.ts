@@ -5,7 +5,7 @@ import { NgModule, Injector, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { HttpClientModule, XHRBackend, BrowserXhr, ResponseOptions,  XSRFStrategy } from '@angular/http';
+// import { HttpClientModule, XHRBackend, BrowserXhr, ResponseOptions,  XSRFStrategy } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppMenuComponent, AppSubMenu }  from './menu/app.menu.component';
 import { AppTopBar }  from './app.topbar.component';
@@ -43,7 +43,6 @@ import { TransportProvidersService } from './online-orders/transport-providers.s
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     ReportsModule,
     OnlineOrdersModule,
