@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, ElementRef, Renderer, ViewChild} from '@angular/core';
+import {Component, OnInit, AfterViewInit, ElementRef, ViewChild, Renderer2} from '@angular/core';
 import { environment } from '../environments/environment';
 import { ConfigsService } from './configs/configs.service';
 import { LookupsService } from './lookups/lookups.service';
@@ -44,13 +44,12 @@ export class AppComponent implements AfterViewInit, OnInit {
     @ViewChild('layoutMenuScroller', {static: false}) layoutMenuScrollerViewChild: ElementRef;
 
     constructor(
-        public renderer: Renderer, 
+        public renderer: Renderer2,
         private router: Router,
         private msgService: MessageService
     ) {}
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
@@ -63,7 +62,7 @@ export class AppComponent implements AfterViewInit, OnInit {
         this.layoutMenuScroller = <HTMLDivElement> this.layoutMenuScrollerViewChild.nativeElement;
 
         //hides the horizontal submenus or top menu if outside is clicked
-        this.documentClickListener = this.renderer.listenGlobal('body', 'click', (event) => {
+        this.documentClickListener = this.renderer.listen('body', 'click', (event) => {
             if (!this.topbarItemClick) {
                 this.activeTopbarItem = null;
                 this.topbarMenuActive = false;
@@ -91,9 +90,9 @@ export class AppComponent implements AfterViewInit, OnInit {
         }
         else {
             if (this.isDesktop())
-                this.staticMenuDesktopInactive = !this.staticMenuDesktopInactive;
+                { this.staticMenuDesktopInactive = !this.staticMenuDesktopInactive; }
             else
-                this.staticMenuMobileActive = !this.staticMenuMobileActive;
+                { this.staticMenuMobileActive = !this.staticMenuMobileActive; }
         }
 
         event.preventDefault();
