@@ -87,12 +87,12 @@ export class AppComponent implements AfterViewInit, OnInit {
 
         if (this.layoutMode === MenuOrientation.OVERLAY) {
             this.overlayMenuActive = !this.overlayMenuActive;
-        }
-        else {
-            if (this.isDesktop())
-                { this.staticMenuDesktopInactive = !this.staticMenuDesktopInactive; }
-            else
-                { this.staticMenuMobileActive = !this.staticMenuMobileActive; }
+        } else {
+            if (this.isDesktop()) {
+                this.staticMenuDesktopInactive = !this.staticMenuDesktopInactive;
+            } else {
+                this.staticMenuMobileActive = !this.staticMenuMobileActive;
+            }
         }
 
         event.preventDefault();
@@ -125,10 +125,9 @@ export class AppComponent implements AfterViewInit, OnInit {
     onTopbarItemClick(event, item) {
         this.topbarItemClick = true;
 
-        if (this.activeTopbarItem === item)
+        if (this.activeTopbarItem === item) {
             this.activeTopbarItem = null;
-        else
-            this.activeTopbarItem = item;
+        } else { this.activeTopbarItem = item; }
 
         event.preventDefault();
     }
