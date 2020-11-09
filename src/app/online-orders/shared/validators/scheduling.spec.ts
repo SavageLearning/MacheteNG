@@ -10,22 +10,22 @@ describe('ScheduleRule', () => {
     let fg: FormGroup;
     let today: Date;
     beforeEach(() => {
-        fb = new FormBuilder(); 
+        fb = new FormBuilder();
         today = new Date();
         tFunc = schedulingDayValidator(new Array<ScheduleRule>(
           new ScheduleRule({
             day: today.getDay(),
             leadHours: 48,
             minStartMin: 420, //7am
-            maxEndMin: 1020 // 5pm 
-          }), 
+            maxEndMin: 1020 // 5pm
+          }),
           new ScheduleRule({
-            day: (new Date(today.valueOf()+(24 * 60 * 60 * 1000)).getDay()), // shame
+            day: (new Date(today.valueOf() + (24 * 60 * 60 * 1000)).getDay()), // shame
             leadHours: 48,
             minStartMin: 420, //7am
-            maxEndMin: 1020 // 5pm 
+            maxEndMin: 1020 // 5pm
           })
-        ));    
+        ));
     });
 
   it('should create an instance', () => {
@@ -36,30 +36,30 @@ describe('ScheduleRule', () => {
       timeOfWork: time,
       transportProviderID: 1
     });
-    ctrl = fg.get('dateOfWork'); 
+    ctrl = fg.get('dateOfWork');
     const result = tFunc(ctrl);
     expect(result).toBeNull();
   });
 
   // it('should reject time in the sameday', () => {
   //   const date: Date = DateTime.local().startOf('day').plus({ days: 1 }).toJSDate();
-  //   const time: string = DateTime.local().minus({hours: 1}).toFormat('HH:mm'); 
+  //   const time: string = DateTime.local().minus({hours: 1}).toFormat('HH:mm');
   //   fg = fb.group({
   //     dateOfWork: date,
   //     timeOfWork: time,
   //     transportProviderID: 1
   //   });
-    
-  //   ctrl = fg.get('dateOfWork'); 
+
+  //   ctrl = fg.get('dateOfWork');
   //   // act
   //   const result = tFunc(ctrl);
-  //   // 
+  //   //
   //   expect(result['scheduling']).toBe('Date cannot be in the past.');
   // });
 
   it('should reject time 1 sec before start time', () => {
-    const date: Date = DateTime.local().plus({secs: 1}).toJSDate();
-    const time: string = DateTime.local().minus({hours: 1}).toFormat('HH:mm'); 
+    const date: Date = DateTime.local().plus({seconds: 1}).toJSDate();
+    const time: string = DateTime.local().minus({hours: 1}).toFormat('HH:mm');
 
     fg = fb.group({
       dateOfWork: date,
@@ -67,11 +67,11 @@ describe('ScheduleRule', () => {
       transportProviderID: 1
     });
 
-    ctrl = fg.get('dateOfWork'); 
+    ctrl = fg.get('dateOfWork');
     ctrl.setValue(date);
     // act
     const result = tFunc(ctrl);
-    // 
+    //
     expect(result['scheduling']).toBe('Lead time of 1 days required.');
   });
 
