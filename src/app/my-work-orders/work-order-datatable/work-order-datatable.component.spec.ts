@@ -1,7 +1,7 @@
 
 import {of as observableOf,  Observable } from 'rxjs';
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { WorkOrderDatatableComponent } from './work-order-datatable.component';
 import { WorkOrder } from '../../shared/models/work-order';
 import { MyWorkOrdersService } from '../my-work-orders.service';
@@ -21,19 +21,19 @@ describe('WorkOrderDatatableComponent', () => {
   let component: WorkOrderDatatableComponent;
   let fixture: ComponentFixture<WorkOrderDatatableComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ WorkOrderDatatableComponent ],
       imports: [
         DataTableModule,
-        MomentModule        
+        MomentModule
       ]
     })
     .overrideComponent(WorkOrderDatatableComponent, {
       set: {
         providers: [
           { provide: MyWorkOrdersService, useClass: WorkOrdersServiceSpy },
-          { provide: Router, useClass: RouterSpy } 
+          { provide: Router, useClass: RouterSpy }
         ]
       }
     })
