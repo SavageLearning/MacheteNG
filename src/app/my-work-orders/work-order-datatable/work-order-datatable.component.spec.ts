@@ -9,7 +9,7 @@ import { DataTableModule } from 'primeng/primeng';
 import { TransportRulesService } from '../../online-orders/transport-rules.service';
 import { TransportRulesServiceSpy, RouterSpy } from '../../shared/testing/services.spy';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MomentModule } from 'angular2-moment/moment.module';
+import { MomentModule } from 'ngx-moment';
 import { Router } from '@angular/router';
 class WorkOrdersServiceSpy {
   getOrders = jasmine.createSpy('getOrders')

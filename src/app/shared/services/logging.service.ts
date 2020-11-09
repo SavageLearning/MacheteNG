@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
 export class LoggingService {
 
   constructor() { }
-  log(message: string, url?: string, stack?: string) 
-  {
+  log(message: string, url?: string, stack?: string) {
     console.log(message);
   }
 }

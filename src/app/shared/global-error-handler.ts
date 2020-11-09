@@ -21,7 +21,7 @@ handleError(error) {
     if (error instanceof HttpErrorResponse) {
       shortMsg = `${error.status} ${error.statusText}`;
 
-    } 
+    }
     // I think this is a bluebird promise error, but i dunno
     if (error.rejection && error.rejection instanceof HttpErrorResponse) {
       shortMsg = (error.rejection.status && error.rejection.statusText) ?
@@ -29,9 +29,9 @@ handleError(error) {
     }
 
     // log on the server
-    msgService.add({severity:'error', summary: shortMsg});
+    msgService.add({ severity: 'error', summary: shortMsg });
     loggingService.log(message, location.path() );
     throw error;
   }
-  
+
 }
