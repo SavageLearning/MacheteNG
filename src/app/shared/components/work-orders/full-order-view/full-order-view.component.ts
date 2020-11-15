@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { WorkOrder } from '../../../models/work-order';
-import {MessageService} from 'primeng/components/common/messageservice';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'full-order-view',

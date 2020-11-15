@@ -14,7 +14,12 @@
             "allowedCommonJsDependencies": [
               "lodash",
               "primeng/primeng",
-              "primeng/components/common/messageservice"
+              "primeng/components/common/messageservice",
+              "rxjs/Rx",
+              "file-saver",
+              "paypal-checkout",
+              "chart.js",
+              "content-disposition"
             ],
             "outputPath": "dist",
             "index": "src/index.html",
@@ -46,11 +51,16 @@
               }
             ],
             "styles": [
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/fullcalendar/dist/fullcalendar.min.css",
               "node_modules/quill/dist/quill.snow.css",
               "node_modules/nanoscroller/bin/css/nanoscroller.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeng/resources/themes/md-light-indigo/theme.css",
+              "node_modules/primeflex/primeflex.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/@fullcalendar/core/main.min.css",
+              "node_modules/@fullcalendar/daygrid/main.min.css",
+              "node_modules/@fullcalendar/timegrid/main.min.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -59,7 +69,6 @@
               "src/assets/layout/js/ripple.js",
               "node_modules/moment/moment.js",
               "node_modules/chart.js/dist/Chart.js",
-              "node_modules/fullcalendar/dist/fullcalendar.js",
               "node_modules/quill/dist/quill.js"
             ]
           },
@@ -155,12 +164,10 @@
               "src/assets/layout/js/ripple.js",
               "node_modules/moment/moment.js",
               "node_modules/chart.js/dist/Chart.js",
-              "node_modules/fullcalendar/dist/fullcalendar.js",
               "node_modules/quill/dist/quill.js"
             ],
             "styles": [
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/fullcalendar/dist/fullcalendar.min.css",
               "node_modules/quill/dist/quill.snow.css",
               "node_modules/nanoscroller/bin/css/nanoscroller.css",
               "src/styles.scss"

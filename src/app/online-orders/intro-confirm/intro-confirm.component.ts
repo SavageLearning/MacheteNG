@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ButtonModule } from 'primeng/primeng';
+import { ButtonModule } from 'primeng/button';
 import { OnlineOrdersService } from '../online-orders.service';
 import { Router } from '@angular/router';
-import { Confirm } from "../shared/models/confirm";
+import { Confirm } from '../shared/models/confirm';
 
 @Component({
   selector: 'app-intro-confirm',

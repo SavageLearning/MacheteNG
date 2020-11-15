@@ -19,7 +19,7 @@ export class ExportsComponent implements OnInit {
   exportsDropDown: MySelectItem[];
   errorMessage: string;
   selectedColumns: ExportColumn[];
-  selectedExportName: string;
+  selectedExportName: MySelectItem;
   selectedDateFilter: string;
   selectedStartDate: string;
   selectedEndDate: string;
@@ -42,7 +42,8 @@ export class ExportsComponent implements OnInit {
   }
 
   getColumns() {
-    this.exportsService.getColumns(this.selectedExportName)
+    console.log(this.selectedColumns);
+    this.exportsService.getColumns(this.selectedExportName.value)
       .subscribe(
         data => {
           this.selectedColumns = data;
@@ -67,10 +68,10 @@ export class ExportsComponent implements OnInit {
       filterField: this.selectedDateFilter
     }, this.form.value);
     console.log(this.form.value);
-    this.exportsService.getExport(this.selectedExportName, data)
+    this.exportsService.getExport(this.selectedExportName.value, data)
       .subscribe(
         (res: Blob) => {
-            saveAs(res, this.selectedExportName + '.xlsx')
+            saveAs(res, this.selectedExportName.value + '.xlsx')
         },
         error => {
           this.errorMessage = <any>error;

@@ -3,8 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ReportsComponent } from './reports.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientJsonpModule } from '@angular/common/http';
-import { ButtonModule, DropdownModule, DataTableModule, SharedModule, ChartModule,
-  DialogModule, TabViewModule, CalendarModule, InputTextareaModule } from 'primeng/primeng';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
+import { DialogModule } from 'primeng/dialog';
+import { TabViewModule } from 'primeng/tabview';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import {ReportsRoutingModule } from './reports-routing.module';
 
 @NgModule({
@@ -15,8 +22,7 @@ import {ReportsRoutingModule } from './reports-routing.module';
     CommonModule,
     TabViewModule,
     ChartModule,
-    DataTableModule,
-    SharedModule,
+    TableModule,
     CalendarModule,
     FormsModule,
     HttpClientJsonpModule,

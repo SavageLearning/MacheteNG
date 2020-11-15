@@ -1,10 +1,15 @@
 
 import {of as observableOf,  Observable } from 'rxjs';
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import {
-  ButtonModule, DropdownModule, DataTableModule, SharedModule, ChartModule,
-  DialogModule, TabViewModule, CalendarModule, InputTextareaModule, InputSwitchModule
-} from 'primeng/primeng';
+import { waitForAsync, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
+import { DialogModule } from 'primeng/dialog';
+import { TabViewModule } from 'primeng/tabview';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExportsComponent } from './exports.component';
 import { ExportsService } from './exports.service';
@@ -26,7 +31,7 @@ describe('ExportsComponent', () => {
   let component: ExportsComponent;
   let fixture: ComponentFixture<ExportsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         ExportsComponent,
@@ -35,7 +40,7 @@ describe('ExportsComponent', () => {
       providers: [HttpClient, HttpHandler ],
       imports: [
         NoopAnimationsModule,
-        DataTableModule,
+        TableModule,
         DropdownModule,
         TabViewModule,
         CalendarModule,

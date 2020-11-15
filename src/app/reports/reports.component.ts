@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ReportsService} from './reports.service';
 import {SearchOptions } from './models/search-options';
 import {SimpleAggregateRow} from './models/simple-aggregate-row';
-import {DataTable, SelectItem} from 'primeng/primeng';
+import { Table } from 'primeng/table';
+import { SelectItem } from 'primeng/api';
 import {Report} from './models/report';
 import {Observable} from 'rxjs';
 import {SearchInputs} from './models/search-inputs';
@@ -92,7 +93,7 @@ export class ReportsComponent implements OnInit {
   //   console.log('getList called');
   // }
 
-  getExport(dt: DataTable) {
+  getExport(dt: Table) {
     dt.exportFilename = this.name + '_' + this.o.beginDate.toString() + '_to_' + this.o.endDate.toString();
     dt.exportCSV();
   }

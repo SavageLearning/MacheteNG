@@ -25,8 +25,8 @@ describe('EmployersService', async() => {
         HttpClientTestingModule
       ]
     });
-    service = TestBed.get(EmployersService);
-    httpMock = TestBed.get(HttpTestingController);
+    service = TestBed.inject(EmployersService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {

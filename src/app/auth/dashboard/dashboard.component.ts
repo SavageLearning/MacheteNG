@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { User } from '../../shared/models/user';
 
 @Component({
@@ -8,7 +7,7 @@ import { User } from '../../shared/models/user';
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   _user: User;
 

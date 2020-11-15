@@ -2,7 +2,7 @@ import { Component, Input, OnInit, EventEmitter, ViewChild, Inject, forwardRef }
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/primeng';
+import { MenuItem } from 'primeng/api';
 import { AppComponent } from '../app.component';
 import { loadMenuRules } from './load-menu-rules';
 import { AuthService } from '../shared/index';

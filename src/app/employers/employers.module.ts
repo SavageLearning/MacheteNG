@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { EmployersComponent } from './employers.component';
 import { EmployersRoutingModule } from './employers-routing.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputTextModule, ButtonModule, DropdownModule, KeyFilterModule } from 'primeng/primeng';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
   imports: [

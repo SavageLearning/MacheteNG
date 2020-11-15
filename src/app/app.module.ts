@@ -24,8 +24,6 @@ import { MyWorkOrdersModule } from './my-work-orders/my-work-orders.module';
 import { EmployersModule } from './employers/employers.module';
 import { GlobalErrorHandler } from './shared/global-error-handler';
 import { LoggingService } from './shared/services/logging.service';
-import { MessageService } from 'primeng/components/common/messageservice';
-import { GrowlModule } from 'primeng/primeng';
 import { TransportProvidersService } from './online-orders/transport-providers.service';
 
 @NgModule({
@@ -49,18 +47,12 @@ import { TransportProvidersService } from './online-orders/transport-providers.s
     ExportsModule,
     MyWorkOrdersModule,
     EmployersModule,
-    AppRoutingModule,
-    GrowlModule
+    AppRoutingModule
   ],
   providers: [
     AuthService,
     LoggingService,
-    TransportProvidersService,
-    MessageService,
-    {
-      provide: ErrorHandler,
-      useClass: GlobalErrorHandler
-    }
+    TransportProvidersService
   ],
   bootstrap: [AppComponent]
 })

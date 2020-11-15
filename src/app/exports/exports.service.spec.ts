@@ -17,8 +17,8 @@ describe('ExportsService', () => {
         HttpClientTestingModule
       ]
     });
-    service = TestBed.get(ExportsService);
-    httpMock = TestBed.get(HttpTestingController);
+    service = TestBed.inject(ExportsService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should ...', inject([ExportsService], (service1: ExportsService) => {

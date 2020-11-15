@@ -9,6 +9,7 @@ import {FormGroup} from '@angular/forms';
 export class ExportsOptionsComponent implements OnInit {
   @Input() columns: ExportColumn[] = [];
   @Input() form: FormGroup;
+  checked: boolean = true;
   constructor() { }
 
   ngOnInit() {

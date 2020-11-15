@@ -1,6 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import {ReactiveFormsModule, FormsModule, FormGroup} from '@angular/forms';
-import {DialogModule, InputSwitchModule, CalendarModule, DataTableModule, TabViewModule, DropdownModule} from 'primeng/primeng';
+import { DialogModule } from 'primeng/dialog';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 import { ExportsOptionsComponent } from './exports-options.component';
 
@@ -8,11 +14,11 @@ describe('ExportsOptionsComponent', () => {
   let component: ExportsOptionsComponent;
   let fixture: ComponentFixture<ExportsOptionsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ExportsOptionsComponent ],
       imports: [
-        DataTableModule,
+        TableModule,
         DropdownModule,
         TabViewModule,
         CalendarModule,

@@ -7,9 +7,17 @@ import { WorkOrderComponent } from './work-order/work-order.component';
 import { WorkAssignmentsComponent } from './work-assignments/work-assignments.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { OnlineOrdersRoutingModule } from './online-orders-routing.module';
-import { StepsModule, CalendarModule, DropdownModule,
-          DataTableModule, InputSwitchModule, MessagesModule,
-          DialogModule, CheckboxModule, ToggleButtonModule } from 'primeng/primeng';
+
+import { StepsModule } from 'primeng/steps';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { MessagesModule } from 'primeng/messages';
+import { DialogModule } from 'primeng/dialog';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnlineOrdersService } from './online-orders.service';
 import { ScheduleRulesService } from './schedule-rules.service';
@@ -26,7 +34,7 @@ import { ProfileGuard } from './guards/profile.guard';
     CalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTableModule,
+    TableModule,
     InputSwitchModule,
     MessagesModule,
     DialogModule,

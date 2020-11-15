@@ -1,10 +1,9 @@
-import {Component, OnInit, AfterViewInit, ElementRef, ViewChild, Renderer2} from '@angular/core';
+import {Component, OnInit, AfterViewInit, ElementRef, ViewChild, Renderer2, OnDestroy} from '@angular/core';
 import { environment } from '../environments/environment';
 import { ConfigsService } from './configs/configs.service';
 import { LookupsService } from './lookups/lookups.service';
 import { Router, NavigationEnd } from '@angular/router';
-import { MessageService } from 'primeng/components/common/messageservice';
-import { Message } from 'primeng/components/common/api';
+import { Message, PrimeNGConfig } from 'primeng/api';
 console.log('environment.name:', environment.name);
 
 enum MenuOrientation {
@@ -21,7 +20,7 @@ declare var jQuery: any;
   styleUrls: ['./app.component.scss'],
   providers: [  LookupsService, ConfigsService ]
 })
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     layoutCompact = false;
     layoutMode: MenuOrientation = MenuOrientation.STATIC;
     darkMenu = true;
@@ -46,10 +45,11 @@ export class AppComponent implements AfterViewInit, OnInit {
     constructor(
         public renderer: Renderer2,
         private router: Router,
-        private msgService: MessageService
+        private primengConfig: PrimeNGConfig
     ) {}
 
     ngOnInit() {
+        this.primengConfig.ripple = true;
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
