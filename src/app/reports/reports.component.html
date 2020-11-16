@@ -1,43 +1,64 @@
-<div class="ui-g">
-  <div class="ui-g-12 ui-md-6">
-    <p-dropdown [options]="reportsDropDown" (onChange)="getView()" [(ngModel)]="selectedReportID" [filter]="true" [style]="{'width':'20em'}"></p-dropdown>
-    <button pButton type="button" icon="ui-icon-sync" (click)="getView()" iconPos="left"></button>
-    <button pButton type="button" icon="ui-icon-edit" (click)="displayDialog=true" iconPos="left"></button>
+<p-card>
+  <div class="p-grid"> 
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-dropdown [options]="reportsDropDown" (onChange)="getView()" [(ngModel)]="selectedReportID" [filter]="true" [style]="{'width':'20em'}"></p-dropdown>
+        <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded" (click)="getView()"></button>
+        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded" (click)="displayDialog=true"></button>
+      </div>
+      <div *ngIf="inputs.memberNumber === true" class="p-col-4">
+        <label for="memberNumber">Membr number</label>
+        <input id="memberNumber" type="text" pInputText [(ngModel)]="o.memberNumber" (onBlur)="getView()" dataType="number"/>
+      </div>
+      <div *ngIf="inputs.beginDate === true" class="p-col-4">
+        <label for="start-date-cal">Start date</label>
+        <p-calendar id="start-date-cal" placeholder="Start date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.beginDate" [showIcon]="true" dataType="string"></p-calendar>
+      </div>
+      <div *ngIf="inputs.endDate === true" class="p-col-4">
+        <label for="end-date-cal">End date</label>
+        <p-calendar id="end-date-cal" placeholder="End date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.endDate" [showIcon]="true" dataType="string"></p-calendar>
+      </div>
+    </div>
   </div>
-  <div *ngIf="inputs.memberNumber === true" class="ui-g-12 ui-md-6">
-    <label for="memberNumber">Membr number</label>
-    <input id="memberNumber" type="text" pInputText [(ngModel)]="o.memberNumber" (onBlur)="getView()" dataType="number"/>
-  </div>
-  <div *ngIf="inputs.beginDate === true" class="ui-g-12 ui-md-6 ui-lg-3">
-    <p-calendar  placeholder="Start date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.beginDate" [showIcon]="true" dataType="string"></p-calendar>
-  </div>
-  <div *ngIf="inputs.endDate === true" class="ui-g-12 ui-md-6 ui-lg-3">
-    <p-calendar placeholder="End date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.endDate" [showIcon]="true" dataType="string"></p-calendar>
-  </div>
-</div>
+</p-card>
+
 <p-dialog header="{{title}}" [(visible)]="displayDescription">
   {{description}}
 </p-dialog>
 <div>
-<p-dataTable
+
+<p-table
   #dt
   [value]="viewData"
   sortField="value"
   sortOrder="-1"
   sortMode="single"
-  [globalFilter]="gb"
   [responsive]="true"
+  styleClass="p-datatable-gridlines p-datatable-striped"
+  [columns]="cols"
   >
-  <p-header>
-    <div class="ui-helper-clearfix">
-      <button type="button" pButton icon="ui-icon-file-download" iconPos="left" label="CSV" (click)="getExport(dt)" style="float:left"></button>
-      <input #gb type="text" placeholder="Global search" width="200">
+  <ng-template pTemplate="caption">
+    <button type="button" pButton icon="ui-icon-file-download" iconPos="left" label="CSV" (click)="getExport(dt)" style="float:left"></button>
+    <input  type="text" placeholder="Global search" width="200">
 
-      <button pButton type="button" icon="ui-icon-help-outline" (click)="showDescription()" iconPos="left" style="float:right"></button>
-    </div>
-  </p-header>
-  <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true"></p-column>
-</p-dataTable>
+    <button pButton type="button" icon="ui-icon-help-outline" (click)="showDescription()" iconPos="left" style="float:right"></button>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+        <th *ngFor="let col of cols">
+            {{col.header}}
+        </th>
+    </tr>
+</ng-template>
+
+<ng-template pTemplate="body" let-viewData>
+  <tr>
+      <td *ngFor="let col of cols">
+              {{viewData[col.field]}}
+      </td>
+  </tr>
+</ng-template>
+</p-table>
   <p-dialog
     header="Report Details"
     [(visible)]="displayDialog"

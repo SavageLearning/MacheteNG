@@ -13,6 +13,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import {ReportsRoutingModule } from './reports-routing.module';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ReportsRoutingModule } from './reports-routing.module';
     DropdownModule,
     DialogModule,
     InputTextareaModule,
-    ReportsRoutingModule
+    ReportsRoutingModule,
+    CardModule
   ],
   bootstrap: []
 })

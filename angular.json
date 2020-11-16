@@ -54,7 +54,7 @@
               "node_modules/quill/dist/quill.snow.css",
               "node_modules/nanoscroller/bin/css/nanoscroller.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeng/resources/themes/md-light-indigo/theme.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeflex/primeflex.scss",
               "node_modules/primeicons/primeicons.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
