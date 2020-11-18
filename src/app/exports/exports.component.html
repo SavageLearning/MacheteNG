@@ -1,8 +1,9 @@
-<h1>Exports</h1>
-<div class="p-grid" >
-  <div class="p-field p-col-12 p-md-12 p-lg-12">
+<p-card styleClass="p-card-shadow p-mb-5" header="Exports">
+  <div class="p-fluid p-formgrid p-grid" >
+    <div class="p-field p-col-12 p-md-12 p-lg-6">
+      <label for="exportsDD">Select a table</label>
       <p-dropdown
-        id="exportsDD"
+        inputId="exportsDD"
         placeholder="Select a table"
         [options]="exportsDropDown"
         optionLabel="value"
@@ -10,44 +11,52 @@
         [(ngModel)]="selectedExportName"
         >
       </p-dropdown>
+    </div>
+    <div class="p-field p-col-12 p-md-12 p-lg-6">
+      <label for="dateFilterDD">Date field for filter</label>
+      <p-dropdown
+        inputId="dateFilterDD"
+        placeholder="date field for filter"
+        [options]="dateFilterDropDown"
+        [(ngModel)]="selectedDateFilter"
+        ></p-dropdown>
+    </div>
+    <div class="p-field p-col-12 p-md-12 p-lg-6">
+      <label for="startDate">Start Date</label>
+      <p-calendar
+        inputId="startDate"
+        placeholder="Start date"
+        [showIcon]="true"
+        [(ngModel)]="selectedStartDate"
+        dataType="string"
+        [showButtonBar]="true"
+        [touchUI]="true"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        yearRange="2000:2030"
+        ></p-calendar>
+    </div>
+    <div class="p-field p-col-12 p-md-12 p-lg-6">
+      <label for="endDate">End date</label>
+      <p-calendar
+        inputId="endDate"
+        placeholder="End date"
+        [showIcon]="true"
+        [(ngModel)]="selectedEndDate"
+        dataType="string"
+        showButtonBar="true"
+        [touchUI]="true"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        yearRange="2000:2030"
+        ></p-calendar>
+    </div>
   </div>
-  <div class="p-field p-col-12 p-md-12 p-lg-12">
-    <p-dropdown
-      placeholder="date field for filter"
-      [options]="dateFilterDropDown"
-      [(ngModel)]="selectedDateFilter"
-      ></p-dropdown>
-  </div>
-  <div class="p-field p-col-12 p-md-12 p-lg-12">
-    <p-calendar
-      placeholder="Start date"
-      [showIcon]="true"
-      [(ngModel)]="selectedStartDate"
-      dataType="string"
-      [showButtonBar]="true"
-      [touchUI]="true"
-      [monthNavigator]="true"
-      [yearNavigator]="true"
-      yearRange="2000:2030"
-      ></p-calendar>
-  </div>
-  <div class="p-field p-col-12 p-md-12 p-lg-12">
-    <p-calendar
-      placeholder="End date"
-      [showIcon]="true"
-      [(ngModel)]="selectedEndDate"
-      dataType="string"
-      showButtonBar="true"
-      [touchUI]="true"
-      [monthNavigator]="true"
-      [yearNavigator]="true"
-      yearRange="2000:2030"
-      ></p-calendar>
-  </div>
-  <div class="ui-g-12 ui-md-4 ui-lg-3">
-    <button pButton type="submit" label="Export" (click)="onSubmit()"></button>
-  </div>
-</div>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple type="button" icon="pi pi-download" label="Export" (click)="onSubmit()"></button>
+  </ng-template>
+</p-card>
+
 <div>
     <exports-options [columns]="selectedColumns" [form]="form"></exports-options>
 </div>

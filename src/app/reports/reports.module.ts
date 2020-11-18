@@ -14,6 +14,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import {ReportsRoutingModule } from './reports-routing.module';
 import {CardModule} from 'primeng/card';
+import { TooltipModule } from 'primeng/tooltip';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {CardModule} from 'primeng/card';
     DialogModule,
     InputTextareaModule,
     ReportsRoutingModule,
-    CardModule
+    CardModule,
+    TooltipModule,
+    MenubarModule
   ],
   bootstrap: []
 })

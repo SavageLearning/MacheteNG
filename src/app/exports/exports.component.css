@@ -1,7 +1,1 @@
-/* :host ::ng-deep .panel-background {
-  background: rgba(255, 255, 255, 1);
-  width: 200px;
-} */
-:host ::ng-deep .p-dropdown {
-  width: 14rem;
-}
+

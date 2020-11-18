@@ -15,6 +15,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { ExportsOptionsComponent } from './exports-options.component';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { ExportsOptionsComponent } from './exports-options.component';
     DialogModule,
     InputSwitchModule,
     InputTextareaModule,
-    ExportsRoutingModule
+    ExportsRoutingModule,
+    CardModule
   ],
   declarations: [ExportsComponent, ExportsOptionsComponent]
 })

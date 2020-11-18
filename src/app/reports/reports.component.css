@@ -1,3 +1,3 @@
-:host ::ng-deep .p-button {
-  margin-right: 0.5rem;
+:host ::ng-deep .p-datatable-header {
+  background-color: #e1e6e9;
 }

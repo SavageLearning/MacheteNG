@@ -1,25 +1,33 @@
-<p-card>
-  <div class="p-grid"> 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <p-dropdown [options]="reportsDropDown" (onChange)="getView()" [(ngModel)]="selectedReportID" [filter]="true" [style]="{'width':'20em'}"></p-dropdown>
-        <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded" (click)="getView()"></button>
-        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded" (click)="displayDialog=true"></button>
-      </div>
-      <div *ngIf="inputs.memberNumber === true" class="p-col-4">
-        <label for="memberNumber">Membr number</label>
-        <input id="memberNumber" type="text" pInputText [(ngModel)]="o.memberNumber" (onBlur)="getView()" dataType="number"/>
-      </div>
-      <div *ngIf="inputs.beginDate === true" class="p-col-4">
-        <label for="start-date-cal">Start date</label>
-        <p-calendar id="start-date-cal" placeholder="Start date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.beginDate" [showIcon]="true" dataType="string"></p-calendar>
-      </div>
-      <div *ngIf="inputs.endDate === true" class="p-col-4">
-        <label for="end-date-cal">End date</label>
-        <p-calendar id="end-date-cal" placeholder="End date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.endDate" [showIcon]="true" dataType="string"></p-calendar>
-      </div>
+<p-card styleClass="p-card-shadow p-mb-5" header="Reports">
+  <div class="p-fluid p-formgrid p-grid"> 
+    <div class="p-field p-col-12">
+      <label for="select-report">Select a report</label>
+      <p-dropdown inputId="select-report" [options]="reportsDropDown" (onChange)="getView()" [(ngModel)]="selectedReportID" [filter]="true" styleClass="p-mr-2"></p-dropdown>
+    </div>
+    <div *ngIf="inputs.memberNumber === true" class="p-field p-col-12 p-md-12 p-lg-4">
+      <label for="memberNumber">Member number</label>
+      <input id="memberNumber" type="text" pInputText [(ngModel)]="o.memberNumber" (onBlur)="getView()" dataType="number"/>
+    </div>
+    <div *ngIf="inputs.beginDate === true" class="p-field p-col-12 p-md-12 p-lg-4">
+      <label for="start-date-cal">Start date</label>
+      <p-calendar id="start-date-cal" placeholder="Start date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.beginDate" [showIcon]="true" dataType="string"></p-calendar>
+    </div>
+    <div *ngIf="inputs.endDate === true" class="p-field p-col-12 p-md-12 p-lg-4">
+      <label for="end-date-cal">End date</label>
+      <p-calendar id="end-date-cal" placeholder="End date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.endDate" [showIcon]="true" dataType="string"></p-calendar>
     </div>
   </div>
+  <ng-template pTemplate="footer">
+    <!-- Responsive container` -->
+    <div class="p-d-flex p-flex-column p-flex-md-row">
+      <div class="p-mb-2 p-mr-2">
+        <button pButton pRipple type="button" icon="pi pi-refresh" tooltipPosition="bottom" label="Refresh" (click)="getView()"></button>
+      </div>
+      <div class="p-mb-2 p-mr-2">
+        <button pButton pRipple type="button" icon="pi pi-pencil" tooltipPosition="bottom" label="Edit" (click)="displayDialog=true"></button>
+      </div>
+    </div>
+  </ng-template>
 </p-card>
 
 <p-dialog header="{{title}}" [(visible)]="displayDescription">
@@ -38,10 +46,19 @@
   [columns]="cols"
   >
   <ng-template pTemplate="caption">
-    <button type="button" pButton icon="ui-icon-file-download" iconPos="left" label="CSV" (click)="getExport(dt)" style="float:left"></button>
-    <input  type="text" placeholder="Global search" width="200">
+    <!-- Responsive container` -->
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between">
+      <div class="p-mb-2 p-mr-2">
+        <button type="button" pButton icon="ui-icon-file-download" iconPos="left" label="CSV" (click)="getExport(dt)"></button>
+      </div>
+      <div class="p-mb-2 p-mr-2">
+        <input class="p-ml-auto" type="text" placeholder="Global search" width="200">
+      </div>
+      <div class="p-mb-2 p-mr-2">
+        <button class="p-ml-auto" pButton type="button" icon="ui-icon-help-outline" (click)="showDescription()" iconPos="left"></button>
+      </div>
+    </div>
 
-    <button pButton type="button" icon="ui-icon-help-outline" (click)="showDescription()" iconPos="left" style="float:right"></button>
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
