@@ -25,6 +25,7 @@ import { EmployersModule } from './employers/employers.module';
 import { GlobalErrorHandler } from './shared/global-error-handler';
 import { LoggingService } from './shared/services/logging.service';
 import { TransportProvidersService } from './online-orders/transport-providers.service';
+import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from "ngx-highlightjs";
 
 @NgModule({
   declarations: [
@@ -47,12 +48,22 @@ import { TransportProvidersService } from './online-orders/transport-providers.s
     ExportsModule,
     MyWorkOrdersModule,
     EmployersModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HighlightModule
   ],
   providers: [
     AuthService,
     LoggingService,
-    TransportProvidersService
+    TransportProvidersService,
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
+        languages: {
+          sql: () => import('highlight.js/lib/languages/sql')}
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })

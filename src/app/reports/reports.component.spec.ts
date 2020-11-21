@@ -1,7 +1,13 @@
 
 import { Observable } from 'rxjs';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DialogModule, CalendarModule, DataTableModule, TabViewModule, DropdownModule } from 'primeng/primeng';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { TabViewModule } from 'primeng/tabview';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import { ReportsComponent } from './reports.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,7 +31,7 @@ describe('ReportsComponent', () => {
   let component: ReportsComponent;
   let fixture: ComponentFixture<ReportsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
 
     TestBed.configureTestingModule({
       declarations: [
@@ -33,7 +39,7 @@ describe('ReportsComponent', () => {
       ],
       imports: [
         NoopAnimationsModule,
-        DataTableModule,
+        TableModule,
         DropdownModule,
         TabViewModule,
         CalendarModule,

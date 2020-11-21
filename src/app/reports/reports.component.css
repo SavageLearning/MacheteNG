@@ -1,3 +1,8 @@
 :host ::ng-deep .p-datatable-header {
   background-color: #e1e6e9;
 }
+
+:host ::ng-deep .p-inputtextarea {
+  font-family: 'Source Code Pro', monospace;
+  color: #498690;
+}

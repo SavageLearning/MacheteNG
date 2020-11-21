@@ -18,7 +18,7 @@
     </div>
   </div>
   <ng-template pTemplate="footer">
-    <!-- Responsive container` -->
+    <!-- Responsive container -->
     <div class="p-d-flex p-flex-column p-flex-md-row">
       <div class="p-mb-2 p-mr-2">
         <button pButton pRipple type="button" icon="pi pi-refresh" tooltipPosition="bottom" label="Refresh" (click)="getView()"></button>
@@ -49,7 +49,7 @@
     <!-- Responsive container` -->
     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between">
       <div class="p-mb-2 p-mr-2">
-        <button type="button" pButton icon="ui-icon-file-download" iconPos="left" label="CSV" (click)="getExport(dt)"></button>
+        <button type="button" pButton icon="pi pi-download" iconPos="left" label="CSV" (click)="getExport(dt)"></button>
       </div>
       <div class="p-mb-2 p-mr-2">
         <input class="p-ml-auto" type="text" placeholder="Global search" width="200">
@@ -66,54 +66,58 @@
             {{col.header}}
         </th>
     </tr>
-</ng-template>
+  </ng-template>
 
-<ng-template pTemplate="body" let-viewData>
-  <tr>
-      <td *ngFor="let col of cols">
-              {{viewData[col.field]}}
-      </td>
-  </tr>
-</ng-template>
+  <ng-template pTemplate="body" let-viewData>
+    <tr>
+        <td *ngFor="let col of cols">
+                {{viewData[col.field]}}
+        </td>
+    </tr>
+  </ng-template>
 </p-table>
-  <p-dialog
-    header="Report Details"
-    [(visible)]="displayDialog"
-    [responsive]="true"
-    showEffect="fade"
-    [modal]="false"
-    resizable="true"
-    width="1000"
-  >
-    <div>
-      <div class="ui-g" style="display:flex">
-        <div class="ui-sm-4 ui-md-3 ui-lg-3" style="flex: 0"><label for="name">Name</label></div>
-        <div class="ui-sm-8 ui-md-9 ui-lg-9" style="flex: 1"><input pInputText id="name" [(ngModel)]="name" style="width: 100%;"/></div>
-      </div>
-      <div class="ui-g" style="display:flex">
-        <div class="ui-sm-4 ui-md-3 ui-lg-3" style="flex: 0"><label for="commonName">Common name</label></div>
-        <div class="ui-sm-8 ui-md-9 ui-lg-9" style="flex: 1"><input pInputText id="commonName" style="width: 100%;" [(ngModel)]="selectedReport.commonName" /></div>
-      </div>
-      <!--<div class="ui-g">-->
-        <!--<div class="ui-sm-4 ui-md-3 ui-lg-2"><label for="title">Title</label></div>-->
-        <!--<div class="ui-sm-8 ui-md-9 ui-lg-10"><input pInputText id="title" [(ngModel)]="selectedReport.title" /></div>-->
-      <!--</div>-->
-      <div class="ui-g">
-        <div class="ui-sm-4 ui-md-3 ui-lg-3" style="flex: 0"><label for="description">Description</label></div>
-        <div class="ui-sm-8 ui-md-9 ui-lg-9" style="flex: 1"><input pInputText id="description" style="width: 100%;" [(ngModel)]="selectedReport.description" /></div>
-      </div>
-      <div class="ui-g" style="display:flex">
-        <div class="ui-sm-4 ui-md-3 ui-lg-3" style="flex: 0"><label for="sqlquery">SQL Query</label></div>
-        <div class="ui-sm-8 ui-md-9 ui-lg-9" style="flex: 1">
-              <textarea pInputTextarea id="sqlquery" rows="20" style="width: 100%;" [(ngModel)]="selectedReport.sqlquery" autoResize="true"></textarea>
-        </div>
-      </div>
+<p-dialog
+  header="Report Details"
+  [(visible)]="displayDialog"
+  [responsive]="true"
+  showEffect="fade"
+  [modal]="false"
+  resizable="true"
+  maximizable="true"
+  [baseZIndex]="10000"
+>
+<div class="card">
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12">
+      <label for="name">Name</label>
+      <input pInputText id="name" [(ngModel)]="name" />
     </div>
-    <p-footer>
-      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-        <!--<button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>-->
-        <!--<button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>-->
-      </div>
-    </p-footer>
-  </p-dialog>
+    <div class="p-field p-col-12">
+      <label for="commonName">Common name</label>
+      <input pInputText id="commonName" [(ngModel)]="selectedReport.commonName" />
+    </div>
+    <div class="p-field p-col-12">
+      <label for="description">Description</label>
+      <input pInputText id="description" [(ngModel)]="selectedReport.description" />
+    </div>
+    <div class="p-field p-col-12">
+      <label for="sqlquery">SQL Query</label>
+      <textarea pInputTextarea  id="sqlquery" [(ngModel)]="selectedReport.sqlquery" [rows]="sqlStringRowCount" [style]="{'height':'100%'}" spellcheck="false"></textarea>
+    </div>
+    <div class="p-field p-col-12">
+      <div class="p-m-5"></div>
+      <label for="sqlHighlight">SQL Syntax Highlighting</label>
+      <pre><code id="sqlHighlight" [highlight]="selectedReport.sqlquery" [lineNumbers]="true"></code></pre>
+    </div>
+
+  </div>
+</div>
+
+  <p-footer>
+    <!-- <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"> -->
+      <!--<button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>-->
+      <!--<button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>-->
+    <!-- </div> -->
+  </p-footer> 
+</p-dialog>
 </div>

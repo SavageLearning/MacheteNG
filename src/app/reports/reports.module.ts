@@ -16,6 +16,9 @@ import {ReportsRoutingModule } from './reports-routing.module';
 import {CardModule} from 'primeng/card';
 import { TooltipModule } from 'primeng/tooltip';
 import { MenubarModule } from 'primeng/menubar';
+import { InputTextModule } from 'primeng/inputtext';
+import { HighlightModule } from 'ngx-highlightjs';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { MenubarModule } from 'primeng/menubar';
     ReportsRoutingModule,
     CardModule,
     TooltipModule,
-    MenubarModule
+    MenubarModule,
+    InputTextModule,
+    HighlightModule
   ],
   bootstrap: []
 })

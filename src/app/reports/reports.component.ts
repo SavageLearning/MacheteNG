@@ -31,6 +31,7 @@ export class ReportsComponent implements OnInit {
   displayDialog = false;
   cols: Column[];
   inputs: SearchInputs;
+  sqlStringRowCount: number;
 
   constructor(private reportsService: ReportsService) {
     let now = new Date();
@@ -64,6 +65,7 @@ export class ReportsComponent implements OnInit {
     this.name = this.selectedReport.name;
     this.cols = this.selectedReport.columns.filter(a => a.visible === true);
     this.inputs = <SearchInputs>this.selectedReport.inputs;
+    this.sqlStringRowCount = this.selectedReport.sqlquery.match(/^/gm).length; // count the number of line breaks in string
   }
 
   ngOnInit() {
