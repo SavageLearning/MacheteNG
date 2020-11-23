@@ -82,9 +82,12 @@
   [responsive]="true"
   showEffect="fade"
   [modal]="false"
-  resizable="true"
-  maximizable="true"
+  [resizable]="true"
+  [maximizable]="true"
   [baseZIndex]="10000"
+  [style]="{width: '90vw'}"
+  [closeOnEscape]="true"
+  (onShow)="collapseSyntaxFeedback=true"
 >
 <div class="card">
   <div class="p-fluid p-formgrid p-grid">
@@ -101,23 +104,34 @@
       <input pInputText id="description" [(ngModel)]="selectedReport.description" />
     </div>
     <div class="p-field p-col-12">
-      <label for="sqlquery">SQL Query</label>
-      <textarea pInputTextarea  id="sqlquery" [(ngModel)]="selectedReport.sqlquery" [rows]="sqlStringRowCount" [style]="{'height':'100%'}" spellcheck="false"></textarea>
+      <p-dialog [(visible)]="this.showSqlSyntaxHelp">
+        Use this syntax highlighting to help validate the sql query. 
+        The syntax only highlights SQL keywords.
+        Please note that it does not highlight table or column names.
+        Depending on the query, you will have the following variables for filtering:
+        <pre><code>@endDate</code></pre>
+        <pre><code>@beginDate</code></pre>
+        <pre><code>@dwccardnum</code></pre>
+
+      </p-dialog>
+      <p-panel [toggleable]="true" [(collapsed)]="collapseSyntaxFeedback">
+        <p-header>SQL Syntax Highlighting</p-header>
+          <ng-template pTemplate="icons">
+            <button pButton class="p-panel-header-icon p-link" icon="pi pi-copy" (click)="copyInputMessage(inputSql)"></button>
+            <button pButton class="p-panel-header-icon p-link" icon="pi pi-question" (click)="showSqlSyntaxHelp=true"></button>
+          </ng-template>
+          <pre><code id="sqlHighlight" [highlight]="selectedReport.sqlquery" [lineNumbers]="true"></code></pre>
+      </p-panel>      
     </div>
     <div class="p-field p-col-12">
-      <div class="p-m-5"></div>
-      <label for="sqlHighlight">SQL Syntax Highlighting</label>
-      <pre><code id="sqlHighlight" [highlight]="selectedReport.sqlquery" [lineNumbers]="true"></code></pre>
+      <label for="sqlquery">SQL Query</label>
+      <textarea #inputSql pInputTextarea  id="sqlquery" [(ngModel)]="selectedReport.sqlquery" [rows]="sqlStringRowCount" [style]="{'height':'100%'}" spellcheck="false"></textarea>
     </div>
-
   </div>
 </div>
 
-  <p-footer>
-    <!-- <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"> -->
-      <!--<button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>-->
-      <!--<button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>-->
-    <!-- </div> -->
-  </p-footer> 
+  <!-- <p-footer>
+      <button type="button" pButton icon="pi pi-save" (click)="save()" label="Save"></button>
+  </p-footer>  -->
 </p-dialog>
 </div>

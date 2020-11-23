@@ -32,6 +32,8 @@ export class ReportsComponent implements OnInit {
   cols: Column[];
   inputs: SearchInputs;
   sqlStringRowCount: number;
+  showSqlSyntaxHelp = false;
+  collapseSyntaxFeedback = true;
 
   constructor(private reportsService: ReportsService) {
     let now = new Date();
@@ -53,6 +55,12 @@ export class ReportsComponent implements OnInit {
   showDescription() {
     this.updateDescription();
     this.displayDescription = true;
+  }
+
+  copyInputMessage(inputElement) {
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
   }
 
   updateDescription() {

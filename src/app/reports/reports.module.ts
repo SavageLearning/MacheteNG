@@ -18,6 +18,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { HighlightModule } from 'ngx-highlightjs';
+import { PanelModule } from 'primeng/panel';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { HighlightModule } from 'ngx-highlightjs';
     TooltipModule,
     MenubarModule,
     InputTextModule,
-    HighlightModule
+    HighlightModule,
+    PanelModule
   ],
   bootstrap: []
 })
