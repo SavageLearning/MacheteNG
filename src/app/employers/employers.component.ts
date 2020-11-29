@@ -69,12 +69,12 @@ export class EmployersComponent implements OnInit {
     'email': [{value: this.employer.email, disabled: true}, requiredValidator('Email is required')],
     'fax': [this.employer.fax],
     'name': [this.employer.name, [requiredValidator('Name is required'), lengthValidator(50)]],
-    'phone': [this.employer.phone, phoneValidator('Phone is required in ###-###-#### format')],
+    'phone': [this.employer.phone, phoneValidator('Phone is required in 999-999-9999 format')],
     'referredBy': [this.employer.referredBy],
     'referredByOther': [this.employer.referredByOther, lengthValidator(50)],
     'state': [this.employer.state, [
       requiredValidator('State is required'), 
-      regexValidator(new RegExp(/^[a-zA-Z]{2,2}$/), 'state', "State must be two letters")]],
+      regexValidator(new RegExp(/^[a-zA-Z]{2,2}$/), 'state', 'State must be two letters')]],
     'zipcode': [this.employer.zipcode, [requiredValidator('zipcode is required'), lengthValidator(10)]]
     });
 

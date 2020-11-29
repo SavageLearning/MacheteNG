@@ -1,232 +1,162 @@
-<h1>
-  Employer profile
-</h1>
-<div class="card">
-  This is your employer profile. If you're a new employer, you must create a profile before you can place an order.
-  This profile information will pre-populate new orders to save you time.
-</div>
-<div class="ui-fluid">
-  <div class="card">
-    <form [formGroup]="employerForm" (ngSubmit)="saveEmployer()" class="ui-g form-group">
-      <div class="ui-g-12 ui-md-6">
+<p-card 
+  styleClass="p-card-shadow p-mb-5"
+  header="Employer Profile"
+  subheader="This is your employer profile. If you're a new employer, you must create a profile before you can place an order.
+This profile information will pre-populate new orders to save you time."
+>
+  <form [formGroup]="employerForm" (ngSubmit)="saveEmployer()" class="ui-g form-group">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-col-12 p-md-6">
 
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <input formControlName="name" id="name" type="text" pInputText/>
             <label for="name">Name</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="name" 
-                      id="name"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.name}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.name}}
+          </small>
         </div>
 
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <p-inputMask
+              formControlName="phone" 
+              inputId="phone"
+              type="text"
+              mask="999-999-9999"
+            >
+            </p-inputMask>
             <label for="phone">Phone number</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="phone" 
-                      id="phone"
-                      type="text" 
-                      placeholder="123-456-7890"
-                      pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.phone}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.phone}}
+          </small>
         </div>
 
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
-            <label for="cellphone">Cell phone</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="cellphone" 
-                      id="cellphone"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.cellphone}}
-              </div>
-            </span>
-          </div>
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <p-inputMask
+              formControlName="cellphone" 
+              inputId="cellphone"
+              type="text"
+              mask="999-999-9999">
+            </p-inputMask>
+            <label for="cellphone" class="p-col-fixed">Cell phone</label>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.cellphone}}
+          </small>  
         </div>
         
-
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
-            <label for="email">Email</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="email" 
-                      id="email"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.email}}
-              </div>
-            </span>
-          </div>
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <input formControlName="email" id="email" type="text" pInputText/>
+            <label for="email" class="p-col-fixed">Email</label>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.email}}
+          </small>
         </div>
         
-
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
-            <label for="referredBy">Referred by?</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="referredBy" 
-                      id="referredBy"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.referredBy}}
-              </div>
-            </span>
-          </div>
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <input formControlName="referredBy" id="referredBy" type="text" pInputText/>
+            <label for="referredBy" class="p-col-fixed">Referred by?</label>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.referredBy}}
+          </small>
         </div>
         
-
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
-            <label for="referredByOther">Referred by notes</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="referredByOther" 
-                      id="referredByOther"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.referredByOther}}
-              </div>
-            </span>
-          </div>
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <input formControlName="referredByOther" id="referredByOther" type="text" pInputText/>
+            <label for="referredByOther" class="p-col-fixed">Referred by notes</label>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.referredByOther}}
+          </small>
         </div>
-        
-        
       </div>
-      <!-- -------------------------vertical divide---------------------------- -->
-      <div class="ui-g-12  ui-md-6">
-        <div class="ui-g-12"> 
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+    
+    <!-- -------------------------vertical divide---------------------------- -->
+      <div class="p-col-12 p-md-6">
+
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <p-dropdown id="business" [options]="yesNoDropDown" formControlName="business"></p-dropdown>
             <label for="business">Is a business?</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-              <p-dropdown id="business" [options]="yesNoDropDown" formControlName="business">
-              </p-dropdown>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.business}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.business}}
+          </small>
         </div>
 
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <input formControlName="address1" id="address1" type="text" pInputText/>
             <label for="address1">Address (1)</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="address1" 
-                      id="address1"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.address1}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.address1}}
+          </small>
         </div>
 
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <input formControlName="address2" id="address2" type="text" pInputText/>
             <label for="address2">Address (2)</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="address2" 
-                      id="address2"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.address2}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.address2}}
+          </small>
         </div>
 
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <input formControlName="city" id="city" type="text" pInputText/>
             <label for="city">City</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="city" 
-                      id="city"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.city}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.city}}
+          </small>
         </div>
 
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <p-inputMask
+              formControlName="state" 
+              inputId="state"
+              type="text" 
+              mask="aa">
+            </p-inputMask>
             <label for="state">State</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="state" 
-                      id="state"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.state}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.state}}
+          </small>  
         </div>
 
-
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
+        <div class="p-field p-col-12 p-input-filled">
+          <span class="p-float-label">
+            <p-inputMask
+            formControlName="zipcode" 
+            inputId="zipcode"
+            type="text" 
+            mask="99999?-9999">
+            </p-inputMask>
             <label for="zipcode">Zipcode</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-                <input class="ui-inputtext ng-dirty ng-invalid" 
-                      formControlName="zipcode" 
-                      id="zipcode"
-                      type="text" pInputText/>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!employerForm.valid && showErrors">
-                {{formErrors.zipcode}}
-              </div>
-            </span>
-          </div>
+          </span>
+          <small class="p-invalid" *ngIf="!employerForm.valid && showErrors">
+            {{formErrors.zipcode}}
+          </small>  
         </div>
-
-        
+         
       </div>
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Save"></button>
-      </div>
-    </form>
-  </div>
-</div>        
+    </div>
+    <div class="p-col-12">
+      <button pButton type="submit" label="Save"></button>
+    </div>
+  </form>
+</p-card>

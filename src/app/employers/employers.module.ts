@@ -7,6 +7,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { CardModule } from 'primeng/card';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { KeyFilterModule } from 'primeng/keyfilter';
     ButtonModule,
     DropdownModule,
     EmployersRoutingModule,
-    KeyFilterModule
+    KeyFilterModule,
+    CardModule,
+    InputMaskModule
   ],
   declarations: [EmployersComponent]
 })
