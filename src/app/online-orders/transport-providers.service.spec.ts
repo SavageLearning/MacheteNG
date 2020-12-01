@@ -13,11 +13,11 @@ describe('TransportProviderService', () => {
       providers: [TransportProvidersService],
       imports: [
         HttpClientModule,
-        HttpClientTestingModule 
+        HttpClientTestingModule
       ]
     })
     .compileComponents();
-    httpMock = TestBed.get(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', inject([TransportProvidersService], (service: TransportProvidersService) => {

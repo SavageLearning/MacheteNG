@@ -12,7 +12,6 @@
                         formControlName="skillId"
                         [(ngModel)]="request.skillId"
                         (onChange)="selectSkill(request.skillId)"
-                        [autoWidth]="false"
                         placeholder="Select a skill"></p-dropdown>
 
           </div>
@@ -91,8 +90,40 @@
       </div>
     </form>
   <div>
-    <p-dataTable [value]="requestList" [(selection)]="selectedRequest" (onRowSelect)="onRowSelect($event)" [responsive]="true">
-      <p-column field="id" header="Request #" [style]="{'padding':'.1em .875em'}"></p-column>
+    <p-table [value]="requestList" [(selection)]="selectedRequest" (onRowSelect)="onRowSelect($event)" [responsive]="true">
+      <ng-template pTemplate="header">
+        <tr [style]="{'padding':'.1em .875em'}">
+          <th>Request #</th>
+          <th>Skill needed</th>
+          <th>Transport cost</th>
+          <th>Hours Requested</th>
+          <th>Notes</th>
+          <th>Heavy lifting?</th>
+          <th>Hourly wage</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-requestListItem>
+        <tr>
+          <td>{{requestListItem.id}}</td>
+          <td>{{requestListItem.skill}}</td>
+          <td>{{requestListItem.transportCost}}</td>
+          <td>{{requestListItem.hours}}</td>
+          <td>{{requestListItem.description}}</td>
+          <td>{{requestListItem.requiresHeavyLifting}}</td>
+          <td>{{requestListItem.hourlyWage}}</td>
+          <td>{{requestListItem.requiresHeavyLifting}}</td>
+          <td>
+            <button type="button" pButton pRipple (click)="editRequest(request)" icon="pi pi-pencil"></button>
+            <button type="button" pButton pRipple (click)="deleteRequest(request)" icon="pi pi-trash"></button>
+          </td>
+
+
+
+        </tr>
+
+      </ng-template>
+      <!-- <p-column field="id" header="Request #" [style]="{'padding':'.1em .875em'}"></p-column>
       <p-column field="skill" header="Skill needed" [style]="{'padding':'.1em .875em'}"></p-column>
       <p-column field="transportCost" header="Transport cost" [style]="{'padding':'.1em .875em'}">
         <ng-template let-col let-wa="rowData" let-ri="rowIndex" pTemplate="body">
@@ -120,8 +151,8 @@
           <button type="button" pButton (click)="editRequest(request)" icon="ui-icon-edit"></button>
           <button type="button" pButton (click)="deleteRequest(request)" icon="ui-icon-delete"></button>
         </ng-template>
-      </p-column>
-    </p-dataTable>
+      </p-column> -->
+    </p-table>
       <div class="ui-g">
         <button pButton type="button"  (click)="finalize()" [disabled]="!hasRequests" label="Done with Jobs"></button>
       </div>

@@ -21,7 +21,7 @@ import {
 } from '../../shared/testing';
 import { TransportRulesService } from '../transport-rules.service';
 import { TransportProvidersService } from '../transport-providers.service';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 describe('WorkAssignmentsService', () => {
   let service: WorkAssignmentsService;
@@ -73,8 +73,8 @@ describe('WorkAssignmentsService', () => {
     spyOn(TransportRulesService.prototype, 'getTransportRules')
       .and.returnValue(observableOf(transportRules));
 
-    service = TestBed.get(WorkAssignmentsService);
-    httpMock = TestBed.get(HttpTestingController);
+    service = TestBed.inject(WorkAssignmentsService);
+    httpMock = TestBed.inject(HttpTestingController);
 
   });
 

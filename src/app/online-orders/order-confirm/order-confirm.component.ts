@@ -32,12 +32,12 @@ export class OrderConfirmComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {    
-    observableCombineLatest(
-      this.transportProviderService.getTransportProviders(),
-      this.ordersService.getStream(),
-      this.assignmentService.getStream()
-    ).subscribe(([l, o, wa]) => {
+  ngOnInit() {
+    const l$ = this.transportProviderService.getTransportProviders();
+    const o$ = this.ordersService.getStream();
+    const wa$ = this.assignmentService.getStream();
+
+    combineLatest([l$, o$, wa$]).subscribe(([l, o, wa]) => {
       console.log('ngOnInit->combineLatest.subscribe', l, o, wa);
       this.order = o;
       if (o.transportProviderID > 0)
@@ -53,7 +53,7 @@ export class OrderConfirmComponent implements OnInit {
         // sums up the labor costs
         this.laborCost = 
           wa.map(wa => wa.hourlyWage * wa.hours)
-            .reduce((a, b) => a + b);      
+            .reduce((a, b) => a + b);
       } else {
         this.workerCount = 0;
         this.transportCost = 0;

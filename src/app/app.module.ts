@@ -25,7 +25,7 @@ import { EmployersModule } from './employers/employers.module';
 import { GlobalErrorHandler } from './shared/global-error-handler';
 import { LoggingService } from './shared/services/logging.service';
 import { TransportProvidersService } from './online-orders/transport-providers.service';
-import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from "ngx-highlightjs";
+import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [

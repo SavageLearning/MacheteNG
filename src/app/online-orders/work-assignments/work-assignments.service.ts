@@ -18,13 +18,13 @@ export class WorkAssignmentsService {
 
   private transports: TransportProvider[];
   private transportRules: TransportRule[];
-  private combinedSource: Observable<[TransportRule[], TransportProvider[], WorkOrder]>;
+  private combinedSource$: Observable<[TransportRule[], TransportProvider[], WorkOrder]>;
   private workOrder: WorkOrder;
 
   constructor(
     private onlineService: OnlineOrdersService,
     private orderService: WorkOrderService,
-    private transportProviderService: TransportProvidersService, 
+    private transportProviderService: TransportProvidersService,
     private transportRulesService: TransportRulesService,
     private messageService: MessageService
   ) {
@@ -35,15 +35,15 @@ export class WorkAssignmentsService {
       let requests: WorkAssignment[] = JSON.parse(data);
       this.requests = requests;
     }
-    this.combinedSource = observableCombineLatest(
+    this.combinedSource$ = observableCombineLatest([
       this.transportRulesService.getTransportRules(),
       this.transportProviderService.getTransportProviders(),
-      this.orderService.getStream());
+      this.orderService.getStream()]);
 
-    const subscribed = this.combinedSource.subscribe(
+    const subscribed = this.combinedSource$.subscribe(
       values => {
         console.log('combined subscription::', values);
-        
+
         const [rules, transports, order] = values;
         this.workOrder = order;
         this.transportRules = rules;
@@ -56,7 +56,7 @@ export class WorkAssignmentsService {
   getStream(): Observable<WorkAssignment[]> {
     return observableOf(this.requests);
   }
-  
+
   getAll(): WorkAssignment[] {
       return this.requests;
   }
@@ -65,14 +65,13 @@ export class WorkAssignmentsService {
     observableZip(
       this.transportRulesService.getTransportRules(),
       this.transportProviderService.getTransportProviders(),
-      this.orderService.getStream(),
-      () => {}
+      this.orderService.getStream()
     )
     .subscribe(() => {
       this._save(request);
     });
   }
-   
+
   _save(request: WorkAssignment) {
     if (request.id === 0) {
       request.id = this.getNextRequestId();
@@ -86,7 +85,7 @@ export class WorkAssignmentsService {
     }
     this.compactRequests();
     console.log('saving:', this.requests);
-    sessionStorage.setItem(this.storageKey, 
+    sessionStorage.setItem(this.storageKey,
       JSON.stringify(this.requests));
   }
 
@@ -107,7 +106,7 @@ export class WorkAssignmentsService {
     this.requests.splice(index, 1);
     this.compactRequests();
     console.log('saving after delete:', this.requests);
-    sessionStorage.setItem(this.storageKey, 
+    sessionStorage.setItem(this.storageKey,
       JSON.stringify(this.requests));
   }
 
@@ -125,15 +124,14 @@ export class WorkAssignmentsService {
 
   compactRequests() {
     let rule = this.getTransportRule();
-    if (rule == null)
-    {
+    if (rule == null) {
       console.log('compactRequests: rule null, skipping...');
       return;
     }
     for (let i in this.requests) {
       let newid = Number(i);
       this.requests[newid].id = newid + 1;
-      this.requests[newid].transportCost = 
+      this.requests[newid].transportCost =
         this.calculateTransportCost(newid + 1, rule);
         console.log('completed compactRequest');
     }
@@ -150,28 +148,28 @@ export class WorkAssignmentsService {
       return null;
     }
 
-    const provider: TransportProvider = this.transports.find(f => f.id == order.transportProviderID);
+    const provider: TransportProvider = this.transports.find(f => f.id === order.transportProviderID);
     if (provider === null || provider === undefined) {
       console.log('LookupService didn\'t return a valid lookup for transportProviderID: ', order);
       return null;
     }
 
-    const rules = this.transportRules.filter(f => f.lookupKey == provider.key);
+    const rules = this.transportRules.filter(f => f.lookupKey === provider.key);
     if (rules === null || rules === undefined) {
       throw new Error('No TransportRules match lookup key: ' + provider.key);
     }
 
-    const result = rules.find(f => f.zipcodes.includes(order.zipcode) || 
-                                   f.zipcodes.includes("*"));
-    if (result === null || result == undefined) {
+    const result = rules.find(f => f.zipcodes.includes(order.zipcode) ||
+                                   f.zipcodes.includes('*'));
+    if (result === null || result === undefined) {
       this.messageService.add({
-        severity:'warn', 
-        summary:`Zipcode ${order.zipcode} out of range`, 
-        detail:`We do not provide service to ${order.zipcode}. You may still hire, if you are willing to pick up the worker.`
-      });      
+        severity: 'warn',
+        summary: `Zipcode ${order.zipcode} out of range`,
+        detail: `We do not provide service to ${order.zipcode}. You may still hire, if you are willing to pick up the worker.`
+      });
       return null;
     }
-    return result; 
+    return result;
   }
 
   calculateTransportCost(id: number, rule: TransportRule): number {

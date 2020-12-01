@@ -25,7 +25,7 @@ export class IntroConfirmComponent implements OnInit {
         this.confirmChoices = confirmed;
         this.confirmStatus = this.confirmChoices
             .map(a => a.confirmed)
-            .reduce((a,b) => a && b );
+            .reduce((a, b) => a && b );
       }
     );
   }
@@ -33,9 +33,9 @@ export class IntroConfirmComponent implements OnInit {
   checkConfirm(event: Event) {
     let result =  this.confirmChoices
                             .map(a => a.confirmed)
-                            .reduce((a,b) => a && b );
+                            .reduce((a, b) => a && b );
     this.confirmStatus = result;
-    this.onlineService.setInitialConfirm(this.confirmChoices);                            
+    this.onlineService.setInitialConfirm(this.confirmChoices);
   }
 
   nextStep() {

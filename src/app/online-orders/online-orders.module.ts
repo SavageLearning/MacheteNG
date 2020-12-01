@@ -14,9 +14,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { MessageService } from 'primeng/api';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnlineOrdersService } from './online-orders.service';
@@ -37,6 +39,7 @@ import { ProfileGuard } from './guards/profile.guard';
     TableModule,
     InputSwitchModule,
     MessagesModule,
+    MessageModule,
     DialogModule,
     CheckboxModule,
     ToggleButtonModule,
@@ -56,6 +59,7 @@ import { ProfileGuard } from './guards/profile.guard';
     OnlineOrdersService,
     ScheduleRulesService,
     TransportRulesService,
+    MessageService, //PrimeNG Service
     ProfileGuard
   ]
 })

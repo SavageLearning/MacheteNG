@@ -12,14 +12,14 @@ describe('ScheduleRulesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        ScheduleRulesService        
+        ScheduleRulesService
       ],
       imports: [
         HttpClientModule,
-        HttpClientTestingModule        
+        HttpClientTestingModule
       ]
     }).compileComponents();
-    httpMock = TestBed.get(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', inject([ScheduleRulesService], (service: ScheduleRulesService) => {

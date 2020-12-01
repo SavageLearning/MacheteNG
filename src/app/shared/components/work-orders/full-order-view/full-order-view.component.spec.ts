@@ -1,19 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DataTableModule } from 'primeng/primeng';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TableModule } from 'primeng/table';
 
 import { FullOrderViewComponent } from './full-order-view.component';
 import { WorkOrder } from '../../../../shared/models/work-order';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 import { MessageServiceSpy } from '../../../testing';
 
 describe('FullOrderViewComponent', () => {
   let component: FullOrderViewComponent;
   let fixture: ComponentFixture<FullOrderViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FullOrderViewComponent ],
-      imports: [DataTableModule],
+      imports: [TableModule],
     }).overrideComponent(FullOrderViewComponent, {
       set: {
         providers: [

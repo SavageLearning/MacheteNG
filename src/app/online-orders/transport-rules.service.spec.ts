@@ -12,14 +12,14 @@ describe('TransportRulesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        TransportRulesService        
+        TransportRulesService
       ],
       imports: [
         HttpClientModule,
-        HttpClientTestingModule        
+        HttpClientTestingModule
       ]
     }).compileComponents();
-    httpMock = TestBed.get(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', inject([TransportRulesService], (service: TransportRulesService) => {

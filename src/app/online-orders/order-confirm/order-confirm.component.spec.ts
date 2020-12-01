@@ -1,30 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderConfirmComponent } from './order-confirm.component';
 import { WorkOrderService } from '../work-order/work-order.service';
 import { WorkOrder } from '../../shared/models/work-order';
 import { OnlineOrdersService } from '../online-orders.service';
-import { WorkOrderServiceSpy, OnlineOrdersServiceSpy, LookupsServiceSpy, WorkAssignmentsServiceSpy, RouterSpy, MessageServiceSpy, TransportProvidersServiceSpy } from '../../shared/testing';
-import { LookupsService } from "../../lookups/lookups.service";
-import { DataTableModule } from 'primeng/primeng';
+import { MessageServiceSpy, TransportProvidersServiceSpy } from '../../shared/testing';
+import { WorkOrderServiceSpy, OnlineOrdersServiceSpy, LookupsServiceSpy, WorkAssignmentsServiceSpy, RouterSpy } from '../../shared/testing';
 
-import { WorkAssignmentsService } from "../work-assignments/work-assignments.service";
+import { LookupsService } from '../../lookups/lookups.service';
+import { TableModule } from 'primeng/table';
+
+import { WorkAssignmentsService } from '../work-assignments/work-assignments.service';
 import { Router } from '@angular/router';
 import { FullOrderViewComponent } from '../../shared/components/work-orders/full-order-view/full-order-view.component';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 import { TransportProvidersService } from '../transport-providers.service';
 
 describe('OrderConfirmComponent', () => {
   let component: OrderConfirmComponent;
   let fixture: ComponentFixture<OrderConfirmComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ 
         OrderConfirmComponent,
         FullOrderViewComponent
        ],
-      imports: [DataTableModule]
+      imports: [TableModule]
     })
     .overrideComponent(OrderConfirmComponent, {
       set: {
@@ -35,7 +37,7 @@ describe('OrderConfirmComponent', () => {
           {provide: MessageService, useClass: MessageServiceSpy },
           { provide: WorkAssignmentsService, useClass: WorkAssignmentsServiceSpy},
           { provide: Router, useClass: RouterSpy }
-          
+
         ]
       }
     })

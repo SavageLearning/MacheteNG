@@ -6,13 +6,13 @@ import { WorkOrder } from '../shared/models/work-order';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import { Confirm } from "./shared/models/confirm";
-import { loadConfirms } from "./shared/rules/load-confirms";
+import { Confirm } from './shared/models/confirm';
+import { loadConfirms } from './shared/rules/load-confirms';
 
 @Injectable()
 export class OnlineOrdersService {
-  private initialConfirmSource: BehaviorSubject<Confirm[]>; 
-  private workOrderConfirmSource = new BehaviorSubject<boolean>(false);  
+  private initialConfirmSource: BehaviorSubject<Confirm[]>;
+  private workOrderConfirmSource = new BehaviorSubject<boolean>(false);
   private workAssignmentsConfirmSource = new BehaviorSubject<boolean>(false);
 
   storageKey = 'machete.online-orders-service';
@@ -24,7 +24,7 @@ export class OnlineOrdersService {
   ) {
     console.log('.ctor: OnlineOrdersService');
     // this loads static data from a file. will replace later.
-    
+
     this.loadConfirmState();
   }
 
@@ -52,9 +52,9 @@ export class OnlineOrdersService {
 
     // notify the subscribers
     this.workOrderConfirmSource.next(
-      sessionStorage.getItem(this.workOrderConfirmKey) == 'true');
+      sessionStorage.getItem(this.workOrderConfirmKey) === 'true');
     this.workAssignmentsConfirmSource.next(
-      sessionStorage.getItem(this.workAssignmentConfirmKey) == 'true');
+      sessionStorage.getItem(this.workAssignmentConfirmKey) === 'true');
   }
 
   clearState() {

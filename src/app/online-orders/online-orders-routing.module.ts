@@ -13,8 +13,8 @@ import { WorkOrderGuard } from './guards/work-order.guard';
 import { WorkOrderService } from './work-order/work-order.service';
 import { EmployersService } from '../employers/employers.service';
 import { WorkAssignmentsService } from './work-assignments/work-assignments.service';
-import { WorkAssignmentsGuard } from "./guards/work-assignments.guard";
-import { OrderConfirmGuard } from "./guards/order-confirm.guard";
+import { WorkAssignmentsGuard } from './guards/work-assignments.guard';
+import { OrderConfirmGuard } from './guards/order-confirm.guard';
 import { OrderNotFoundComponent } from './order-not-found/order-not-found.component';
 import { ProfileGuard } from './guards/profile.guard';
 

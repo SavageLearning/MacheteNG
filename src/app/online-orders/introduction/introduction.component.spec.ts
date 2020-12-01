@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IntroductionComponent } from './introduction.component';
-import { RouterSpy, OnlineOrdersServiceSpy, WorkOrderServiceSpy, WorkAssignmentsServiceSpy } from "../../shared/testing";
-import { Router } from "@angular/router";
-import { OnlineOrdersService } from "../online-orders.service";
+import { RouterSpy, OnlineOrdersServiceSpy, WorkOrderServiceSpy, WorkAssignmentsServiceSpy } from '../../shared/testing';
+import { Router } from '@angular/router';
+import { OnlineOrdersService } from '../online-orders.service';
 import { WorkOrderService } from '../work-order/work-order.service';
 import { WorkAssignmentsService } from '../work-assignments/work-assignments.service';
 
@@ -11,7 +11,7 @@ describe('IntroductionComponent', () => {
   let component: IntroductionComponent;
   let fixture: ComponentFixture<IntroductionComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ IntroductionComponent ]
     })

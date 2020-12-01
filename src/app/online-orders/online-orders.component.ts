@@ -23,12 +23,12 @@ export class OnlineOrdersComponent implements OnInit {
   confirmation = false;
 
   constructor(
-    private onlineService: OnlineOrdersService, 
+    private onlineService: OnlineOrdersService,
     private router: Router) {
       router.events.subscribe(event => {
         // NavigationEnd event occurs after route succeeds
-        if(event instanceof NavigationEnd) {
-          switch(event.urlAfterRedirects) {
+        if (event instanceof NavigationEnd) {
+          switch (event.urlAfterRedirects) {
             case '/online-orders/introduction': { this.activeIndex = 0; break; }
             case '/online-orders/intro-confirm': { this.activeIndex = 1; break; }
             case '/online-orders/work-order': { this.activeIndex = 2; break; }
