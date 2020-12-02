@@ -9,7 +9,9 @@ import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { OnlineOrdersRoutingModule } from './online-orders-routing.module';
 
 import { StepsModule } from 'primeng/steps';
+
 import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { InputSwitchModule } from 'primeng/inputswitch';
@@ -44,7 +46,8 @@ import { ProfileGuard } from './guards/profile.guard';
     CheckboxModule,
     ToggleButtonModule,
     OnlineOrdersRoutingModule,
-    WorkOrdersModule
+    WorkOrdersModule,
+    CardModule,
   ],
   declarations: [
     IntroductionComponent,
