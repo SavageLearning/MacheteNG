@@ -1,14 +1,31 @@
-<div class="card">
-  <strong>You must accept the following terms to continue:</strong>
-  <table>
-    <tr *ngFor="let item of confirmChoices">
-      <td class="ui-g-1">
-        <p-checkbox [(ngModel)]="item.confirmed" binary="true" (ngModelChange)="checkConfirm()"></p-checkbox>     
-      </td>
-      <td class="ui-g-11">
-        {{item.description}}
-      </td>
-    </tr>
-  </table>
-  <button pButton [disabled]="!confirmStatus" (click)="nextStep()" label="Confirm and proceed"></button>
-</div>
+<p-card>
+  <ng-template pTemplate="title">
+    Terms
+  </ng-template>
+  <ng-template pTemplate="subtitle">
+    You must accept the following terms to continue
+  </ng-template>
+  <ng-template pTemplate="content">
+    <p-table [value]="confirmChoices">
+      <ng-template pTemplate="body" let-confirmChoice>
+        <tr class="p-selectable-row">
+          <td>
+            <div class="p-d-flex p-flex-column p-flex-md-row">
+              <div class="p-mb-2 p-mr-2">
+                <p-checkbox inputId="{{confirmChoice.name}}" [(ngModel)]="confirmChoice.confirmed" binary="true" (ngModelChange)="checkConfirm()"></p-checkbox>
+              </div>
+              <div class="p-mb-2 p-mr-2">
+                <label for="{{confirmChoice.name}}">{{confirmChoice.description}}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="p-grid p-nogutter p-justify-end">
+      <p-button [disabled]="!confirmStatus" (click)="nextStep()" label="Confirm and proceed" icon="pi pi-check"></p-button>
+    </div>
+  </ng-template>
+</p-card>
