@@ -26,20 +26,23 @@
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="p-grid p-nogutter p-justify-end">
-      <p-button
-        (click)="onClick()"
-        label="Next"
-        icon="pi pi-angle-right"
-        iconPos="right"
-        styleClass="p-button-sm p-mr-2"
-      ></p-button>
-      <p-button
+      <span class="p-mr-2">
+        <button
+          (click)="onClick()"
+          label="Next"
+          icon="pi pi-chevron-right"
+          iconPos="right"
+          styleClass="p-mr-2"
+          pButton
+        ></button>
+      </span>
+      <button
         (click)="onClear()"
         label="Start over"
         icon="pi pi-undo"
         iconPos="right"
-        styleClass="p-button-sm"
-      ></p-button>
+        pButton
+      ></button>
     </div>
   </ng-template>
 

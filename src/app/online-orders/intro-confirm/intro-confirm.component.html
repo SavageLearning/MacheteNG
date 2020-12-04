@@ -25,7 +25,7 @@
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="p-grid p-nogutter p-justify-end">
-      <p-button [disabled]="!confirmStatus" (click)="nextStep()" label="Confirm and proceed" icon="pi pi-check"></p-button>
+      <button pButton [disabled]="!confirmStatus" (click)="nextStep()" label="Confirm and proceed" icon="pi pi-check" iconPos="right"></button>
     </div>
   </ng-template>
 </p-card>

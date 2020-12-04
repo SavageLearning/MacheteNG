@@ -1,206 +1,394 @@
-<div class="ui-fluid">
-  <div class="card ui-g-nopad">
-    <form [formGroup]="orderForm" (ngSubmit)="save()" class="ui-g form-group">
-      <div class="ui-g-12 ui-md-6 ui-g-nopad">
-        <div class="ui-g-12 ui-g-nopad">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
-            <label for="dateOfWork">Date needed</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                <p-calendar id="dateOfWork"
-                            [minDate]="minOrderDate"
-                            [showIcon]="true"
-                            formControlName="dateOfWork">
-                </p-calendar>
-              </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['dateOfWork'].valid && showErrors">
+<p-card>
+  <ng-template pTemplate="title">
+    Worksite Details
+  </ng-template>
+  <ng-template pTemplate="content">
+    <form [formGroup]="orderForm" (ngSubmit)="save()">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-col-12 p-md-6">
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <p-calendar 
+                id="dateOfWork"
+                [minDate]="minOrderDate"
+                [showIcon]="true"
+                formControlName="dateOfWork"
+                [touchUI]="isHandset$">
+              </p-calendar>
+              <label for="dateOfWork">Date needed</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['dateOfWork'].valid && showErrors">
               {{formErrors.dateOfWork}}
-            </div>
+            </small>
           </div>
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
-            <label for="timeOfWork">Time needed</label>
-          </div>
-          <div class="ui-g-12 ui-md-8  ui-g-nopad">
-              <span class="md-inputfield">
-                <p-calendar id="timeOfWork"
-                            [defaultDate]="defaultOrderTime"
-                            showTime="true"
-                            [timeOnly]="true"
-                            dataType="string"
-                            [stepMinute]="30"
-                            showIcon="true"
-                            icon="pi pi-pencil"
-                            formControlName="timeOfWork">
-                </p-calendar>
-              </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['timeOfWork'].valid && showErrors">
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <p-calendar id="timeOfWork"
+                [defaultDate]="defaultOrderTime"
+                timeOnly="true"
+                dataType="string"
+                [stepMinute]="30"
+                showIcon="true"
+                icon="pi pi-pencil"
+                formControlName="timeOfWork"
+                [touchUI]="isHandset$">
+              </p-calendar>
+              <label for="dateOfWork">Time needed</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['timeOfWork'].valid && showErrors">
               {{formErrors.timeOfWork}}
-            </div>
+            </small>
           </div>
-        </div>
-        <div class="ui-g-12 ui-g-nopad">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="contactName">Contact name</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                  <input class="ui-inputtext ng-dirty ng-invalid" formControlName="contactName" id="contactName"
-                         type="text" pInputText/>
-              </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['contactName'].valid  && showErrors">
-              {{formErrors.contactName}}
-            </div>
-          </div>
-        </div>
-        <div class="ui-g-12 ui-g-nopad">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="worksiteAddress1">Address (1)</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                  <input class="ui-inputtext" formControlName="worksiteAddress1" id="worksiteAddress1" type="text"
-                         pInputText/>
-              </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['worksiteAddress1'].valid && showErrors">
-              {{formErrors.worksiteAddress1}}
-            </div>
-          </div>
-        </div>
-        <div class="ui-g-12 ui-g-nopad">
-          <div class="ui-g-12 ui-md-4  ui-g-nopad">
-            <label for="worksiteAddress2">Address (2)</label>
-          </div>
-          <div class="ui-g-12  ui-md-8 ui-g-nopad">
-            <input class="ui-inputtext" formControlName="worksiteAddress2" id="worksiteAddress2" type="text"
-                   pInputText/>
-          </div>
-        </div>
-        <div class="ui-g-12 ui-g-nopad">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="city">City</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-              <input class="ui-inputtext" formControlName="city" id="city" type="text" pInputText/>
-            </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['city'].valid && showErrors">
-              {{formErrors.city}}
-          </div>
-          </div>
-        </div>
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="state">State</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-              <input class="ui-inputtext" formControlName="state" id="state" type="text" pInputText/>
-            </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['state'].valid && showErrors">
-              {{formErrors.state}}
-            </div>
-          </div>
-        </div>
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="zipcode">Zipcode</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-              <input class="ui-inputtext" formControlName="zipcode" id="zipcode" type="text" pInputText/>
-            </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['zipcode'].valid && showErrors">
-              {{formErrors.zipcode}}
-            </div>
-          </div>
-        </div>
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="phone">Phone</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-              <input class="ui-inputtext" 
-                formControlName="phone" 
-                id="phone" 
-                type="text" 
-                placeholder="123-456-7890"
-                pInputText />
-            </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['phone'].valid && showErrors">
-              {{formErrors.phone}}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="description">Work Description</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
-              <textarea rows="5" pInputTextarea autoResize="autoResize" class="ui-inputtextarea"
-                        formControlName="description" id="description" type="text"></textarea>
-            </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['description'].valid && showErrors">
-              {{formErrors.description}}
-            </div>
-          </div>
-        </div>
 
-        <div class="ui-g-12"> 
-          <div class="ui-g-7 ui-md-9 ui-g-nopad">
-            <label for="englishRequired">Do you need an English-speaking worker?</label>
-          </div>
-          <div class="ui-g-5 ui-md-3 ui-g-nopad">
-            <span class="md-inputfield">
-              <p-dropdown
-                  id="englishRequired"
-                  [options]="yesNoDropDown"
-                  formControlName="englishRequired"
-                  [autoWidth]="false">
-              </p-dropdown>
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['englishRequired'] && showErrors">
-                {{formErrors.englishRequired}}
+          <!-- <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-md-4  ui-g-nopad">
+              <label for="dateOfWork">Date needed</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+                <span class="md-inputfield">
+                  <p-calendar id="dateOfWork"
+                              [minDate]="minOrderDate"
+                              [showIcon]="true"
+                              formControlName="dateOfWork"
+                              [touchUI]="isHandset$">
+                  </p-calendar>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['dateOfWork'].valid && showErrors">
+                {{formErrors.dateOfWork}}
               </div>
-            </span>
-          </div>
-        </div>
+            </div> -->
+            <!-- <div class="ui-g-12 ui-md-4  ui-g-nopad">
+              <label for="timeOfWork">Time needed</label>
+            </div>
+            <div class="ui-g-12 ui-md-8  ui-g-nopad">
+                <span class="md-inputfield">
+                  <p-calendar id="timeOfWork"
+                              [defaultDate]="defaultOrderTime"
+                              showTime="true"
+                              [timeOnly]="true"
+                              dataType="string"
+                              [stepMinute]="30"
+                              showIcon="true"
+                              icon="pi pi-pencil"
+                              formControlName="timeOfWork">
+                  </p-calendar>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['timeOfWork'].valid && showErrors">
+                {{formErrors.timeOfWork}}
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="contactName">Contact name</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+                <span class="md-inputfield">
+                    <input class="ui-inputtext ng-dirty ng-invalid" formControlName="contactName" id="contactName"
+                            type="text" pInputText/>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['contactName'].valid  && showErrors">
+                {{formErrors.contactName}}
+              </div>
+            </div>
+          </div> -->
 
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <input
+                formControlName="contactName"
+                id="contactName"
+                type="text"
+                pInputText />
+              <label for="contactName">Contact name</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['contactName'].valid && showErrors">
+              {{formErrors.contactName}}
+            </small>
+          </div>
+
+          <!-- <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="worksiteAddress1">Address (1)</label>
+            </div>
+            <div class="ui-g-12  ui-md-8 ui-g-nopad">
+                <span class="md-inputfield">
+                    <input class="ui-inputtext" formControlName="worksiteAddress1" id="worksiteAddress1" type="text"
+                            pInputText/>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['worksiteAddress1'].valid && showErrors">
+                {{formErrors.worksiteAddress1}}
+              </div>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <input
+                formControlName="worksiteAddress1"
+                id="worksiteAddress1"
+                type="text"
+                pInputText />
+              <label for="contactName">Address (1)</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['worksiteAddress1'].valid && showErrors">
+              {{formErrors.worksiteAddress1}}
+            </small>
+          </div>
+
+          <!-- <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-md-4  ui-g-nopad">
+              <label for="worksiteAddress2">Address (2)</label>
+            </div>
+            <div class="ui-g-12  ui-md-8 ui-g-nopad">
+              <input class="ui-inputtext" formControlName="worksiteAddress2" id="worksiteAddress2" type="text"
+                      pInputText/>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <input
+                formControlName="worksiteAddress2"
+                id="worksiteAddress2"
+                type="text"
+                pInputText />
+              <label for="contactName">Address (2)</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['worksiteAddress2'].valid && showErrors">
+              {{formErrors.worksiteAddress2}}
+            </small>
+          </div>
+
+          <!-- <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="city">City</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+              <span class="md-inputfield">
+                <input class="ui-inputtext" formControlName="city" id="city" type="text" pInputText/>
+              </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['city'].valid && showErrors">
+                {{formErrors.city}}
+            </div>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <input
+                formControlName="city"
+                id="city"
+                type="text"
+                pInputText />
+              <label for="city">City</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['city'].valid && showErrors">
+              {{formErrors.city}}
+            </small>
+          </div>
+
+          <!-- <div class="ui-g-12">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="state">State</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+              <span class="md-inputfield">
+                <input class="ui-inputtext" formControlName="state" id="state" type="text" pInputText/>
+              </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['state'].valid && showErrors">
+                {{formErrors.state}}
+              </div>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <input
+                formControlName="state"
+                id="state"
+                type="text"
+                pInputText />
+              <label for="state">State</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['state'].valid && showErrors">
+              {{formErrors.state}}
+            </small>
+          </div>
+
+          <!-- <div class="ui-g-12">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="zipcode">Zipcode</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+              <span class="md-inputfield">
+                <input class="ui-inputtext" formControlName="zipcode" id="zipcode" type="text" pInputText/>
+              </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['zipcode'].valid && showErrors">
+                {{formErrors.zipcode}}
+              </div>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <input
+                formControlName="zipcode"
+                id="zipcode"
+                type="text"
+                pInputText />
+              <label for="zipcode">Zipcode</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['zipcode'].valid && showErrors">
+              {{formErrors.zipcode}}
+            </small>
+          </div>
+
+          <!-- <div class="ui-g-12">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="phone">Phone</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+              <span class="md-inputfield">
+                <input class="ui-inputtext" 
+                  formControlName="phone" 
+                  id="phone" 
+                  type="text" 
+                  placeholder="123-456-7890"
+                  pInputText />
+              </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['phone'].valid && showErrors">
+                {{formErrors.phone}}
+              </div>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <input
+                formControlName="phone"
+                id="phone"
+                type="text"
+                pInputText />
+              <label for="phone">Phone</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['phone'].valid && showErrors">
+              {{formErrors.phone}}
+            </small>
+          </div>
+
+        </div>
+        <!-- Vertical divide ///////////////////-->
+        <div class="p-col-12 p-md-6">
+          <!-- <div class="ui-g-12">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="description">Work Description</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+              <span class="md-inputfield">
+                <textarea rows="5" pInputTextarea autoResize="autoResize" class="ui-inputtextarea"
+                          formControlName="description" id="description" type="text"></textarea>
+              </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['description'].valid && showErrors">
+                {{formErrors.description}}
+              </div>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <textarea
+                rows="5"
+                autoResize="autoResize"
+                formControlName="description"
+                id="description"
+                pInputTextarea>
+              </textarea>
+              <label for="description">Work Description</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['description'].valid && showErrors">
+              {{formErrors.description}}
+            </small>
+          </div>
+    
+          <!-- <div class="ui-g-12"> 
+            <div class="ui-g-7 ui-md-9 ui-g-nopad">
+              <label for="englishRequired">Do you need an English-speaking worker?</label>
+            </div>
+            <div class="ui-g-5 ui-md-3 ui-g-nopad">
+              <span class="md-inputfield">
+                <p-dropdown
+                    id="englishRequired"
+                    [options]="yesNoDropDown"
+                    formControlName="englishRequired">
+                </p-dropdown>
+                <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['englishRequired'] && showErrors">
+                  {{formErrors.englishRequired}}
+                </div>
+              </span>
+            </div>
+          </div> -->
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
+              <p-dropdown id="englishRequired" [options]="yesNoDropDown" formControlName="englishRequired"></p-dropdown>
+              <label for="englishRequired">Do you need an English-speaking worker?</label>
+            </span>
+            <small class="p-invalid" *ngIf="!!orderForm.controls['englishRequired'] && showErrors">
+              {{formErrors.englishRequired}}
+            </small>
+          </div>
+    
+          <!-- <div class="ui-g-12" *ngIf="true">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="englishRequiredNote">Please describe English requirement</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
+                <span class="md-inputfield">
+                    <textarea rows="5" pInputTextarea autoResize="autoResize" class="ui-inputtextarea"
+                              formControlName="englishRequiredNote" id="englishRequiredNote" type="text"></textarea>
+                </span>
+            </div>
+            <div class="ui-g-12 ui-g-nopad">
+              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['englishRequiredNote'].valid && showErrors">
+                {{formErrors.englishRequiredNote}}
+              </div>
+            </div>
+          </div> -->
 
         <!-- <div class="ui-g-12" *ngIf="engReqToggle">
           <div class="ui-g-12 ui-md-4 ui-g-nopad">
             <label for="englishRequiredNote">Please describe English requirement</label>
           </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
+<!-- 
+          <div class="ui-g-12">
+            <div class="ui-g-12 ui-md-4 ui-g-nopad">
+              <label for="transportProviderID">Transport method</label>
+            </div>
+            <div class="ui-g-12 ui-md-8 ui-g-nopad">
               <span class="md-inputfield">
-                  <textarea rows="5" pInputTextarea autoResize="autoResize" class="ui-inputtextarea"
-                            formControlName="englishRequiredNote" id="englishRequiredNote" type="text"></textarea>
+                <p-dropdown id="transportProviderID" [options]="transportMethodsDropDown" formControlName="transportProviderID"></p-dropdown>
               </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['englishRequiredNote'].valid && showErrors">
-              {{formErrors.englishRequiredNote}}
             </div>
           </div>
         </div> -->
@@ -213,33 +401,45 @@
               <p-dropdown id="transportProviderID" [options]="transportMethodsDropDown" formControlName="transportProviderID"
                           [autoWidth]="false"></p-dropdown>
             </span>
-          </div>
-          <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['transportProviderID'].valid && showErrors">
+            <small class="p-invalid" *ngIf="!!orderForm.controls['transportProviderID'] && showErrors">
               {{formErrors.transportProviderID}}
-            </div>
+            </small>
           </div>
-        </div>
-        <div class="ui-g-12">
-          <!-- <button type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show transport rates" *ngIf="false"></button> -->
-          <a href="http://casa-latina.org/get-involved/hire-worker#Do I have to pick up the worker?" target="_blank">
-            For transportation pricing, click here.
-          </a>
-        </div>
-        <div class="ui-g-12" *ngIf="selectedTransport==32">
-          Before picking a Casa Latina Van drop off time, please check for available times using the following calendar<br/>
-          <a href="https://calendar.google.com/calendar/embed?src=voluntarios.casa.latina@gmail.com&ctz=America/Los_Angeles" target="_blank">
-            For Van transport, select an available time slot.
-          </a> <br/>
-          Arrival times are estimates and can be adjusted by CL dispatchers due to traffic, or high demand, etc.
+
+          <div class="p-field p-col-12">
+            <!-- <button type="button" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show transport rates" *ngIf="false"></button> -->
+            <a href="https://casa-latina.org/hire-a-worker/" target="_blank">
+              <button 
+                pButton 
+                pRipple 
+                type="button"
+                icon="pi pi-external-link"
+                label="For transportation pricing, click here." 
+                class="p-button-rounded p-button-help"
+              ></button>
+            </a>
+          </div>
+
+          <div class="p-field p-col-12" *ngIf="selectedTransport==2">
+            <p-fieldset legend="Transportation Method Note">
+              <p>
+                Before picking a Casa Latina Van drop off time, please check for available times using the following calendar<br/>
+                <a href="https://calendar.google.com/calendar/embed?src=voluntarios.casa.latina@gmail.com&ctz=America/Los_Angeles" target="_blank">
+                For Van transport, select an available time slot.
+                </a> <br/>
+                Arrival times are estimates and can be adjusted by CL dispatchers due to traffic, or high demand, etc.
+              </p>
+            </p-fieldset>
+          </div>
+
         </div>
       </div>
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Save"></button>
+      <div class="p-grid p-nogutter p-justify-end">
+        <button pButton type="submit" label="Save and Continue" icon="pi pi-chevron-right" iconPos="right"></button>
       </div>
     </form>
-  </div>
-</div>
+  </ng-template>
+</p-card>
 
 <div>
   <p-dialog header="Title" [(visible)]="displayTransportCosts">

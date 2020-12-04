@@ -5,13 +5,13 @@ $invalid-color: #ffcdd2;
 
 .p-inputtext.p-error,
 .p-inputtext.p-invalid,
-.p-inputtext.ng-invalid,
+.p-inputtext.ng-dirty.ng-invalid,
 .p-inputtext.p-error:hover,
 .p-inputtext.p-invalid:hover,
-.p-inputtext.ng-invalid:hover,
+.p-inputtext.ng-dirty.ng-invalid:hover,
 .p-inputtext.p-error:enabled:hover,
 .p-inputtext.p-invalid:enabled:hover,
-.p-inputtext.ng-invalid:enabled:hover {
+.p-inputtext.ng-dirty.ng-invalid:enabled:hover {
   background-image: linear-gradient(to bottom, $invalid-color, $invalid-color), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
   border-top-style: none;
   border-right-style: none;
@@ -20,8 +20,10 @@ $invalid-color: #ffcdd2;
   background-color: $invalid-color !important;
 }
 
-p-inputmask.ng-invalid > .p-inputtext,
-p-inputmask.ng-invalid > .p-inputtext:hover {
+p-inputmask.ng-dirty.ng-invalid > .p-inputtext,
+p-calendar.ng-dirty.ng-invalid > .p-calendar > .p-inputtext,
+p-calendar.ng-dirty.ng-invalid > .p-calendar > .p-inputtext:hover,
+p-inputmask.ng-dirty.ng-invalid > .p-inputtext:hover {
   background-image: linear-gradient(to bottom, $invalid-color, $invalid-color), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
   border-top-style: none;
   border-right-style: none;
@@ -30,12 +32,17 @@ p-inputmask.ng-invalid > .p-inputtext:hover {
   background-color: $invalid-color;
 }
 
-p-inputmask.ng-invalid > .p-inputtext:enabled:hover {
+p-inputmask.ng-dirty.ng-invalid > .p-inputtext:enabled:hover,
+p-calendar.ng-dirty.ng-invalid > .p-calendar > .p-inputtext:enabled:hover {
   background-image: linear-gradient(to bottom, $invalid-color, $invalid-color), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
   border-top-style: none;
   border-right-style: none;
   border-left-style: none;
   border-bottom-style: none;
+}
+
+.p-float-label textarea ~ label {
+  top: 0rem;
 }
 
 // Global input styles End //

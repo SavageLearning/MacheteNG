@@ -1,5 +1,5 @@
 
-import { combineLatest as observableCombineLatest } from 'rxjs';
+import { combineLatest as observableCombineLatest, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { WorkOrder } from '../../shared/models/work-order';
@@ -7,7 +7,7 @@ import { OnlineOrdersService } from '../online-orders.service';
 import { WorkOrderService } from './work-order.service';
 import { ScheduleRule, schedulingDayValidator, requiredValidator, TransportRule, TransportProvider, schedulingTimeValidator } from '../shared';
 import { MySelectItem, YesNoSelectItem } from '../../shared/models/my-select-item';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { ScheduleRulesService } from '../schedule-rules.service';
 import { zipcodeValidator } from '../shared/validators/zipcode';
 import { TransportRulesService } from '../transport-rules.service';
@@ -17,6 +17,8 @@ import { lengthValidator } from '../../shared/validators/length';
 import { TransportProvidersService } from '../transport-providers.service';
 import { transportAvailabilityValidator } from '../shared/validators/transport-availability';
 import { DateTime } from 'luxon';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-work-order',
@@ -40,7 +42,7 @@ export class WorkOrderComponent implements OnInit {
   displayTransportCosts = false;
   displayUserGuide = true;
   yesNoDropDown = [new YesNoSelectItem('no', false), new YesNoSelectItem('yes', true)];
-  selectedTransport: number = 0;
+  selectedTransport = 0;
   storageKey = 'machete.work-order.component';
   formErrors = {
     'dateOfWork': '',
@@ -57,6 +59,7 @@ export class WorkOrderComponent implements OnInit {
     'englishRequiredNote': '',
     'transportProviderID': ''
   };
+  isHandset$ = false;
 
 
 
@@ -76,7 +79,8 @@ export class WorkOrderComponent implements OnInit {
     private schedulingRulesService: ScheduleRulesService,
     private transportRulesService: TransportRulesService,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private observer: BreakpointObserver) {
     console.log('.ctor');
     let result = sessionStorage.getItem(this.storageKey + '.UG');
     if (result === 'false') {
@@ -88,12 +92,13 @@ export class WorkOrderComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    observableCombineLatest( // observables from these services:
+    observableCombineLatest([ // observables from these services:
       this.transportProviderService.getTransportProviders(),
       this.orderService.getStream(),
       this.schedulingRulesService.getScheduleRules(),
-      this.transportRulesService.getTransportRules()
-    ).subscribe(([transportProviders, workOrder, schedulingRules, transportRules]) => { // (order must match above)
+      this.transportRulesService.getTransportRules(),
+      this.observer.observe(Breakpoints.Handset) // observe device size
+    ]).subscribe(([transportProviders, workOrder, schedulingRules, transportRules, observer]) => { // (order must match above)
       this.workOrder = workOrder;
       if (workOrder.dateTimeofWork) {
         this.dateOfWork = this.getDateOnly(workOrder.dateTimeofWork);
@@ -102,6 +107,7 @@ export class WorkOrderComponent implements OnInit {
       this.transportMethods = transportProviders;
       this.schedulingRules = schedulingRules;
       this.transportRules = transportRules;
+      this.isHandset$ = observer.matches; // observe device size
       // map transport entries to dropdown
       let items = [new MySelectItem('Select transportation method', null)];
       let transports = transportProviders.map(l => new MySelectItem(l.text, String(l.id)));
@@ -136,7 +142,7 @@ export class WorkOrderComponent implements OnInit {
       'city': [this.workOrder.city, [requiredValidator('City is required.'), lengthValidator(50)]],
       'state': [this.workOrder.state, [
         requiredValidator('State is required.'),
-        regexValidator(new RegExp(/^[a-zA-Z]{2,2}$/), 'state', "State must be two letters")
+        regexValidator(new RegExp(/^[a-zA-Z]{2,2}$/), 'state', 'State must be two letters')
       ]],
       'zipcode': [this.workOrder.zipcode, [requiredValidator('Zipcode is required.')]],
       'phone': [this.workOrder.phone, phoneValidator('Phone is required in ###-###-#### format')],
