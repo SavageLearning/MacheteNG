@@ -42,65 +42,6 @@
             </small>
           </div>
 
-          <!-- <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-g-12 ui-md-4  ui-g-nopad">
-              <label for="dateOfWork">Date needed</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-                <span class="md-inputfield">
-                  <p-calendar id="dateOfWork"
-                              [minDate]="minOrderDate"
-                              [showIcon]="true"
-                              formControlName="dateOfWork"
-                              [touchUI]="isHandset$">
-                  </p-calendar>
-                </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['dateOfWork'].valid && showErrors">
-                {{formErrors.dateOfWork}}
-              </div>
-            </div> -->
-            <!-- <div class="ui-g-12 ui-md-4  ui-g-nopad">
-              <label for="timeOfWork">Time needed</label>
-            </div>
-            <div class="ui-g-12 ui-md-8  ui-g-nopad">
-                <span class="md-inputfield">
-                  <p-calendar id="timeOfWork"
-                              [defaultDate]="defaultOrderTime"
-                              showTime="true"
-                              [timeOnly]="true"
-                              dataType="string"
-                              [stepMinute]="30"
-                              showIcon="true"
-                              icon="pi pi-pencil"
-                              formControlName="timeOfWork">
-                  </p-calendar>
-                </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['timeOfWork'].valid && showErrors">
-                {{formErrors.timeOfWork}}
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="contactName">Contact name</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-                <span class="md-inputfield">
-                    <input class="ui-inputtext ng-dirty ng-invalid" formControlName="contactName" id="contactName"
-                            type="text" pInputText/>
-                </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['contactName'].valid  && showErrors">
-                {{formErrors.contactName}}
-              </div>
-            </div>
-          </div> -->
-
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
               <input
@@ -114,23 +55,6 @@
               {{formErrors.contactName}}
             </small>
           </div>
-
-          <!-- <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="worksiteAddress1">Address (1)</label>
-            </div>
-            <div class="ui-g-12  ui-md-8 ui-g-nopad">
-                <span class="md-inputfield">
-                    <input class="ui-inputtext" formControlName="worksiteAddress1" id="worksiteAddress1" type="text"
-                            pInputText/>
-                </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['worksiteAddress1'].valid && showErrors">
-                {{formErrors.worksiteAddress1}}
-              </div>
-            </div>
-          </div> -->
 
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
@@ -146,16 +70,6 @@
             </small>
           </div>
 
-          <!-- <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-g-12 ui-md-4  ui-g-nopad">
-              <label for="worksiteAddress2">Address (2)</label>
-            </div>
-            <div class="ui-g-12  ui-md-8 ui-g-nopad">
-              <input class="ui-inputtext" formControlName="worksiteAddress2" id="worksiteAddress2" type="text"
-                      pInputText/>
-            </div>
-          </div> -->
-
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
               <input
@@ -169,22 +83,6 @@
               {{formErrors.worksiteAddress2}}
             </small>
           </div>
-
-          <!-- <div class="ui-g-12 ui-g-nopad">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="city">City</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                <input class="ui-inputtext" formControlName="city" id="city" type="text" pInputText/>
-              </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['city'].valid && showErrors">
-                {{formErrors.city}}
-            </div>
-            </div>
-          </div> -->
 
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
@@ -200,29 +98,14 @@
             </small>
           </div>
 
-          <!-- <div class="ui-g-12">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="state">State</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                <input class="ui-inputtext" formControlName="state" id="state" type="text" pInputText/>
-              </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['state'].valid && showErrors">
-                {{formErrors.state}}
-              </div>
-            </div>
-          </div> -->
-
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
-              <input
+              <p-inputMask
                 formControlName="state"
-                id="state"
+                inputId="state"
                 type="text"
-                pInputText />
+                mask="aa">
+              </p-inputMask>
               <label for="state">State</label>
             </span>
             <small class="p-invalid" *ngIf="!orderForm.controls['state'].valid && showErrors">
@@ -230,29 +113,14 @@
             </small>
           </div>
 
-          <!-- <div class="ui-g-12">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="zipcode">Zipcode</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                <input class="ui-inputtext" formControlName="zipcode" id="zipcode" type="text" pInputText/>
-              </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['zipcode'].valid && showErrors">
-                {{formErrors.zipcode}}
-              </div>
-            </div>
-          </div> -->
-
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
-              <input
+              <p-inputMask
                 formControlName="zipcode"
-                id="zipcode"
+                inputId="zipcode"
                 type="text"
-                pInputText />
+                mask="99999?-9999">
+              </p-inputMask>
               <label for="zipcode">Zipcode</label>
             </span>
             <small class="p-invalid" *ngIf="!orderForm.controls['zipcode'].valid && showErrors">
@@ -260,34 +128,14 @@
             </small>
           </div>
 
-          <!-- <div class="ui-g-12">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="phone">Phone</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                <input class="ui-inputtext" 
-                  formControlName="phone" 
-                  id="phone" 
-                  type="text" 
-                  placeholder="123-456-7890"
-                  pInputText />
-              </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['phone'].valid && showErrors">
-                {{formErrors.phone}}
-              </div>
-            </div>
-          </div> -->
-
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
-              <input
+              <p-inputMask
                 formControlName="phone"
-                id="phone"
-                type="text"
-                pInputText />
+                inputId="phone"
+                mask="999-999-9999"
+                type="text">
+              </p-inputMask>
               <label for="phone">Phone</label>
             </span>
             <small class="p-invalid" *ngIf="!orderForm.controls['phone'].valid && showErrors">
@@ -298,22 +146,6 @@
         </div>
         <!-- Vertical divide ///////////////////-->
         <div class="p-col-12 p-md-6">
-          <!-- <div class="ui-g-12">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="description">Work Description</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                <textarea rows="5" pInputTextarea autoResize="autoResize" class="ui-inputtextarea"
-                          formControlName="description" id="description" type="text"></textarea>
-              </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['description'].valid && showErrors">
-                {{formErrors.description}}
-              </div>
-            </div>
-          </div> -->
 
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
@@ -331,24 +163,6 @@
             </small>
           </div>
     
-          <!-- <div class="ui-g-12"> 
-            <div class="ui-g-7 ui-md-9 ui-g-nopad">
-              <label for="englishRequired">Do you need an English-speaking worker?</label>
-            </div>
-            <div class="ui-g-5 ui-md-3 ui-g-nopad">
-              <span class="md-inputfield">
-                <p-dropdown
-                    id="englishRequired"
-                    [options]="yesNoDropDown"
-                    formControlName="englishRequired">
-                </p-dropdown>
-                <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['englishRequired'] && showErrors">
-                  {{formErrors.englishRequired}}
-                </div>
-              </span>
-            </div>
-          </div> -->
-
           <div class="p-field p-col-12 p-input-filled">
             <span class="p-float-label">
               <p-dropdown id="englishRequired" [options]="yesNoDropDown" formControlName="englishRequired"></p-dropdown>
@@ -358,23 +172,6 @@
               {{formErrors.englishRequired}}
             </small>
           </div>
-    
-          <!-- <div class="ui-g-12" *ngIf="true">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="englishRequiredNote">Please describe English requirement</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-                <span class="md-inputfield">
-                    <textarea rows="5" pInputTextarea autoResize="autoResize" class="ui-inputtextarea"
-                              formControlName="englishRequiredNote" id="englishRequiredNote" type="text"></textarea>
-                </span>
-            </div>
-            <div class="ui-g-12 ui-g-nopad">
-              <div class="ui-message ui-message-error ui-corner-all" *ngIf="!orderForm.controls['englishRequiredNote'].valid && showErrors">
-                {{formErrors.englishRequiredNote}}
-              </div>
-            </div>
-          </div> -->
 
         <!-- <div class="ui-g-12" *ngIf="engReqToggle">
           <div class="ui-g-12 ui-md-4 ui-g-nopad">
@@ -420,7 +217,7 @@
             </a>
           </div>
 
-          <div class="p-field p-col-12" *ngIf="selectedTransport==2">
+          <div class="p-field p-col-12" *ngIf="selectedTransport==32">
             <p-fieldset legend="Transportation Method Note">
               <p>
                 Before picking a Casa Latina Van drop off time, please check for available times using the following calendar<br/>

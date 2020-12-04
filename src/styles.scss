@@ -29,7 +29,7 @@ p-inputmask.ng-dirty.ng-invalid > .p-inputtext:hover {
   border-right-style: none;
   border-left-style: none;
   border-bottom-style: none;
-  background-color: $invalid-color;
+  background-color: $invalid-color !important;
 }
 
 p-inputmask.ng-dirty.ng-invalid > .p-inputtext:enabled:hover,

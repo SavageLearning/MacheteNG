@@ -50,12 +50,28 @@
       <div class="ui-g-12 ui-md-6">
         <div class="ui-g-12">
           <div class="ui-g-6 ui-md-4 ui-g-nopad">
-            <label for="hours">Hours needed</label>
+            <label for="hours">Hours needed: {{requestForm.controls['hours'].value}}</label>
           </div>
           <div class="ui-g-6 ui-md-8 ui-g-nopad">
             <input class="ui-inputtext" formControlName="hours" id="hours" type="text" pInputText/>
           </div>
         </div>
+
+        <div class="p-field p-col-12 p-md-3">
+          <label for="hours" style="display: block">Hours needed: {{requestForm.controls['hours'].value}}</label>
+          <p-inputNumber
+            formControlName="hours"
+            [showButtons]="true"
+            buttonLayout="vertical"
+            spinnerMode="vertical"
+            inputId="hours"
+            [min]="3"
+            [max]="8"
+            incrementButtonIcon="pi pi-plus"
+            decrementButtonIcon="pi pi-minus">
+          </p-inputNumber>
+        </div>
+
         <div class="ui-g-12 ui-g-nopad">
           <div class="ui-message ui-message-error ui-corner-all" *ngIf="!requestForm.controls['hours'].valid && showErrors">
             {{formErrors.hours}}

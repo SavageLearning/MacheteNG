@@ -24,6 +24,8 @@ import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FieldsetModule } from 'primeng/fieldset';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnlineOrdersService } from './online-orders.service';
@@ -55,7 +57,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     LayoutModule,
     InputTextModule,
     InputTextareaModule,
-    FieldsetModule
+    FieldsetModule,
+    InputNumberModule,
+    InputMaskModule
   ],
   declarations: [
     IntroductionComponent,
