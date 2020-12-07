@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Lookup } from '../../../lookups/models/lookup';
 import { MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-skills',
@@ -8,29 +9,20 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent implements OnInit {
-  @Input() skills: Lookup[];
-  @Input() hasSelection: boolean;
-  @Output() selectedOption = new EventEmitter<number>();
+  skills: Lookup[];
+  $isHandset: any;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+    public dialogService: DialogService,
+    public ref: DynamicDialogRef,
+    public config: DynamicDialogConfig) { }
 
   ngOnInit(): void {
-
+    this.skills = this.config.data;
   }
 
-  onSkillSelect(item: Lookup) {
-    this.confirmSelect(item.text_EN);
-    this.selectedOption.emit(item.id);
-  }
-
-  confirmSelect(skill: string) {
-    this.messageService.add({
-      life: 10000,
-      key: 'bc',
-      severity: 'success',
-      summary: `${skill} selected`,
-      detail: 'Choose additional details below to continue'
-    });
+  selectSkill(skill: Lookup) {
+    this.ref.close(skill);
   }
 
 }

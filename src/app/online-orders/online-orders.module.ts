@@ -30,6 +30,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { SliderModule } from 'primeng/slider';
 import { DataViewModule } from 'primeng/dataview';
 import { RippleModule } from 'primeng/ripple';
+import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnlineOrdersService } from './online-orders.service';
@@ -68,7 +69,8 @@ import { SkillsComponent } from './work-assignments/skills/skills.component';
     SliderModule,
     DataViewModule,
     RippleModule,
-    ToastModule
+    ToastModule,
+    DynamicDialogModule
   ],
   declarations: [
     IntroductionComponent,
@@ -85,7 +87,10 @@ import { SkillsComponent } from './work-assignments/skills/skills.component';
     ScheduleRulesService,
     TransportRulesService,
     MessageService, //PrimeNG Service
-    ProfileGuard
+    ProfileGuard,
+    DialogService,
+    DynamicDialogRef,
+    DynamicDialogConfig
   ]
 })
 export class OnlineOrdersModule { }

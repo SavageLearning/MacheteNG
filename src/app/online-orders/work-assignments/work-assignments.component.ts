@@ -1,6 +1,6 @@
 
 import {combineLatest as observableCombineLatest,  Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {WorkAssignment} from '../../shared/models/work-assignment';
@@ -22,7 +22,7 @@ import { lengthValidator } from '../../shared/validators/length';
   templateUrl: './work-assignments.component.html',
   styleUrls: ['./work-assignments.component.css']
 })
-export class WorkAssignmentsComponent implements OnInit {
+export class WorkAssignmentsComponent implements OnInit, OnDestroy {
   skills: Lookup[]; // Lookups from Lookups Service
   transports: TransportProvider[];
   skillsDropDown: MySelectItem[];
@@ -48,6 +48,7 @@ export class WorkAssignmentsComponent implements OnInit {
     'hourlyWage': ''
   };
   inputSliderVal: number;
+  ref: DynamicDialogRef;
 
   constructor(
     private lookupsService: LookupsService,
@@ -56,7 +57,9 @@ export class WorkAssignmentsComponent implements OnInit {
     private onlineService: OnlineOrdersService,
     private transportRulesService: TransportRulesService,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    public dialogService: DialogService,
+    private messageServ: MessageService) {
       console.log('.ctor');
   }
 
@@ -167,6 +170,34 @@ export class WorkAssignmentsComponent implements OnInit {
     this.requestForm.controls['skillId'].setValue(skill.id);
     this.requestForm.controls['skill'].setValue(skill.text_EN);
     this.requestForm.controls['hourlyWage'].setValue(skill.wage);
+  }
+
+  show() {
+    this.ref = this.dialogService.open(SkillsComponent, {
+      data: this.skillsToDisplay,
+      header: 'Choose a Skill',
+      width: '100%',
+      contentStyle: {'overflow': 'auto'},
+      baseZIndex: 10000
+    });
+
+    this.ref.onClose.subscribe((skill: Lookup) => {
+      if (skill) {
+          this.messageServ.add({
+            life: 10000,
+            key: 'bc',
+            severity: 'info',
+            summary: `${skill.text_EN} selected`,
+            detail: 'Choose additional details below to continue'
+          });
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.ref) {
+        this.ref.close();
+    }
   }
 
   // loads an existing item into the form fields

@@ -1,0 +1,7 @@
+:host ::ng-deep i {
+    color: #9c27b0;
+}
+
+:host ::ng-deep .primary {
+    color: var(--primary-color);
+}

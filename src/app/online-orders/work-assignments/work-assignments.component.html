@@ -7,8 +7,10 @@
       Each skill requested will be matched by a worker.
     </ng-template>
     <ng-template pTemplate="content">
-      <!-- Ineractive Skills Cart -->
-      <app-skills [skills]="skillsToDisplay" [hasSelection]="this.selectedSkill.id != null" (selectedOption)="selectSkill($event)"></app-skills>
+      <!-- Ineractive Skills Cart Dialog loads dynamically (skillsComponent)-->
+      <p-toast position="bottom-center" life="1000000" key="bc"></p-toast>
+      <button type="button" (click)="show()" pButton icon="pi pi-user" label="Choose a Skill"></button>
+      <!-- <app-skills></app-skills> -->
 
         <div class="p-field p-col-12 p-md-3">
           <label for="hours" style="display: block">Hours needed: {{requestForm.controls['hours'].value}}</label>

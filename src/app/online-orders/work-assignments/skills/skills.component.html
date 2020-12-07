@@ -1,27 +1,41 @@
-<p-fieldset legend="Choose a skill">
-  <p-dataView #dv [value]="skills" layout="list" [paginator]="true" [rows]="3" filterBy="text_EN">
-    <ng-template pTemplate="header">
-      <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between p-input-filled">
-          <span class="p-input-icon-left p-mb-2 p-mb-md-0">
-              <i class="pi pi-search"></i>
-              <input type="search" pInputText placeholder="Search Skills by Name" (input)="dv.filter($event.target.value)">
-          </span>
-      </div>
-    </ng-template>
-    <ng-template pTemplate="listItem" let-skillItem>
-      <div class="p-col-12 card p-p-2">
-        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between p-ai-center">
-          <div class="p-text-bold p-text-capitalize">
-            <h2><i class="pi pi-user"></i> {{ skillItem.text_EN }}</h2>
-          </div>
-          <div class="p-text-light">{{ skillItem.skillDescriptionEn }}</div>
-          <div>Hourly Rate: {{ skillItem.wage | currency: "USD" }}</div>
-          <div>Minimum hours: {{ skillItem.minHour }}</div>
-          <div><p-button [disabled]="hasSelection" (click)="!hasSelection && onSkillSelect(skillItem)" label="Select"></p-button></div>
-        </div>
-      </div>
-    </ng-template>
-  </p-dataView>
-</p-fieldset>
-
-<p-toast position="bottom-center" life="1000000" key="bc"></p-toast>
+<p-table #dt 
+  [value]="skills" 
+  [paginator]="true" 
+  [rows]="4" 
+  [responsive]="true" 
+  styleClass="p-datatable-striped"
+  [globalFilterFields]="['text_EN','skillDescriptionEn','wage','minHour']">
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex">
+        <span class="p-input-icon-left p-ml-auto p-input-filled">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+        </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+      <tr>
+          <th pSortableColumn="text_EN">Skill <p-sortIcon field="text_EN"></p-sortIcon></th>
+          <th pSortableColumn="skillDescriptionEn">Description</th>
+          <th pSortableColumn="wage">Hourly Rate <p-sortIcon field="wage"></p-sortIcon></th>
+          <th pSortableColumn="minHour">Minimum hours <p-sortIcon field="minHour"></p-sortIcon></th>
+          <th style="width:4em"></th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-skillItem>
+      <tr>
+          <td>
+            <div class="p-text-bold p-text-capitalize primary">
+              <i class="pi pi-user"></i> 
+              {{ skillItem.text_EN }}
+            </div>
+          </td>
+          <td>{{ skillItem.skillDescriptionEn }}</td>
+          <td>{{ skillItem.wage | currency: "USD" }}</td>
+          <td>{{ skillItem.minHour }}</td>
+          <td>
+            <p-button (click)="selectSkill(skillItem)" label="Select"></p-button>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
