@@ -26,6 +26,7 @@ export class WorkAssignmentsComponent implements OnInit {
   skills: Lookup[]; // Lookups from Lookups Service
   transports: TransportProvider[];
   skillsDropDown: MySelectItem[];
+  skillsToDisplay: Lookup[]
   skillsRules: SkillRule[];
   selectedSkill: Lookup = new Lookup();
   requestList: WorkAssignment[] = new Array<WorkAssignment>(); // list built by user in UI
@@ -75,6 +76,10 @@ export class WorkAssignmentsComponent implements OnInit {
         this.transportRules = rules;
         //
         this.skills = skills;
+        this.skillsToDisplay = skills.filter(l =>
+          l.category === 'skill'
+        );
+        console.table(this.skillsToDisplay);
         this.skillsDropDown = skills.map(l =>
           new MySelectItem(l.text_EN, String(l.id)));
         this.skillsRules = skills.map(l => new SkillRule(l));
@@ -159,6 +164,7 @@ export class WorkAssignmentsComponent implements OnInit {
       throw new Error('Can\'t find selected skill in component\'s list');
     }
     this.selectedSkill = skill;
+    this.requestForm.controls['skillId'].setValue(skill.id);
     this.requestForm.controls['skill'].setValue(skill.text_EN);
     this.requestForm.controls['hourlyWage'].setValue(skill.wage);
   }

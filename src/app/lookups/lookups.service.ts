@@ -73,7 +73,8 @@ export class LookupsService {
   getLookups(category: LCategory): Observable<Lookup[]> {
     return this.lookups$.pipe(
       map(res => {
-        console.log('getlookups', res);
+        console.log('getlookups');
+        console.table(res);
         return res.filter(l => l.category == category);
       }));
   }

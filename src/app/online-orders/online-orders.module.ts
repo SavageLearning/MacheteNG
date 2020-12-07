@@ -21,11 +21,15 @@ import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
+import { SliderModule } from 'primeng/slider';
+import { DataViewModule } from 'primeng/dataview';
+import { RippleModule } from 'primeng/ripple';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnlineOrdersService } from './online-orders.service';
@@ -35,6 +39,7 @@ import { OrderNotFoundComponent } from './order-not-found/order-not-found.compon
 import { WorkOrdersModule } from '../shared/components/work-orders/work-orders.module';
 import { ProfileGuard } from './guards/profile.guard';
 import { LayoutModule } from '@angular/cdk/layout';
+import { SkillsComponent } from './work-assignments/skills/skills.component';
 
 @NgModule({
   imports: [
@@ -59,7 +64,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     InputTextareaModule,
     FieldsetModule,
     InputNumberModule,
-    InputMaskModule
+    InputMaskModule,
+    SliderModule,
+    DataViewModule,
+    RippleModule,
+    ToastModule
   ],
   declarations: [
     IntroductionComponent,
@@ -68,7 +77,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     WorkOrderComponent,
     WorkAssignmentsComponent,
     OrderConfirmComponent,
-    OrderNotFoundComponent
+    OrderNotFoundComponent,
+    SkillsComponent
   ],
   providers: [
     OnlineOrdersService,

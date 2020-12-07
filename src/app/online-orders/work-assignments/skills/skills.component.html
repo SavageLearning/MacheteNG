@@ -1,0 +1,27 @@
+<p-fieldset legend="Choose a skill">
+  <p-dataView #dv [value]="skills" layout="list" [paginator]="true" [rows]="3" filterBy="text_EN">
+    <ng-template pTemplate="header">
+      <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between p-input-filled">
+          <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+              <i class="pi pi-search"></i>
+              <input type="search" pInputText placeholder="Search Skills by Name" (input)="dv.filter($event.target.value)">
+          </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="listItem" let-skillItem>
+      <div class="p-col-12 card p-p-2">
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between p-ai-center">
+          <div class="p-text-bold p-text-capitalize">
+            <h2><i class="pi pi-user"></i> {{ skillItem.text_EN }}</h2>
+          </div>
+          <div class="p-text-light">{{ skillItem.skillDescriptionEn }}</div>
+          <div>Hourly Rate: {{ skillItem.wage | currency: "USD" }}</div>
+          <div>Minimum hours: {{ skillItem.minHour }}</div>
+          <div><p-button [disabled]="hasSelection" (click)="!hasSelection && onSkillSelect(skillItem)" label="Select"></p-button></div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</p-fieldset>
+
+<p-toast position="bottom-center" life="1000000" key="bc"></p-toast>
