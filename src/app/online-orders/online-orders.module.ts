@@ -24,12 +24,10 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { FieldsetModule } from 'primeng/fieldset';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
-import { SliderModule } from 'primeng/slider';
 import { DataViewModule } from 'primeng/dataview';
-import { RippleModule } from 'primeng/ripple';
+import { TabViewModule } from 'primeng/tabview';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -63,14 +61,12 @@ import { SkillsComponent } from './work-assignments/skills/skills.component';
     LayoutModule,
     InputTextModule,
     InputTextareaModule,
-    FieldsetModule,
     InputNumberModule,
     InputMaskModule,
-    SliderModule,
     DataViewModule,
-    RippleModule,
     ToastModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    TabViewModule
   ],
   declarations: [
     IntroductionComponent,

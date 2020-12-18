@@ -10,7 +10,7 @@ import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dy
 })
 export class SkillsComponent implements OnInit {
   skills: Lookup[];
-  $isHandset: any;
+  selectedSkill: Lookup;
 
   constructor(private messageService: MessageService,
     public dialogService: DialogService,
@@ -21,8 +21,8 @@ export class SkillsComponent implements OnInit {
     this.skills = this.config.data;
   }
 
-  selectSkill(skill: Lookup) {
-    this.ref.close(skill);
+  onRowSelect(event) {
+    this.ref.close(event.data);
   }
 
 }

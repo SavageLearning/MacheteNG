@@ -2,9 +2,13 @@
   [value]="skills" 
   [paginator]="true" 
   [rows]="4" 
-  [responsive]="true" 
+  [responsive]="true"
   styleClass="p-datatable-striped"
-  [globalFilterFields]="['text_EN','skillDescriptionEn','wage','minHour']">
+  [globalFilterFields]="['text_EN','skillDescriptionEn','wage','minHour']"
+  selectionMode="single"
+  [(selection)]="selectedSkill"
+  (onRowSelect)="onRowSelect($event)"
+  styleClass="p-datatable-responsive">
   <ng-template pTemplate="caption">
     <div class="p-d-flex">
         <span class="p-input-icon-left p-ml-auto p-input-filled">
@@ -19,22 +23,34 @@
           <th pSortableColumn="skillDescriptionEn">Description</th>
           <th pSortableColumn="wage">Hourly Rate <p-sortIcon field="wage"></p-sortIcon></th>
           <th pSortableColumn="minHour">Minimum hours <p-sortIcon field="minHour"></p-sortIcon></th>
-          <th style="width:4em"></th>
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-skillItem>
-      <tr>
+  <ng-template pTemplate="body" let-rowData let-skillItem>
+      <tr [pSelectableRow]="rowData">
           <td>
-            <div class="p-text-bold p-text-capitalize primary">
-              <i class="pi pi-user"></i> 
-              {{ skillItem.text_EN }}
-            </div>
+            <small class="p-column-title">Skill</small>
+            <i class="pi pi-user"></i>
+            <span class="primary">
+              {{ skillItem.text_EN  | titlecase }}
+            </span>
           </td>
-          <td>{{ skillItem.skillDescriptionEn }}</td>
-          <td>{{ skillItem.wage | currency: "USD" }}</td>
-          <td>{{ skillItem.minHour }}</td>
           <td>
-            <p-button (click)="selectSkill(skillItem)" label="Select"></p-button>
+            <small class="p-column-title">Description</small>
+            <span class="p-text-light">
+              {{ skillItem.skillDescriptionEn }}
+            </span>
+          </td>
+          <td>
+            <small class="p-column-title">Hourly Rate</small>
+            <span class="p-text-light">
+              {{ skillItem.wage | currency: "USD" }}
+            </span>
+          </td>
+          <td>
+            <small class="p-column-title">Minimum Hours</small>
+            <span class="p-text-light">
+              {{ skillItem.minHour }}
+            </span>
           </td>
       </tr>
   </ng-template>

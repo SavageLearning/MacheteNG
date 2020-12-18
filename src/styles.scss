@@ -1,9 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 // Global outlined input text styles //
 
-
 .p-float-label textarea ~ label {
   top: 0rem;
 }
 
 // Global input styles End //
+
+// Responsive Table Styles
+
+.p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+  display: none;
+}
+
+.p-datatable-responsive .p-datatable-tbody > tr {
+  align-items: center;
+}
+
+@media screen and (max-width: 640px) {
+  .p-datatable {
+    tr {
+      font-size: small;
+      &:nth-child(odd) {
+        background: var(--surface-c) !important; 
+        }
+    }
+    &.p-datatable-responsive {
+      .p-datatable-thead > tr > th,
+      .p-datatable-tfoot > tr > td {
+        display: none !important;
+      }
+
+      .p-datatable-tbody > tr > td {
+        &:last-child {
+          border-bottom: 2px solid var(--surface-d);
+        }
+      }
+    }
+  }
+}
+
+// custom info card
+.c-info-card {
+  background: #b3e5fc;
+  border: solid transparent;
+  border-width: 0 0 0 0;
+  border-radius: 4px;
+  width: 100%;
+  color: #044868;
+  padding: 1.25rem 1rem;
+  margin-bottom: 1rem;
+}

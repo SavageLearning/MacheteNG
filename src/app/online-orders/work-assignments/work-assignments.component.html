@@ -63,105 +63,155 @@
                 <div class="ui-message ui-message-error ui-corner-all" *ngIf="!requestForm.controls['hours'].valid && showErrors">
                   {{formErrors.hours}}
                 </div>
-              </div>
-              <div class="ui-g-12">
-                <div class="ui-g-8 ui-md-4 ui-g-nopad">
-                  <label for="requiresHeavyLifting">Requires heavy lifting?</label>
+                <div style="font-weight: 80;font-size: .90rem;" class="p-order-3 p-order-md-2">
+                  {{selectedSkill.skillDescriptionEn}}
                 </div>
-                <div class="ui-g-4 ui-md-8 ui-g-nopad">
-                  <p-inputSwitch id="requiresHeavyLifting" formControlName="requiresHeavyLifting"></p-inputSwitch>
+                <div style="font-size: 1.5rem;" class="p-order-1 p-order-md-3">
+                  <i class="pi pi-info-circle"></i>
                 </div>
               </div>
-      
-              <div class="ui-g-12">
-                <div class="ui-g-12 ui-md-4 ui-g-nopad">
-                  <label for="description">Additional info about job</label>
-                </div>
-                <div class="ui-g-12 ui-md-8 ui-g-nopad">
-                  <textarea rows="3" class="ui-inputtext" formControlName="description" id="description" type="text" pInputText></textarea>
-                </div>
-              </div>
-          
             </div>
+
+            <div class="p-field p-grid p-jc-between p-ai-end p-col-12 p-md-4">
+              <label class="p-col-12" for="hours">Skill</label>
+              <div class="p-col-12">
+                <!-- Ineractive Skills Cart Dialog loads dynamically (skillsComponent)-->
+                <p-button
+                  (click)="onShowSkillsCart()"
+                  icon="pi pi-search"
+                  [label]="requestForm.controls['skillId'].value != 0 ? 'Change Selection' : 'Select a Skill'"
+                  styleClass="p-mr-2 p-button-help">
+                </p-button>
+                <!-- <app-skills></app-skills> -->
+              </div>
+            </div>
+
+            <div class="p-field p-grid p-jc-between p-ai-start p-col-12 p-md-4 p-input-filled">
+              <label class="p-col-12" for="hours">Hours needed</label>
+              <div class="p-col-12">
+                <p-inputNumber
+                  formControlName="hours"
+                  [showButtons]="true"
+                  buttonLayout="horizontal"
+                  inputId="hours"
+                  spinnerMode="horizontal"
+                  incrementButtonIcon="pi pi-plus"
+                  decrementButtonIcon="pi pi-minus"
+                  suffix=" hrs."
+                  [min]="selectedSkill.minHour || 1"
+                  [max]="8">
+                </p-inputNumber>
+              </div>
+              <small class="p-invalid" *ngIf="!requestForm.controls['hours'].valid && showErrors">
+                {{formErrors.hours}}
+              </small>
+            </div>
+
+            <div class="p-field p-grid p-jc-between p-ai-start p-col-12 p-md-4">
+              <label class="p-col-12" for="requiresHeavyLifting">Requires heavy lifting?</label>
+              <div class="p-col-12">
+                <p-inputSwitch id="requiresHeavyLifting" formControlName="requiresHeavyLifting"></p-inputSwitch>
+              </div>
+            </div>
+
+            <div class="p-field p-col-12 p-ai-start p-input-filled">
+              <label for="description">Additional info about job</label>
+              <textarea rows="2" autoResize="autoResize" formControlName="description" id="description" type="text" pInputTextarea></textarea>
+            </div>
+          
           </div>
   
-          <div class="ui-g-12">
-            <button pButton type="submit" label="Add request"></button>
+          <div class="p-grid p-nogutter p-justify-end">
+            <p-button
+              type="submit" 
+              [label]="newRequest ? 'Add Current Job to Your Request' : 'Save'" 
+              [disabled]="!requestForm.valid" 
+              (click)="onAddJobsToRequest()" 
+              [icon]="newRequest ? 'pi pi-plus' : 'pi pi-check'" 
+              iconPos="right"
+              styleClass="p-button-success">
+            </p-button>
           </div>
         </form>
-      </p-fieldset>
-      
-      <p-fieldset legend="Your Request Summary">
+      </p-tabPanel>
+
+      <p-tabPanel header="Review and Continue" leftIcon="pi pi-check-square">
+        <div class="p-col-12">
+          <p-messages [closable]="true" [key]="eMessages.SuccessSkillSaved"></p-messages>
+        </div>
         <p-table [value]="requestList" [(selection)]="selectedRequest" (onRowSelect)="onRowSelect($event)" [responsive]="true">
           <ng-template pTemplate="header">
             <tr [style]="{'padding':'.1em .875em'}">
-              <th>Request #</th>
               <th>Skill needed</th>
-              <th>Transport cost</th>
               <th>Hours Requested</th>
               <th>Notes</th>
               <th>Heavy lifting?</th>
               <th>Hourly wage</th>
-              <th>Actions</th>
+              <th>Subtotal</th>
+              <th style="width: 6rem;"></th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-requestListItem>
             <tr>
-              <td>{{requestListItem.id}}</td>
-              <td>{{requestListItem.skill}}</td>
-              <td>{{requestListItem.transportCost}}</td>
-              <td>{{requestListItem.hours}}</td>
-              <td>{{requestListItem.description}}</td>
-              <td>{{requestListItem.requiresHeavyLifting}}</td>
-              <td>{{requestListItem.hourlyWage}}</td>
-              <td>{{requestListItem.requiresHeavyLifting}}</td>
               <td>
-                <button type="button" pButton pRipple (click)="editRequest(request)" icon="pi pi-pencil"></button>
-                <button type="button" pButton pRipple (click)="deleteRequest(request)" icon="pi pi-trash"></button>
+                <small class="p-column-title">Skill needed</small>
+                {{requestListItem.skill | titlecase }}
               </td>
-    
-    
-    
+              <td>
+                <small class="p-column-title">Hours Requested</small>
+                {{requestListItem.hours}}
+              </td>
+              <td style="word-break: break-all;">
+                <small class="p-column-title">Notes</small>
+                {{requestListItem.description}}
+              </td>
+              <td>
+                <small class="p-column-title">Heavy lifting?</small>
+                {{requestListItem.requiresHeavyLifting ? 'Yes' : 'No'}}
+              </td>
+              <td>
+                <small class="p-column-title">Hourly wage</small>
+                {{requestListItem.hourlyWage | currency:'USD'}}
+              </td>
+              <td>
+                <small class="p-column-title">Subtotal</small>
+                <span class="p-tag p-tag-warning">
+                  {{ (requestListItem.hours * requestListItem.hourlyWage) | currency:'USD'}}
+                </span>
+              </td>
+              <td>
+                <div class="p-grid p-ai-start p-justify-end">
+                  <button class="p-mr-2" type="button" pButton pRipple (click)="editRequest(requestListItem)" icon="pi pi-pencil"></button>
+                  <button class="p-button-danger" type="button" pButton pRipple (click)="deleteRequest(requestListItem)" icon="pi pi-trash"></button>
+                </div>
+              </td>
             </tr>
-    
           </ng-template>
-          <!-- <p-column field="id" header="Request #" [style]="{'padding':'.1em .875em'}"></p-column>
-          <p-column field="skill" header="Skill needed" [style]="{'padding':'.1em .875em'}"></p-column>
-          <p-column field="transportCost" header="Transport cost" [style]="{'padding':'.1em .875em'}">
-            <ng-template let-col let-wa="rowData" let-ri="rowIndex" pTemplate="body">
-              <span>{{wa[col.field]| currency:'USD' }}</span>
-            </ng-template>
-          </p-column>
-          <p-column field="hours" header="hours requested" [style]="{'padding':'.1em .875em'}"></p-column>
-          <p-column field="description" header="notes" [style]="{'padding':'.1em .875em'}" ></p-column>
-          <p-column field="requiresHeavyLifting" header="Heavy lifting?" [style]="{'padding':'.1em .875em'}">
-            <ng-template let-col let-wa="rowData" let-ri="rowIndex" pTemplate="body">
-              <span>{{wa[col.field] ? 'Yes' : 'No'}}</span>
-            </ng-template>        
-          </p-column>
-          <p-column field="hourlyWage" header="Hourly wage" [style]="{'padding':'.1em .875em'}">
-            <ng-template let-col let-wa="rowData" let-ri="rowIndex" pTemplate="body">
-              <span>{{wa[col.field]| currency:'USD' }}</span>
-            </ng-template>
-          </p-column>
-    
-          <p-column styleClass="col-button">
-            <ng-template pTemplate="header">
-              Actions
-            </ng-template>
-            <ng-template let-request="rowData" pTemplate="body">
-              <button type="button" pButton (click)="editRequest(request)" icon="ui-icon-edit"></button>
-              <button type="button" pButton (click)="deleteRequest(request)" icon="ui-icon-delete"></button>
-            </ng-template>
-          </p-column> -->
         </p-table>
-      </p-fieldset>
-    </ng-template>
+        <div class="p-grid p-ai-start p-justify-end p-mt-6">
+          <p-button
+            (click)="onAddMoreJobs()" 
+            [disabled]="!hasRequests" 
+            label="Add More Jobs"
+            icon="pi pi-plus" 
+            iconPos="right"
+            styleClass="p-button-success p-button-raised p-mr-2 p-mb-2 size">
+          </p-button>
+          <p-button
+            (click)="finalize()" 
+            [disabled]="!hasRequests" 
+            label="Save and Continue"
+            icon="pi pi-angle-right" 
+            iconPos="right"
+            styleClass="p-button-raised size">
+          </p-button>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </ng-template>
 
 
-    <ng-template pTemplate="footer">
-      <div class="p-grid p-nogutter p-justify-end">
-        <button pButton type="button"  (click)="finalize()" [disabled]="!hasRequests" label="Done with Jobs"></button>
-      </div>
-    </ng-template>
-  </p-card>
+  <ng-template pTemplate="footer">
+
+  </ng-template>
+</p-card>

@@ -1,11 +1,24 @@
-label { 
-    font-weight: bold; 
-} 
- 
-.ui-g-12 { 
-    padding: .1em; 
+:host ::ng-deep .p-panel {
+    margin: 1rem 0 1rem 0;
 }
 
-.ui-g-6 { 
-    padding: .1em; 
+:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled)[aria-selected="true"]  {
+    background-color: rgba(63, 81, 181, 0.12);
+    border-bottom: 2px solid var(--primary-color);
+    transition: border 0.2s;
+}
+:host ::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled)  {
+    border: transparent;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav .p-tabview-nav-link {
+    height: 50px;
+}
+
+:host ::ng-deep .p-tabview .p-tabview-nav .p-tabview-ink-bar {
+    background-color: transparent;
+}
+
+.size {
+    font-size: 36px;
 }
