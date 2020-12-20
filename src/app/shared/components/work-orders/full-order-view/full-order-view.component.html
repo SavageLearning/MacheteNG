@@ -1,4 +1,4 @@
-<div class="p-d-flex">
+<div class="p-d-flex" *ngIf="order.id > 0">
   <div><button pButton [useExistingCss]="true" printSectionId="printable-area" label="PRINT" icon="pi pi-print" ngxPrint></button></div>
 </div>
 <div id="printable-area">
