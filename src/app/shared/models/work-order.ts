@@ -24,7 +24,7 @@ export class WorkOrder extends Record<WorkOrder> {
   ppPaymentID?: string;
   phone: string;
   state: string;
-  // statusEN: string;
+  statusEN: string;
   // statusID: number;
   // timeFlexible: boolean;
   // timeZoneOffset: number;

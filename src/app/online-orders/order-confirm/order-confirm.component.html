@@ -1,4 +1,4 @@
-<div class="ui-fluid card ui-g">
+<div class="card">
   <full-order-view 
     [transportLabel]="transportLabel"
     [workerCount]="workerCount"
@@ -13,7 +13,7 @@
   or call 206.956.0779 x3 to make arrangements. When you finalize this order below, you 
   will be taken to the PayPal transaction page. 
   </div>
-  <div class="ui-g-12">
-    <button pButton type="button" (click)="submit()" label="Review and submit"></button>
+  <div class="p-grid p-nogutter p-justify-end p-mt-4">
+    <p-button icon="pi pi-send" iconPos="right" (click)="submit()" label="Review and submit"></p-button>
   </div>
 </div>

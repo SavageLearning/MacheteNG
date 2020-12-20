@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.c-highlight-header .p-datatable-responsive .p-datatable-thead > tr > th {
+  background-color: var(--surface-c) !important;
+}
+
 @media screen and (max-width: 40rem) {
   .p-datatable {
     tr {

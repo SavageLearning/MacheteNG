@@ -79,9 +79,4 @@ export class FullOrderViewComponent implements OnChanges {
       }];
     }
 
-    print(printArea: string) {
-      let popupWinindow = document.getElementById(printArea).innerHTML;
-      window.print();
-    }
-
 }

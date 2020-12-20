@@ -3,18 +3,43 @@
 </div>
 <div id="printable-area">
   <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between c-divider">
-    <div class="p-d-flex p-flex-column"></div>
+    <!-- pre confirm message -->
+    <div class="p-d-flex p-flex-column">
+      <div
+        class="c-info-card p-shadow-6"
+        style="max-width: 450px;"
+        *ngIf="order.id == 0"
+        >
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between p-ai-center">
+          <div class="p-order-2 p-order-md-1">
+            <div class="p-text-bold p-mb-2" style="font-size: 1.50rem;">
+              Review and Submit
+            </div>
+            <div style="font-weight: 90;">
+              Please review your request summary below.
+            </div>
+          </div>
+          <div style="font-size: 1rem;" class="p-order-1 p-order-md-3">
+            <i class="pi pi-info-circle"></i>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="p-d-flex p-flex-column" style="width: 200px;">
       <div class="p-d-flex p-jc-end p-mb-4" style="font-size: 2rem;">WORK ORDER</div>
-      <div class="p-d-flex p-jc-between p-mb-2" *ngIf="order.id > 0">
+      <div class="p-d-flex p-jc-between" *ngIf="order.id > 0">
         <div class="c-invoice-label">ORDER #</div>
         <div>{{order.id }}</div>
       </div>
-      <div class="p-d-flex p-jc-between p-mb-2">
+      <div class="p-d-flex p-jc-between">
+        <div class="c-invoice-label">STATUS</div>
+        <div>{{order.statusEN ? this.order.statusEN : 'Not Submitted'}}</div>
+      </div>
+      <div class="p-d-flex p-jc-between">
         <div class="c-invoice-label">DATE</div>
         <div>{{order.dateTimeofWork |date:'mediumDate'}}</div>
       </div>
-      <div class="p-d-flex p-jc-between p-mb-2">
+      <div class="p-d-flex p-jc-between">
         <div class="c-invoice-label">TIME</div>
         <div>{{order.dateTimeofWork |date:'shortTime'}}</div>
       </div>
@@ -59,7 +84,7 @@
     
     <div class="c-divider">
       <div class="c-card-header">Order Details</div>
-      <p-table [value]="this.jobInfo" styleClass="p-datatable-sm" [responsive]="true">
+      <p-table [value]="this.jobInfo" styleClass="p-datatable-sm" class="c-highlight-header" [responsive]="true">
         <ng-template pTemplate="header">
             <tr>
                 <th>Description</th>
@@ -94,6 +119,8 @@
     <div class="c-divider">
       <div class="c-card-header">{{workerCount > 1 ? workerCount + ' Jobs Requested' :  workerCount + ' Job Requested'}}</div>
       <p-table [value]="order.workAssignments" 
+        styleClass="p-datatable-sm"
+        class="c-highlight-header"
         [responsive]="true">
         <ng-template pTemplate="header">
           <tr>
