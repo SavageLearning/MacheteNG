@@ -170,13 +170,6 @@ export class WorkAssignmentsComponent implements OnInit, OnDestroy {
     this.requestForm.controls['hourlyWage'].setValue(skill.wage);
   }
 
-  clearSelectedSkill() {
-    var props = Object.getOwnPropertyNames(this.selectedSkill);
-    for (var i = 0; i < props.length; i++) {
-      delete this.selectedSkill[props[i]];
-    }
-  }
-
   onAddJobsToRequest() {
     this.activeTabIndex = 1;
   }
@@ -184,9 +177,10 @@ export class WorkAssignmentsComponent implements OnInit, OnDestroy {
   onAddMoreJobs() {
     this.activeTabIndex = 0;
     this.clearMessages(this.eMessages.SuccessSkillSaved);
-    this.clearSelectedSkill();
     this.requestForm.reset();
+    this.selectedSkill = new Lookup();
     this.buildForm();
+    this.newRequest = true;
   }
 
   onShowSkillsCart() {

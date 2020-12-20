@@ -28,6 +28,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DataViewModule } from 'primeng/dataview';
 import { TabViewModule } from 'primeng/tabview';
+import { FieldsetModule } from 'primeng/fieldset';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -66,7 +67,8 @@ import { SkillsComponent } from './work-assignments/skills/skills.component';
     DataViewModule,
     ToastModule,
     DynamicDialogModule,
-    TabViewModule
+    TabViewModule,
+    FieldsetModule
   ],
   declarations: [
     IntroductionComponent,

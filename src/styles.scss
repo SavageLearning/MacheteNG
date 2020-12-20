@@ -17,12 +17,12 @@
   align-items: center;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 40rem) {
   .p-datatable {
     tr {
       font-size: small;
       &:nth-child(odd) {
-        background: var(--surface-c) !important; 
+        background: var(--surface-c); 
         }
     }
     &.p-datatable-responsive {
@@ -50,4 +50,37 @@
   color: #044868;
   padding: 1.25rem 1rem;
   margin-bottom: 1rem;
+}
+
+.c-info-border {
+  border: solid var(--surface-d);
+  border-width: 1;
+  border-radius: 5px;
+  padding: 1.25rem 1rem;
+  margin-bottom: 1rem;
+}
+
+//custome card header
+.c-card-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+// Invloce Lable
+.c-invoice-label {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.c-divider {
+  border-bottom: .2px solid var(--surface-d);
+  margin: 1.5rem 0 .2rem 0;
+}
+
+.c-hightlight {
+  border-left: solid var(--primary-color);
+  border-width: 1rem;
+  padding-left: 1rem;
 }
