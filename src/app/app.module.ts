@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
 import { AuthService} from './shared/services/auth.service';
 
+import { ToastModule } from 'primeng/toast';
+
 import { AuthorizeComponent } from './auth/authorize/authorize.component';
 import { OnlineOrdersModule } from './online-orders/online-orders.module';
 import { ReportsModule } from './reports/reports.module';
@@ -49,7 +51,8 @@ import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highli
     MyWorkOrdersModule,
     EmployersModule,
     AppRoutingModule,
-    HighlightModule
+    HighlightModule,
+    ToastModule
   ],
   providers: [
     AuthService,

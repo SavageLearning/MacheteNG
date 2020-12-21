@@ -56,7 +56,14 @@
         <div>{{employerInfo.city}}, {{employerInfo.state}} {{employerInfo.zip}}</div>
       </div>
       <div class="p-d-flex p-flex-column p-mb-4 c-hightlight" style="max-width: 550px;">
-        <div class="c-card-header">What you pay</div>
+        <div class="p-d-flex p-jc-between c-card-header">
+          <div>
+            WHAT YOU PAY
+          </div>
+          <div>
+            <div id="paypal-button" *ngIf="showPayPal && transportCost > 0"></div>
+          </div> 
+        </div>
         <div>
           <p-table [value]="this.orderCost" styleClass="p-datatable-sm" [responsive]="true">
             <ng-template pTemplate="header">
@@ -167,7 +174,7 @@
   
   
   <div class="ui-g-12 ui-md-6 ui-g-nopad">
-    <div class="ui-g-12" *ngIf="order.ppPaymentID != null">
+    <div class="ui-g-12" >
       <div class="ui-g-12 ui-md-4 ui-g-nopad">
         <label for="ppPaymentID">Paypal Payment #</label>
       </div>
@@ -175,7 +182,7 @@
         {{order.ppPaymentID}}
       </div>
     </div>   
-    <div class="ui-g-12" *ngIf="order.ppState != null">
+    <div class="ui-g-12" >
       <div class="ui-g-6 ui-md-4 ui-g-nopad">
         <label for="ppState">Payment State</label>
       </div>

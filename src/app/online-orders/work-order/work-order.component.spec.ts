@@ -8,7 +8,11 @@ import { Lookup } from '../../lookups/models/lookup';
 import { WorkOrder } from '../../shared/models/work-order';
 import { Employer } from '../../shared/models/employer';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DropdownModule, CalendarModule, DialogModule, ToggleButtonModule } from 'primeng/primeng';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { DialogModule } from 'primeng/dialog';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { OnlineOrdersService } from '../online-orders.service';
 import { ScheduleRule } from '../shared/models/schedule-rule';
