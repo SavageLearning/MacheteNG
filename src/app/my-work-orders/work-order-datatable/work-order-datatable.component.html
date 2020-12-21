@@ -1,34 +1,63 @@
-<p>
-  These are your past orders:
-</p>
-<p-dataTable
-  #dt
-  sortMode="single"
-  sortField="paperOrderNum"
-  [sortOrder]="0"
-  [value]="orders"
-  [responsive]="true"
-  resizable="true"
-  [paginator]="true"
-  [rows]="10"
-  >
-  <p-header>
-    
-  </p-header>
-  <p-column styleClass="col-button" field="paperOrderNum" header="Order #" [sortable]="true">
-    <ng-template let-order="rowData" pTemplate="body">
-        <button type="button" pButton (click)="viewOrder(order)" icon="ui-icon-edit"></button>
-        {{order.id }}
+<p-card header="Your Past Orders">
+  <p-table
+    #dt
+    [value]="orders"
+    [responsive]="true"
+    [paginator]="true"
+    [rows]="10"
+    [globalFilterFields]="['paperOrderNum','dateTimeofWork', 'statusEN', 'transportMethodEN']"
+    styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex">
+          <span class="p-input-icon-left p-ml-auto p-input-filled">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+          </span>
+      </div>
+      </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="paperOrderNum">Order # <p-sortIcon field="paperOrderNum"></p-sortIcon></th>
+            <th pSortableColumn="dateTimeofWork">Time needed <p-sortIcon field="dateTimeofWork"></p-sortIcon></th>
+            <th pSortableColumn="statusEN">Status <p-sortIcon field="statusEN"></p-sortIcon></th>
+            <th pSortableColumn="transportMethodEN">Trans. method <p-sortIcon field="transportMethodEN"></p-sortIcon></th>
+            <th pSortableColumn="contactName">Contact name <p-sortIcon field="contactName"></p-sortIcon></th>
+            <th pSortableColumn="workSiteAddress1">Address <p-sortIcon field="workSiteAddress1"></p-sortIcon></th>
+            <th style="width: 3rem;"></th>
+        </tr>
     </ng-template>
-  </p-column>
-  <p-column field="dateTimeofWork" header="Time needed"  [sortable]="true">
-      <ng-template let-col let-row="rowData" pTemplate="body">
-          <span >{{ row.dateTimeofWork |amDateFormat:'MMM DD YYYY, h:mm' }}</span>
-        </ng-template>
-  </p-column>
-  <p-column field="statusEN" header="Status"  [sortable]="true"></p-column>
-  <p-column field="transportMethodEN" header="Trans. method" [sortable]="true"></p-column>
-  <!-- <p-column field="" header="Worker count" [sortable]="true"></p-column> -->
-  <p-column field="contactName" header="Contact name" [sortable]="true"></p-column>
-  <p-column field="workSiteAddress1" header="Address" [sortable]="true"></p-column>
-</p-dataTable>  
+    <ng-template pTemplate="body" let-order>
+        <tr>
+            <td>
+              <small class="p-column-title">Order #</small>
+              {{order.paperOrderNum}}
+            </td>
+            <td>
+              <small class="p-column-title">Time needed</small>
+              {{ order.dateTimeofWork | date:'short' }}
+            </td>
+            <td>
+              <small class="p-column-title">Status</small>
+              {{order.statusEN}}
+            </td>
+            <td>
+              <small class="p-column-title">Trans. method</small>
+              {{order.transportMethodEN}}
+            </td>
+            <td>
+              <small class="p-column-title">Contact name</small>
+              {{order.contactName}}
+            </td>
+            <td>
+              <small class="p-column-title">Address</small>
+              {{order.workSiteAddress1}}
+            </td>
+            <td>
+              <div class="p-d-flex p-ai-start  p-jc-end p-md-jc-center">
+                <button type="button" pButton (click)="viewOrder(order)" icon="ui-icon-edit" class="p-button-rounded"></button>
+              </div>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>  
+</p-card>

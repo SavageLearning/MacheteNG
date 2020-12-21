@@ -1,11 +1,11 @@
 
 import {of as observableOf,  Observable } from 'rxjs';
 
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { WorkOrderDatatableComponent } from './work-order-datatable.component';
 import { WorkOrder } from '../../shared/models/work-order';
 import { MyWorkOrdersService } from '../my-work-orders.service';
-import { DataTableModule } from 'primeng/primeng';
+import { TableModule } from 'primeng/table';
 import { TransportRulesService } from '../../online-orders/transport-rules.service';
 import { TransportRulesServiceSpy, RouterSpy } from '../../shared/testing/services.spy';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -25,7 +25,7 @@ describe('WorkOrderDatatableComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ WorkOrderDatatableComponent ],
       imports: [
-        DataTableModule,
+        TableModule,
         MomentModule
       ]
     })

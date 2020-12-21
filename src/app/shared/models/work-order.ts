@@ -15,7 +15,7 @@ export class WorkOrder extends Record<WorkOrder> {
   englishRequired: boolean = false;
   englishRequiredNote: string;
   // onlineSource: boolean;
-  // paperOrderNum?: number;
+  paperOrderNum?: number;
   ppFee?: string;
   ppPayerID?: number;
   ppState?: string;
