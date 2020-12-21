@@ -1,6 +1,6 @@
 <p-card styleClass="p-card-shadow p-mb-5" header="Exports">
   <div class="p-fluid p-formgrid p-grid" >
-    <div class="p-field p-col-12 p-md-12 p-lg-6">
+    <div class="p-field p-col-12 p-md-12 p-lg-6 p-input-filled">
       <label for="exportsDD">Select a table</label>
       <p-dropdown
         inputId="exportsDD"
@@ -12,7 +12,7 @@
         >
       </p-dropdown>
     </div>
-    <div class="p-field p-col-12 p-md-12 p-lg-6">
+    <div class="p-field p-col-12 p-md-12 p-lg-6 p-input-filled">
       <label for="dateFilterDD">Date field for filter</label>
       <p-dropdown
         inputId="dateFilterDD"
@@ -21,7 +21,7 @@
         [(ngModel)]="selectedDateFilter"
         ></p-dropdown>
     </div>
-    <div class="p-field p-col-12 p-md-12 p-lg-6">
+    <div class="p-field p-col-12 p-md-12 p-lg-6 p-input-filled">
       <label for="startDate">Start Date</label>
       <p-calendar
         inputId="startDate"
@@ -36,7 +36,7 @@
         yearRange="2000:2030"
         ></p-calendar>
     </div>
-    <div class="p-field p-col-12 p-md-12 p-lg-6">
+    <div class="p-field p-col-12 p-md-12 p-lg-6 p-input-filled">
       <label for="endDate">End date</label>
       <p-calendar
         inputId="endDate"

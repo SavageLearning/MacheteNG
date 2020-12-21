@@ -1,5 +1,7 @@
 <div [formGroup]="form">
-  <p-table  [value]="columns" [responsive]="true">
+  <p-table  [value]="columns"
+    [responsive]="true"
+    styleClass="p-datatable-striped p-datatable-gridlines p-datatable-sm">
     <ng-template pTemplate="header">
       <tr>
         <th>Column name</th>

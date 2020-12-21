@@ -1,18 +1,18 @@
 <p-card styleClass="p-card-shadow p-mb-5" header="Reports">
   <div class="p-fluid p-formgrid p-grid"> 
-    <div class="p-field p-col-12">
+    <div class="p-field p-col-12 p-input-filled">
       <label for="select-report">Select a report</label>
       <p-dropdown inputId="select-report" [options]="reportsDropDown" (onChange)="getView()" [(ngModel)]="selectedReportID" [filter]="true" styleClass="p-mr-2"></p-dropdown>
     </div>
-    <div *ngIf="inputs.memberNumber === true" class="p-field p-col-12 p-md-12 p-lg-4">
+    <div *ngIf="inputs.memberNumber === true" class="p-field p-col-12 p-md-12 p-lg-4 p-input-filled">
       <label for="memberNumber">Member number</label>
       <input id="memberNumber" type="text" pInputText [(ngModel)]="o.memberNumber" (onBlur)="getView()" dataType="number"/>
     </div>
-    <div *ngIf="inputs.beginDate === true" class="p-field p-col-12 p-md-12 p-lg-4">
+    <div *ngIf="inputs.beginDate === true" class="p-field p-col-12 p-md-12 p-lg-4 p-input-filled">
       <label for="start-date-cal">Start date</label>
       <p-calendar id="start-date-cal" placeholder="Start date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.beginDate" [showIcon]="true" dataType="string"></p-calendar>
     </div>
-    <div *ngIf="inputs.endDate === true" class="p-field p-col-12 p-md-12 p-lg-4">
+    <div *ngIf="inputs.endDate === true" class="p-field p-col-12 p-md-12 p-lg-4 p-input-filled">
       <label for="end-date-cal">End date</label>
       <p-calendar id="end-date-cal" placeholder="End date" (onSelect)="getView()" (onBlur)="getView()" [(ngModel)]="o.endDate" [showIcon]="true" dataType="string"></p-calendar>
     </div>
@@ -91,15 +91,15 @@
 >
 <div class="card">
   <div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12">
+    <div class="p-field p-col-12 p-input-filled">
       <label for="name">Name</label>
       <input pInputText id="name" [(ngModel)]="name" />
     </div>
-    <div class="p-field p-col-12">
+    <div class="p-field p-col-12 p-input-filled">
       <label for="commonName">Common name</label>
       <input pInputText id="commonName" [(ngModel)]="selectedReport.commonName" />
     </div>
-    <div class="p-field p-col-12">
+    <div class="p-field p-col-12 p-input-filled">
       <label for="description">Description</label>
       <input pInputText id="description" [(ngModel)]="selectedReport.description" />
     </div>
@@ -123,7 +123,7 @@
           <pre><code id="sqlHighlight" [highlight]="selectedReport.sqlquery" [lineNumbers]="true"></code></pre>
       </p-panel>      
     </div>
-    <div class="p-field p-col-12">
+    <div class="p-field p-col-12 p-input-filled">
       <label for="sqlquery">SQL Query</label>
       <textarea #inputSql pInputTextarea  id="sqlquery" [(ngModel)]="selectedReport.sqlquery" [rows]="sqlStringRowCount" [style]="{'height':'100%'}" spellcheck="false"></textarea>
     </div>
