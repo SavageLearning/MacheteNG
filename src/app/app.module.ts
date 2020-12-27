@@ -7,9 +7,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // import { HttpClientModule, XHRBackend, BrowserXhr, ResponseOptions,  XSRFStrategy } from '@angular/http';
 import { AppComponent } from './app.component';
-import { AppMenuComponent, AppSubMenu }  from './menu/app.menu.component';
-import { AppTopBar }  from './app.topbar.component';
-import { AppFooter }  from './app.footer.component';
+import { AppMenuComponent, AppSubMenuComponent }  from './menu/app.menu.component';
+import { AppTopBarComponent }  from './app.topbar.component';
+import { AppFooterComponent }  from './app.footer.component';
 import { InlineProfileComponent }  from './menu/app.profile.component';
 import { PageNotFoundComponent }   from './not-found.component';
 import { Router } from '@angular/router';
@@ -33,9 +33,9 @@ import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highli
   declarations: [
     AppComponent,
     AppMenuComponent,
-    AppSubMenu,
-    AppTopBar,
-    AppFooter,
+    AppSubMenuComponent,
+    AppTopBarComponent,
+    AppFooterComponent,
     InlineProfileComponent,
     PageNotFoundComponent,
     AuthorizeComponent

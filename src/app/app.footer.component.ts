@@ -12,6 +12,6 @@ import {AppComponent} from './app.component';
         </div>
     `
 })
-export class AppFooter {
+export class AppFooterComponent {
 
 }

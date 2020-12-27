@@ -17,7 +17,7 @@ import {AppComponent} from './app.component';
         </div>
     `
 })
-export class AppTopBar {
+export class AppTopBarComponent {
 
     constructor(@Inject(forwardRef(() => AppComponent)) public app: AppComponent) {}
 

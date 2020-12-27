@@ -10,13 +10,7 @@ import { MenuRule } from './menu-rule';
 
 @Component({
     selector: 'app-menu',
-    template: `
-        <ul app-submenu [item]="model"
-            root="true"
-            class="ultima-menu ultima-main-menu clearfix"
-            [reset]="reset"
-            visible="true"></ul>
-    `
+    templateUrl: './app.menu.component.html'
 })
 export class AppMenuComponent implements OnInit {
 
@@ -42,8 +36,9 @@ export class AppMenuComponent implements OnInit {
 }
 
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[app-submenu]',
-    templateUrl: './app.menu.component.html',
+    templateUrl: './app.submenu.component.html',
     animations: [
         trigger('children', [
             state('hidden', style({
@@ -57,7 +52,7 @@ export class AppMenuComponent implements OnInit {
         ])
     ]
 })
-export class AppSubMenu {
+export class AppSubMenuComponent {
 
     @Input() item: MenuItem;
 
@@ -83,10 +78,7 @@ export class AppSubMenu {
 
         //execute command
         if (item.command) {
-            item.command({
-              originalEvent: event,
-              item: item
-            });
+            item.command({ event, item });
         }
 
         //prevent hash change
@@ -96,10 +88,11 @@ export class AppSubMenu {
 
         //hide menu
         if (!item.items) {
-            if (this.app.isHorizontal())
+            if (this.app.isHorizontal()) {
                 this.app.resetMenu = true;
-            else
+            } else {
                 this.app.resetMenu = false;
+            }
 
             this.app.overlayMenuActive = false;
             this.app.staticMenuMobileActive = false;

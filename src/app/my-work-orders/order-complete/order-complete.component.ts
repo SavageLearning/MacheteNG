@@ -82,12 +82,12 @@ export class OrderCompleteComponent implements OnInit {
   ngOnInit() {
     console.log('order-complete.component:ngOnInit');
     const id = +this.route.snapshot.paramMap.get('id');
-    observableCombineLatest(
+    observableCombineLatest([
       this.transportProviderService.getTransportProviders(),
       this.ordersService.getOrder(id),
       this.configsService.getConfig('PayPalClientID'),
       this.configsService.getConfig('PayPalEnvironment')
-    ).subscribe(([l,o,id,env])=>{
+    ]).subscribe(([l,o,id,env])=>{
       console.log('ngOnInit:combineLatest received:', l,o,id,env);
       this.paypalConfig['env'] = env.value;
       this.paypalConfig.client[env.value] = id.value;

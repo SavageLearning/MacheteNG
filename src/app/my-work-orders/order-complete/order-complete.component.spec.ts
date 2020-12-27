@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderCompleteComponent } from './order-complete.component';
 import { FullOrderViewComponent } from '../../shared/components/work-orders/full-order-view/full-order-view.component';
@@ -16,7 +16,7 @@ describe('OrderCompleteComponent', () => {
   let component: OrderCompleteComponent;
   let fixture: ComponentFixture<OrderCompleteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ 
         OrderCompleteComponent,

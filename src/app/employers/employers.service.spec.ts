@@ -1,4 +1,4 @@
-import { async, TestBed, inject } from '@angular/core/testing';
+import { waitForAsync, TestBed, inject } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 
 import { EmployersService } from './employers.service';

@@ -1,0 +1,18 @@
+/* :host ::ng-deep li > a .p-menuitem-link-active {
+    background-color: red !important;
+} */
+
+:host ::ng-deep .p-steps .p-steps-item .p-menuitem-link-active > span.p-steps-number {
+    background-color: var(--primary-color) !important;
+}
+
+:host ::ng-deep  .p-steps .p-steps-item.p-highlight .p-steps-number {
+    background-color: #9e9d9e !important;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--primary-color) !important;
+    }
+    &:active {
+        background-color: #727172 !important;
+    }
+}
