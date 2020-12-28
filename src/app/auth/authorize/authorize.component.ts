@@ -19,7 +19,9 @@ export class AuthorizeComponent implements OnInit {
       user.state = user.state ? user.state : '/welcome';
 
       // get out of the auth loop (no hanging 'authorize works!')
-      if (user.state.endsWith('authorize')) { user.state = '/welcome'; }
+      if (user.state.endsWith('authorize')) {
+          user.state = '/welcome';
+        }
 
       if (user.profile.roles.includes('Hirer') && user.state === '/welcome') {
         rtr.navigate(['/online-orders/introduction']);

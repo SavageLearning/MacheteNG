@@ -1,4 +1,4 @@
-import { WorkAssignment } from "./work-assignment";
+import { WorkAssignment } from './work-assignment';
 import { Record } from './record';
 
 export class WorkOrder extends Record<WorkOrder> {
@@ -12,7 +12,7 @@ export class WorkOrder extends Record<WorkOrder> {
   description: string;
   // disclosureAgreement?: boolean;
   // employerID: number;
-  englishRequired: boolean = false;
+  englishRequired = false;
   englishRequiredNote: string;
   // onlineSource: boolean;
   paperOrderNum?: number;
@@ -42,9 +42,10 @@ export class WorkOrder extends Record<WorkOrder> {
     return !this.isEmpty();
   }
   isEmpty(): boolean {
-    for(var key in this) {
-      if(this.hasOwnProperty(key))
-      console.log('Not empty: ', this[key]);
+    for(let key in this) {
+      if (this.hasOwnProperty(key)) {
+        console.log('Not empty: ', this[key]);
+      }
       return false;
     }
   return true;

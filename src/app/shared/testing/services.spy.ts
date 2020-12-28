@@ -1,16 +1,18 @@
+/* eslint-disable brace-style */
+/* eslint-disable @typescript-eslint/naming-convention */
 
 import {of as observableOf,  Observable ,  Subject ,  BehaviorSubject } from 'rxjs';
 import {} from 'jasmine';
-import { Employer } from "../models/employer";
-import { Lookup } from "../../lookups/models/lookup";
-import { User, UserProfile } from "../models/user";
-import { EventEmitter } from "@angular/core";
-import { WorkOrder } from "../../shared/models/work-order";
-import { ScheduleRule, TransportRule, TransportProvider, CostRule, TransportProviderAvailability } from "../../online-orders/shared/index";
-import { WorkAssignment } from "../models/work-assignment";
-import { Router, NavigationEnd, UrlTree } from "@angular/router";
-import { loadConfirms } from "../../online-orders/shared/rules/load-confirms";
-import { Config } from "../models/config";
+import { Employer } from '../models/employer';
+import { Lookup } from '../../lookups/models/lookup';
+import { User, UserProfile } from '../models/user';
+import { EventEmitter } from '@angular/core';
+import { WorkOrder } from '../../shared/models/work-order';
+import { ScheduleRule, TransportRule, TransportProvider, CostRule, TransportProviderAvailability } from '../../online-orders/shared/index';
+import { WorkAssignment } from '../models/work-assignment';
+import { Router, NavigationEnd, UrlTree } from '@angular/router';
+import { loadConfirms } from '../../online-orders/shared/rules/load-confirms';
+import { Config } from '../models/config';
 import { Profile } from 'selenium-webdriver/firefox';
 
 export class EmployersServiceSpy {
@@ -87,7 +89,7 @@ export class RouterSpy {
     );
   serializeUrl = jasmine.createSpy('serializeUrl')
     .and.callFake(
-      () => ""
+      () => ''
     );
   navigate = jasmine.createSpy('navigate');
 }
@@ -107,7 +109,7 @@ export class WorkAssignmentsServiceSpy {
     .and.callFake(
       () => observableOf(new Array<TransportRule>())
     );
-  
+
   getTransportsStream = jasmine.createSpy('getTransportsStream')
     .and.callFake(
       () => observableOf(new Array<Lookup>())
@@ -185,7 +187,7 @@ export class TransportRulesServiceSpy {
     .and.callFake(
       () => observableOf([
         new TransportRule({
-          id: 1, 
+          id: 1,
           zipcodes: ['12345'],
           costRules: [new CostRule({
             minWorker: 0,
@@ -201,7 +203,7 @@ export class TransportProvidersServiceSpy {
   getTransportProviders = jasmine.createSpy('getTransportProviders')
     .and.callFake(
       () => observableOf([new TransportProvider({
-        id: 32, 
+        id: 32,
         text: 'a text label',
         availabilityRules: new Array<TransportProviderAvailability>(
           new TransportProviderAvailability({day: 0, available: false}),

@@ -10,15 +10,13 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class LookupsService {
   uriBase = environment.dataUrl + '/api/lookups';
-  
-  private lookups = new Array<Lookup>();
-  // need BehaviorSubject because we're caching the response and 
+    // need BehaviorSubject because we're caching the response and
   // need to be able serve the cache and not call API every time
   lookupsSource = new BehaviorSubject<Lookup[]>(new Array<Lookup>());
   lookups$ = this.lookupsSource.asObservable();
   lookupsAge = 0;
   storageKey = 'machete.lookups';
-
+  private lookups = new Array<Lookup>();
 
   constructor(private http: HttpClient) {
     console.log('.ctor: LookupsService');
@@ -64,9 +62,9 @@ export class LookupsService {
   }
 
   storeLookups() {
-    sessionStorage.setItem(this.storageKey, 
+    sessionStorage.setItem(this.storageKey,
       JSON.stringify(this.lookups));
-    sessionStorage.setItem(this.storageKey + '.age', 
+    sessionStorage.setItem(this.storageKey + '.age',
       JSON.stringify(this.lookupsAge));
   }
 
@@ -74,13 +72,13 @@ export class LookupsService {
     return this.lookups$.pipe(
       map(res => {
         console.log('getlookups', res);
-        return res.filter(l => l.category == category);
+        return res.filter(l => l.category === category);
       }));
   }
 
   getLookup(id: number): Observable<Lookup> {
     return this.lookups$.pipe(
-      mergeMap(a => a.filter(ll => ll.id == id)),
+      mergeMap(a => a.filter(ll => ll.id === id)),
       first(),); // TODO is this a mistake or are we passing undefined?
   }
 }

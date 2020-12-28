@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 
 import {combineLatest as observableCombineLatest,  Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { WorkOrder } from '../../shared/models/work-order';
 import { LookupsService } from '../../lookups/lookups.service';
 import { LCategory } from '../../lookups/models/lookup';
@@ -16,27 +17,26 @@ import { TransportProvidersService } from '../../online-orders/transport-provide
   templateUrl: './order-complete.component.html',
   styleUrls: ['./order-complete.component.css']
 })
-export class OrderCompleteComponent implements OnInit {
+export class OrderCompleteComponent implements OnInit, AfterViewChecked {
 
   order = new WorkOrder();
   transportLabel: string;
   workerCount: number;
-  transportCost: number = 0;
+  transportCost = 0;
   laborCost: number;
   // paypal values
-  public didPaypalScriptLoad: boolean = false;
-  public loading: boolean = true;
+  public didPaypalScriptLoad = false;
+  public loading = true;
 
   public paypalConfig: any = {
-    // The env (sandbox/production) tells the paypal client which URL to use. 
+    // The env (sandbox/production) tells the paypal client which URL to use.
     env: '',
     client: {
       sandbox: '',
       production: ''
     },
     commit: true,
-    payment: (data, actions) => {
-      return actions.payment.create({
+    payment: (data, actions) => actions.payment.create({
         payment: {
           transactions: [
             { amount: { total: this.transportCost, currency: 'USD' } }
@@ -47,24 +47,23 @@ export class OrderCompleteComponent implements OnInit {
               no_shipping: 1
           }
         },
-      });
-    },
+      }),
     onAuthorize: (data, actions) => {
       console.log('Payment was successful!', data, actions);
       // TODO: add confirmation notice/spinner
       this.ordersService.executePaypal(this.order.id, data['payerID'], data['paymentID'], data['paymentToken'])
         .subscribe(
-          data => {
-            console.log('execute paypal returned:', data);
+          res => {
+            console.log('execute paypal returned:', res);
             this.ordersService.getOrder(this.order.id)
               .subscribe(foo => this.order = foo);
           },
           error => console.error('execute paypal errored:', error));
     },
-    onCancel: function(data) {
+    onCancel: (data) => {
       console.log('The payment was cancelled!', data);
     },
-    onError: function(err) {
+    onError: (err) => {
       console.log('There was an error:', err);
     }
   };
@@ -75,16 +74,16 @@ export class OrderCompleteComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private configsService: ConfigsService
-  ) { 
-    console.log('.ctor');    
+  ) {
+    console.log('.ctor');
   }
 
   ngOnInit() {
     console.log('order-complete.component:ngOnInit');
-    const id = +this.route.snapshot.paramMap.get('id');
+    const orderId = +this.route.snapshot.paramMap.get('id');
     observableCombineLatest([
       this.transportProviderService.getTransportProviders(),
-      this.ordersService.getOrder(id),
+      this.ordersService.getOrder(orderId),
       this.configsService.getConfig('PayPalClientID'),
       this.configsService.getConfig('PayPalEnvironment')
     ]).subscribe(([l,o,id,env])=>{
@@ -97,18 +96,18 @@ export class OrderCompleteComponent implements OnInit {
         this.router.navigate(['/online-orders/order-not-found'])
         return;
       }
-      this.transportLabel = l.find(ll => ll.id == o.transportProviderID).text;
+      this.transportLabel = l.find(ll => ll.id === o.transportProviderID).text;
       let wa = o.workAssignments;
       if (wa != null && wa.length > 0) {
         // sums up the transport  costs
-        this.transportCost = 
-          wa.map(wa => wa.transportCost)
+        this.transportCost =
+          wa.map(waItem => waItem.transportCost)
             .reduce((a, b) => a + b);
         this.workerCount = wa.length;
         // sums up the labor costs
-        this.laborCost = 
-          wa.map(wa => wa.hourlyWage * wa.hours)
-            .reduce((a, b) => a + b);      
+        this.laborCost =
+          wa.map(waItem => waItem.hourlyWage * waItem.hours)
+            .reduce((a, b) => a + b);
       } else {
         this.workerCount = 0;
         this.transportCost = 0;

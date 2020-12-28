@@ -5,6 +5,7 @@ import { User } from '../shared/models/user';
 import { Router } from '@angular/router';
 
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'inline-profile',
     templateUrl: './app.profile.component.html',
     animations: [
@@ -28,7 +29,7 @@ export class InlineProfileComponent implements OnInit {
       private auth: AuthService,
       private router: Router
     ) {
-      console.log(".ctor: InlineProfileComponent");
+      console.log('.ctor: InlineProfileComponent');
     }
 
     ngOnInit() {

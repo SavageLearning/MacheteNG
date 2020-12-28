@@ -33,9 +33,7 @@ export class ReportsService {
   }
 
   public encodeData(data: any): string {
-    return Object.keys(data).map((key) => {
-      return [key, data[key]].map(encodeURIComponent).join('=');
-    }).join('&');
+    return Object.keys(data).map((key) => [key, data[key]].map(encodeURIComponent).join('=')).join('&');
   }
 }
 

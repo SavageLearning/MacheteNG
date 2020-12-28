@@ -22,5 +22,5 @@ export class AuthGuardService implements CanActivate {
 
         return !user.expired;
       }));
-    }    
+    }
 }

@@ -9,12 +9,12 @@ import { AuthService } from '../shared/index';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceSpy } from '../shared/testing';
 
-describe('EmployersService', async() => {
+describe('EmployersService', async () => {
   let service: EmployersService;
   let httpMock: HttpTestingController;
   let baseref: string  = environment.dataUrl;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
         EmployersService,

@@ -1,9 +1,9 @@
+/* eslint-disable brace-style */
 /**
  * Created by jcii on 5/31/17.
  */
 import { Record } from './record';
-export class WorkAssignment extends Record<WorkAssignment>
-{
+export class WorkAssignment extends Record<WorkAssignment> {
   skillId: number;
   skill: string;
   hours: number;

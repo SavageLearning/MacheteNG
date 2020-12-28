@@ -17,7 +17,9 @@
 // import { OnlineOrdersService } from '../online-orders.service';
 // import { ScheduleRule } from '../shared/models/schedule-rule';
 // import { ConfigsService } from '../../configs/configs.service';
-// import { WorkOrderServiceSpy, LookupsServiceSpy, ConfigsServiceSpy, OnlineOrdersServiceSpy, RouterSpy, ScheduleRulesServiceSpy, TransportRulesServiceSpy, TransportProvidersServiceSpy } from '../../shared/testing';
+// import { TransportRulesServiceSpy, TransportProvidersServiceSpy, ScheduleRulesServiceSpy } from '../../shared/testing';
+// import { WorkOrderServiceSpy, LookupsServiceSpy, ConfigsServiceSpy, OnlineOrdersServiceSpy, RouterSpy } from '../../shared/testing';
+
 // import { Router } from "@angular/router";
 // import { ScheduleRulesService } from '../schedule-rules.service';
 // import { TransportRulesService } from '../transport-rules.service';
@@ -49,7 +51,7 @@
 //           { provide: Router, useClass: RouterSpy},
 //           { provide: ScheduleRulesService, useClass: ScheduleRulesServiceSpy },
 //           { provide: TransportRulesService, useClass: TransportRulesServiceSpy }
-          
+
 //         ]
 //       }
 //     })

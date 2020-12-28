@@ -1,3 +1,5 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable brace-style */
 
 import { Observable } from 'rxjs';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -12,12 +14,12 @@ class ConfigsServiceSpy {
   getConfig = jasmine.createSpy('getConfig')
     .and.callFake(() => { return this.mockConfigs() });
   getAllConfigs = jasmine.createSpy('getAllConfigs')
-    .and.callFake(() => {
+    .and.callFake(() =>
       // let configs = new Array<Config>();
       // configs.push(new Config({key: 'WorkCenterDescription_EN', value: 'foo'}));
       // return Observable.of(configs);
-      return this.mockConfigs();
-    });
+       this.mockConfigs()
+    );
 
   mockConfigs(): Observable<Config[]> {
       let configs = new Array<Config>();

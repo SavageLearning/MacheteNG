@@ -38,7 +38,7 @@ export class WelcomeComponent implements OnInit {
       this.userState = user.state ? user.state : '/welcome';
     }, error => {
       console.log('welcome component: error; ', error);
-      this.isLoggedIn = false; 
+      this.isLoggedIn = false;
     });
   }
 

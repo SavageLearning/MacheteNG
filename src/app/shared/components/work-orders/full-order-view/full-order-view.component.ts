@@ -26,6 +26,7 @@ interface OrderCost {
 }
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'full-order-view',
   templateUrl: './full-order-view.component.html',
   styleUrls: ['./full-order-view.component.css']
@@ -42,14 +43,14 @@ export class FullOrderViewComponent implements OnChanges {
   jobInfo: JobDetails[] = new Array<JobDetails>();
   orderCost: OrderCost[] = new Array<OrderCost>();
 
-  constructor(private messageService: MessageService) {  
+  constructor(private messageService: MessageService) {
     console.log('.ctor');
    }
 
     ngOnChanges() {
-      if (this.showPayPal && this.transportCost > 0 && this.order.ppState != 'created') {
+      if (this.showPayPal && this.transportCost > 0 && this.order.ppState !== 'created') {
         const detail = 'Please pay the transport costs by PayPal or Credit Card by clicking on "PayPal Checkout"';
-        this.messageService.add({severity: 'warn', summary: 'Transport costs due', detail: detail});
+        this.messageService.add({severity: 'warn', summary: 'Transport costs due', detail});
       } else {
 
       }

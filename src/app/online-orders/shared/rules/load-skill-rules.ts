@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { SkillRule } from '../models/skill-rule';
 
 export function loadSkillRules(): Array<SkillRule> {
@@ -84,7 +85,7 @@ export function loadSkillRules(): Array<SkillRule> {
       speciality: false,
       key: 'skill_deep_cleaning',
       descriptionEn: 'kitchen, bedrooms, living room, bathroom, etc.',
-      'minimumCost': 92,
+      minimumCost: 92,
       active: true
     }),
     new SkillRule({

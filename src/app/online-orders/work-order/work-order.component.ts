@@ -5,7 +5,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { WorkOrder } from '../../shared/models/work-order';
 import { OnlineOrdersService } from '../online-orders.service';
 import { WorkOrderService } from './work-order.service';
-import { ScheduleRule, schedulingDayValidator, requiredValidator, TransportRule, TransportProvider, schedulingTimeValidator } from '../shared';
+import { ScheduleRule, schedulingDayValidator, requiredValidator, TransportRule } from '../shared';
+import { TransportProvider, schedulingTimeValidator } from '../shared';
 import { MySelectItem, YesNoSelectItem } from '../../shared/models/my-select-item';
 import { Router } from '@angular/router';
 import { ScheduleRulesService } from '../schedule-rules.service';
@@ -45,32 +46,21 @@ export class WorkOrderComponent implements OnInit {
   selectedTransport = 0;
   storageKey = 'machete.work-order.component';
   formErrors = {
-    'dateOfWork': '',
-    'timeOfWork': '',
-    'contactName': '',
-    'worksiteAddress1': '',
-    'worksiteAddress2': '',
-    'city': '',
-    'state': '',
-    'zipcode': '',
-    'phone': '',
-    'description': '',
-    'englishRequired': '',
-    'englishRequiredNote': '',
-    'transportProviderID': ''
+    dateOfWork: '',
+    timeOfWork: '',
+    contactName: '',
+    worksiteAddress1: '',
+    worksiteAddress2: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    phone: '',
+    description: '',
+    englishRequired: '',
+    englishRequiredNote: '',
+    transportProviderID: ''
   };
   isHandset$ = false;
-
-
-
-  showDialog() {
-    this.displayTransportCosts = true;
-  }
-
-  ackUserGuide() {
-    this.displayUserGuide = false;
-    sessionStorage.setItem(this.storageKey + '.UG', 'false');
-  }
 
   constructor(
     private transportProviderService: TransportProvidersService,
@@ -88,6 +78,15 @@ export class WorkOrderComponent implements OnInit {
     } else {
       this.displayUserGuide = true;
     }
+  }
+
+  showDialog() {
+    this.displayTransportCosts = true;
+  }
+
+  ackUserGuide() {
+    this.displayUserGuide = false;
+    sessionStorage.setItem(this.storageKey + '.UG', 'false');
   }
 
   ngOnInit() {
@@ -134,22 +133,22 @@ export class WorkOrderComponent implements OnInit {
   buildForm(): void {
     this.selectedTransport = this.workOrder.transportProviderID;
     this.orderForm = this.fb.group({
-      'dateOfWork': [this.dateOfWork, requiredValidator('Date & time is required.')],
-      'timeOfWork': [this.timeOfWork, requiredValidator('Date & time is required.')],
-      'contactName': [this.workOrder.contactName, requiredValidator('Contact name is required')],
-      'worksiteAddress1': [this.workOrder.worksiteAddress1, [requiredValidator('Address is required'), lengthValidator(50)]],
-      'worksiteAddress2': [this.workOrder.worksiteAddress2, lengthValidator(50)],
-      'city': [this.workOrder.city, [requiredValidator('City is required.'), lengthValidator(50)]],
-      'state': [this.workOrder.state, [
+      dateOfWork: [this.dateOfWork, requiredValidator('Date & time is required.')],
+      timeOfWork: [this.timeOfWork, requiredValidator('Date & time is required.')],
+      contactName: [this.workOrder.contactName, requiredValidator('Contact name is required')],
+      worksiteAddress1: [this.workOrder.worksiteAddress1, [requiredValidator('Address is required'), lengthValidator(50)]],
+      worksiteAddress2: [this.workOrder.worksiteAddress2, lengthValidator(50)],
+      city: [this.workOrder.city, [requiredValidator('City is required.'), lengthValidator(50)]],
+      state: [this.workOrder.state, [
         requiredValidator('State is required.'),
         regexValidator(new RegExp(/^[a-zA-Z]{2,2}$/), 'state', 'State must be two letters')
       ]],
-      'zipcode': [this.workOrder.zipcode, [requiredValidator('Zipcode is required.')]],
-      'phone': [this.workOrder.phone, phoneValidator('Phone is required in ###-###-#### format')],
-      'description': [this.workOrder.description, [requiredValidator('Description is required'), lengthValidator(100)]],
-      'englishRequired': [this.workOrder.englishRequired],
-      'englishRequiredNote': [this.workOrder.englishRequiredNote, lengthValidator(100)],
-      'transportProviderID': [this.workOrder.transportProviderID, [requiredValidator('A transport method is required')]]
+      zipcode: [this.workOrder.zipcode, [requiredValidator('Zipcode is required.')]],
+      phone: [this.workOrder.phone, phoneValidator('Phone is required in ###-###-#### format')],
+      description: [this.workOrder.description, [requiredValidator('Description is required'), lengthValidator(100)]],
+      englishRequired: [this.workOrder.englishRequired],
+      englishRequiredNote: [this.workOrder.englishRequiredNote, lengthValidator(100)],
+      transportProviderID: [this.workOrder.transportProviderID, [requiredValidator('A transport method is required')]]
     });
 
     this.orderForm.valueChanges

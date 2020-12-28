@@ -11,14 +11,15 @@ import { loadConfirms } from './shared/rules/load-confirms';
 
 @Injectable()
 export class OnlineOrdersService {
-  private initialConfirmSource: BehaviorSubject<Confirm[]>;
-  private workOrderConfirmSource = new BehaviorSubject<boolean>(false);
-  private workAssignmentsConfirmSource = new BehaviorSubject<boolean>(false);
-
   storageKey = 'machete.online-orders-service';
   initialConfirmKey = this.storageKey + '.initialconfirm';
   workOrderConfirmKey = this.storageKey + '.workorderconfirm';
   workAssignmentConfirmKey = this.storageKey + '.workassignmentsconfirm';
+
+  private initialConfirmSource: BehaviorSubject<Confirm[]>;
+  private workOrderConfirmSource = new BehaviorSubject<boolean>(false);
+  private workAssignmentsConfirmSource = new BehaviorSubject<boolean>(false);
+
   constructor(
     private http: HttpClient
   ) {
@@ -90,8 +91,6 @@ export class OnlineOrdersService {
 
     return this.http.post<WorkOrder>(url, JSON.stringify(order), {
       headers: postHeaders, withCredentials: true
-    }).pipe(map((data) => {
-      return data['data'] as WorkOrder;
-    }));
+    }).pipe(map((data) => data['data'] as WorkOrder));
   }
 }

@@ -23,10 +23,10 @@ export class WorkOrderService {
     } else {
       console.log('.ctor->Create work order from employer');
       this.employerService.getEmployer()
-        .subscribe(data => {
+        .subscribe(res => {
           // loading employer data as the defaults for
           // the new workorder
-          this.order = this.mapOrderFrom(data || new Employer());
+          this.order = this.mapOrderFrom(res || new Employer());
           this.orderSource.next(this.order);
         });
     }
@@ -36,18 +36,18 @@ export class WorkOrderService {
     return this.orderSource.asObservable();
   }
 
-  get(): WorkOrder { 
-    console.log('get called'); 
-    let data = sessionStorage.getItem(this.storageKey); 
-    if (data) { 
-      let order: WorkOrder = JSON.parse(data); 
-      //console.log('get: returning stored order', order); 
-      order.dateTimeofWork = new Date(order.dateTimeofWork); 
-      return order; 
-    } else { 
-      return this.order; 
-    } 
-  } 
+  get(): WorkOrder {
+    console.log('get called');
+    let data = sessionStorage.getItem(this.storageKey);
+    if (data) {
+      let order: WorkOrder = JSON.parse(data);
+      //console.log('get: returning stored order', order);
+      order.dateTimeofWork = new Date(order.dateTimeofWork);
+      return order;
+    } else {
+      return this.order;
+    }
+  }
 
   mapOrderFrom(employer: Employer): WorkOrder {
     const order = new WorkOrder();

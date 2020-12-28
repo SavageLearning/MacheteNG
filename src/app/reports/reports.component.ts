@@ -72,7 +72,7 @@ export class ReportsComponent implements OnInit {
     this.title = this.selectedReport.title || this.selectedReport.commonName;
     this.name = this.selectedReport.name;
     this.cols = this.selectedReport.columns.filter(a => a.visible === true);
-    this.inputs = <SearchInputs>this.selectedReport.inputs;
+    this.inputs = this.selectedReport.inputs as SearchInputs;
     this.sqlStringRowCount = this.selectedReport.sqlquery.match(/^/gm).length; // count the number of line breaks in string
   }
 
@@ -84,7 +84,7 @@ export class ReportsComponent implements OnInit {
         this.reportsDropDown = listData.map(r => new MySelectItem(r.commonName, r.name) as SelectItem);
         this.getView();
       },
-      error => this.errorMessage = <any>error,
+      error => this.errorMessage = error as any,
       () => console.log('ngOnInit onCompleted'));
 
   }
@@ -95,7 +95,7 @@ export class ReportsComponent implements OnInit {
           this.viewData = data;
           this.updateDescription();
         },
-        error => this.errorMessage = <any>error,
+        error => this.errorMessage = error as any,
         () => console.log('getView onCompleted'));
   }
   // getList() {

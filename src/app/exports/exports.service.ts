@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -35,6 +36,7 @@ export class ExportsService {
     //const uri = this.uriBase + '/' + tableName.toLowerCase();
     const uri = this.uriBase + '/' + tableName + '/execute?' + params;
     return this.http.get(uri, { responseType: 'blob', withCredentials: true }).pipe(
+      // eslint-disable-next-line arrow-body-style
       map((res: any) => {
         return res;
     }));

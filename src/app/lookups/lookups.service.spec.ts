@@ -50,7 +50,7 @@ describe('LookupsService', () => {
     testdata.push(new Lookup({id: 2}));
     testdata.push(new Lookup({id: 3}));
     service.lookupsSource.next(testdata);
-    
+
     service.getLookup(2)
       .subscribe(lookup => {
         expect(lookup.id).toBe(2, 'expected lookup with id=2');

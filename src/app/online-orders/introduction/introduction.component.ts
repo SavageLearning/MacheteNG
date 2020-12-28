@@ -10,7 +10,7 @@ import { WorkAssignmentsService } from '../work-assignments/work-assignments.ser
 })
 export class IntroductionComponent implements OnInit {
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
     private onlineService: OnlineOrdersService,
     private orderService: WorkOrderService,
     private assignmentService: WorkAssignmentsService

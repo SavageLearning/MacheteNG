@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
+/* eslint-disable curly */
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, Validators } from '@angular/forms';
 import { TransportRule, TransportProvider, TransportProviderAvailability } from '../index';
@@ -16,11 +18,11 @@ export function transportAvailabilityValidator(rules: TransportProvider[], field
       const dateTimeofWork = new Date(dateOfWork.getTime() + timeInMS);
       const transportProviderID = control.parent.get('transportProviderID').value;
       if (!dateTimeofWork || !transportProviderID) return null;
-        
-      let provider = rules.find(f => f.id == transportProviderID);
-      let day = provider.availabilityRules.find(a => a.day == moment(dateTimeofWork).day())
+
+      let provider = rules.find(f => f.id === transportProviderID);
+      let day = provider.availabilityRules.find(a => a.day === moment(dateTimeofWork).day())
       if(!day.available) {
-        return {'transportAvailability': `${provider.text} not available on ${moment(dateTimeofWork).format('dddd')}.`}
+        return {transportAvailability: `${provider.text} not available on ${moment(dateTimeofWork).format('dddd')}.`}
       }
       // clear errors on listed fields
       for (let i in fields) {
@@ -30,4 +32,3 @@ export function transportAvailabilityValidator(rules: TransportProvider[], field
       return null;
     };
   }
-  

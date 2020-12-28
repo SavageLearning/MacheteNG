@@ -21,7 +21,7 @@ describe('FullOrderViewComponent', () => {
         ]
       }
     });
-    
+
   }));
 
   beforeEach(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Record } from './record';
 export class Config extends Record<Config> {
 

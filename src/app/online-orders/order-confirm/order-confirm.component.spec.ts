@@ -22,7 +22,7 @@ describe('OrderConfirmComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         OrderConfirmComponent,
         FullOrderViewComponent
        ],

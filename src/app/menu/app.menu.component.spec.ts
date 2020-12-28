@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AppMenuComponent, AppSubMenu } from './app.menu.component';
+import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
 import { AppComponent } from '../app.component';
 import { By }           from '@angular/platform-browser';
 import { DebugElement, EventEmitter } from '@angular/core';
@@ -18,9 +18,9 @@ describe('AppMenuComponent', () => {
   let component: AppMenuComponent;
   let fixture: ComponentFixture<AppMenuComponent>;
   let el: DebugElement;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppMenuComponent, AppSubMenu ],
+      declarations: [ AppMenuComponent, AppSubMenuComponent ],
       imports: [
         ReactiveFormsModule,
         RouterTestingModule
@@ -39,7 +39,7 @@ describe('AppMenuComponent', () => {
       fixture = TestBed.createComponent(AppMenuComponent);
       component = fixture.componentInstance;
       el = fixture.debugElement.query(By.css('.item'))
-      component
+      // component
       fixture.detectChanges();
     });
   }));

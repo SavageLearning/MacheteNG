@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {combineLatest as observableCombineLatest,  Observable } from 'rxjs';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -23,16 +24,16 @@ import { lengthValidator } from '../../shared/validators/length';
 })
 export class WorkAssignmentsComponent implements OnInit, OnDestroy {
   // public properties
-  activeTabIndex: number = 0;
+  activeTabIndex = 0;
   eMessages = MessageTypes;
   errorMessage: string;
   formErrors = {
-    'skillId': '',
-    'skill': '',
-    'hours': '',
-    'description': '',
-    'requiresHeavyLifting': '',
-    'hourlyWage': ''
+    skillId: '',
+    skill: '',
+    hours: '',
+    description: '',
+    requiresHeavyLifting: '',
+    hourlyWage: ''
   };
   hasRequests = false;
   newRequest = true;
@@ -188,7 +189,7 @@ export class WorkAssignmentsComponent implements OnInit, OnDestroy {
       data: this.skills,
       header: 'Choose a Skill',
       width: '100%',
-      contentStyle: {'overflow': 'auto'},
+      contentStyle: {overflow: 'auto'},
       baseZIndex: 10000
     });
 

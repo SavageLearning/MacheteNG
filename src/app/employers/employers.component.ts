@@ -23,21 +23,21 @@ export class EmployersComponent implements OnInit {
   showErrors = false;
   yesNoDropDown = [new YesNoSelectItem('no', false), new YesNoSelectItem('yes', true)];
   formErrors = {
-    'address1': '',
-    'address2': '',
+    address1: '',
+    address2: '',
     'blogparticipate?': '',
-    'business': '',
-    'businessname': '',
-    'cellphone': '',
-    'city': '',
-    'email': '',
-    'fax': '',
-    'name': '',
-    'phone': '',
-    'referredBy': '',
-    'referredByOther': '',
-    'state': '',
-    'zipcode': ''
+    business: '',
+    businessname: '',
+    cellphone: '',
+    city: '',
+    email: '',
+    fax: '',
+    name: '',
+    phone: '',
+    referredBy: '',
+    referredByOther: '',
+    state: '',
+    zipcode: ''
   };
 
   constructor(
@@ -59,23 +59,23 @@ export class EmployersComponent implements OnInit {
   buildForm(): void {
     this.employerForm = this.formBuilder.group({
     //'id': [this.employer.id],
-    'address1': [this.employer.address1, [requiredValidator('Address is required'), lengthValidator(50)]],
-    'address2': [this.employer.address2, lengthValidator(50)],
-    'blogparticipate': [this.employer.blogparticipate],
-    'business': [this.employer.business],
-    'businessname': [this.employer.businessname],
-    'cellphone': [this.employer.cellphone, phoneOrEmptyValidator('Cell is optional, but requires ###-###-#### format')],
-    'city': [this.employer.city, [requiredValidator('City is required'), lengthValidator(50)]],
-    'email': [{value: this.employer.email, disabled: true}, requiredValidator('Email is required')],
-    'fax': [this.employer.fax],
-    'name': [this.employer.name, [requiredValidator('Name is required'), lengthValidator(50)]],
-    'phone': [this.employer.phone, phoneValidator('Phone is required in 999-999-9999 format')],
-    'referredBy': [this.employer.referredBy],
-    'referredByOther': [this.employer.referredByOther, lengthValidator(50)],
-    'state': [this.employer.state, [
-      requiredValidator('State is required'), 
+    address1: [this.employer.address1, [requiredValidator('Address is required'), lengthValidator(50)]],
+    address2: [this.employer.address2, lengthValidator(50)],
+    blogparticipate: [this.employer.blogparticipate],
+    business: [this.employer.business],
+    businessname: [this.employer.businessname],
+    cellphone: [this.employer.cellphone, phoneOrEmptyValidator('Cell is optional, but requires ###-###-#### format')],
+    city: [this.employer.city, [requiredValidator('City is required'), lengthValidator(50)]],
+    email: [{value: this.employer.email, disabled: true}, requiredValidator('Email is required')],
+    fax: [this.employer.fax],
+    name: [this.employer.name, [requiredValidator('Name is required'), lengthValidator(50)]],
+    phone: [this.employer.phone, phoneValidator('Phone is required in 999-999-9999 format')],
+    referredBy: [this.employer.referredBy],
+    referredByOther: [this.employer.referredByOther, lengthValidator(50)],
+    state: [this.employer.state, [
+      requiredValidator('State is required'),
       regexValidator(new RegExp(/^[a-zA-Z]{2,2}$/), 'state', 'State must be two letters')]],
-    'zipcode': [this.employer.zipcode, [requiredValidator('zipcode is required'), lengthValidator(10)]]
+    zipcode: [this.employer.zipcode, [requiredValidator('zipcode is required'), lengthValidator(10)]]
     });
 
     this.employerForm.valueChanges
@@ -94,7 +94,7 @@ export class EmployersComponent implements OnInit {
 
       if (control && !control.valid) {
         for (const key in control.errors) {
-          if (this.showErrors == true){
+          if (this.showErrors === true){
             console.log('onValueChanged.error:' + field + ': ' + control.errors[key]);
           }
           this.formErrors[field] += control.errors[key] + ' ';

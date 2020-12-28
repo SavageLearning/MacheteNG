@@ -1,16 +1,17 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export class User {
-  expired: boolean = true;
+  expired = true;
   profile: UserProfile = new UserProfile();
-  scope: string = '';
-  session_state: string = '';
-  state: string = '';
-  token_type: string = '';
-  expires_at: number = 0;
-  expires_in: number = 0;
+  scope = '';
+  session_state = '';
+  state = '';
+  token_type = '';
+  expires_at = 0;
+  expires_in = 0;
   scopes: Array<string> = new Array<string>();
 }
 
 export class UserProfile {
   roles: Array<string> = new Array<string>();
-  preferred_username: string = 'Not logged in!';
+  preferred_username = 'Not logged in!';
 }

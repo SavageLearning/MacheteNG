@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { ExportColumn } from './models/export-column';
 import {FormGroup} from '@angular/forms';
@@ -9,7 +10,7 @@ import {FormGroup} from '@angular/forms';
 export class ExportsOptionsComponent implements OnInit {
   @Input() columns: ExportColumn[] = [];
   @Input() form: FormGroup;
-  checked: boolean = true;
+  checked: true;
   constructor() { }
 
   ngOnInit() {

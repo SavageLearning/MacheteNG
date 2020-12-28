@@ -11,7 +11,7 @@ describe('TransportAvailability', () => {
     let tFunc: ValidatorFn;
     let today: Date;
     beforeEach(() => {
-      fb = new FormBuilder();        
+      fb = new FormBuilder();
       tFunc = transportAvailabilityValidator( new Array<TransportProvider>(
         new TransportProvider({
           id: 1,
@@ -30,7 +30,7 @@ describe('TransportAvailability', () => {
             new TransportProviderAvailability({day: 6, available: true})
           )
         })
-      ), ['dateOfWork']);    
+      ), ['dateOfWork']);
     });
 
   it('should create an instance', () => {
@@ -41,10 +41,10 @@ describe('TransportAvailability', () => {
       timeOfWork: time,
       transportProviderID: 1
     });
-    ctrl = fg.get('dateOfWork'); 
+    ctrl = fg.get('dateOfWork');
     const result = tFunc(ctrl);
     expect(result).toBeNull();
-  });  
+  });
 
   it('should not show van on Sunday', () => {
     const date: Date = moment().startOf('day').add(1, 'weeks').isoWeekday(0).toDate();

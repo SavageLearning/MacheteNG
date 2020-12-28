@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 
 import { MenuRule, LRole } from './menu-rule';
 
@@ -95,9 +96,5 @@ export function loadMenuRules(authList: string[]): Array<MenuRule> {
   if (authList === null || authList === undefined) {
     return new Array<MenuRule>();
   }
-  return rules.filter(rule => {
-    return rule.authorizedRoles.findIndex(role => {
-      return authList.findIndex(auth => auth == role) > -1
-    }) > -1
-  });
+  return rules.filter(rule => rule.authorizedRoles.findIndex(role => authList.findIndex(auth => auth === role) > -1) > -1);
 }

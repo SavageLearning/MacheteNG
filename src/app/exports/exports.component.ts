@@ -37,7 +37,7 @@ export class ExportsComponent implements OnInit {
         this.exportsDropDown = listData.map(r =>
           new MySelectItem(r.name, r.name));
       },
-      error => this.errorMessage = <any>error,
+      error => this.errorMessage = error as any,
       () => console.log('ngOnInit onCompleted'));
   }
 
@@ -56,7 +56,7 @@ export class ExportsComponent implements OnInit {
           });
           this.form = new FormGroup(group);
         },
-        error => this.errorMessage = <any>error,
+        error => this.errorMessage = error as any,
         () => console.log('getColumns completed')
       );
   }
@@ -74,7 +74,7 @@ export class ExportsComponent implements OnInit {
             saveAs(res, this.selectedExportName.value + '.xlsx')
         },
         error => {
-          this.errorMessage = <any>error;
+          this.errorMessage = error as any;
         },
       () => console.log('onSubmit.getExport completed'));
   }

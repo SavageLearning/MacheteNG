@@ -14,7 +14,7 @@ export class WorkOrderDatatableComponent implements OnInit {
     private workOrderService: MyWorkOrdersService,
     private router: Router
   ) { }
-  
+
   ngOnInit() {
     this.workOrderService.getOrders()
     .subscribe(
@@ -23,8 +23,7 @@ export class WorkOrderDatatableComponent implements OnInit {
       });
   }
 
-  viewOrder(order: WorkOrder)
-  {
+  viewOrder(order: WorkOrder) {
     console.log(order);
     this.router.navigate([`/my-work-orders/${order.id}`]);
   }

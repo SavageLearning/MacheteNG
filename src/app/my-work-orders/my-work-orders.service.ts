@@ -56,15 +56,13 @@ export class MyWorkOrdersService {
     let url = environment.dataUrl + '/api/onlineorders/' + orderID + '/paypalexecute';
     let postHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     let jsonModel = JSON.stringify({
-      payerID: payerID,
-      paymentID: paymentID,
+      payerID,
+      paymentID,
       paymentToken: token
     });
 
     return this.http.post<any>(url, jsonModel, { headers: postHeaders, withCredentials: true }).pipe(
-      map(data => {
-        return data;
-      })
+      map(data => data)
     );
   }
 

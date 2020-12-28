@@ -13,6 +13,7 @@ export class Report {
   subcategory: string;
   idString: string;
   id: number;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   data: Object;
   datecreated: Date;
   dateupdated: Date;

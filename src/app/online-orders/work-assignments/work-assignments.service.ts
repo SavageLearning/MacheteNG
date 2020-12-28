@@ -1,5 +1,6 @@
 
-import {zip as observableZip, of as observableOf, combineLatest as observableCombineLatest, Observable, BehaviorSubject,  Subject } from 'rxjs';
+import {zip as observableZip, of as observableOf, combineLatest as observableCombineLatest } from 'rxjs';
+import { Observable, BehaviorSubject,  Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {WorkAssignment} from '../../shared/models/work-assignment';
 

@@ -1,7 +1,7 @@
-import { Confirm } from "../models/confirm";
+import { Confirm } from '../models/confirm';
 
-export function loadConfirms(): Array<Confirm> {
-  return [
+export const loadConfirms = (): Array<Confirm> => {
+  const result = [
     new Confirm({
       name: 'completion',
       description: `This order is not complete until I receive a confirmation email from Casa Latina.  
@@ -58,6 +58,6 @@ export function loadConfirms(): Array<Confirm> {
       `,
       confirmed: false
     })
-    
   ];
+  return result;
 }
