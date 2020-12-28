@@ -1,5 +1,5 @@
 
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -27,7 +27,7 @@ export class EmployersService {
       catchError(error => {
         this.setEmployer(null);
         console.log('error from getEmployer');
-        return Observable.of(null);
+        return of(null);
       }),); // TODO is this last 'undefined' bit intentional?
   }
   getEmployer(): Observable<Employer> {

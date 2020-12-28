@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable brace-style */
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { WelcomeComponent } from './welcome.component';
 import { ConfigsService } from '../../configs/configs.service';
@@ -27,7 +27,7 @@ class ConfigsServiceSpy {
       configs.push(new Config({key: 'FacebookAppId', value: 'foo'}));
       configs.push(new Config({key: 'GoogleClientId', value: 'foo'}));
       configs.push(new Config({key: 'OAuthStateParameter', value: 'foo'}));
-      return Observable.of(configs);
+      return of(configs);
   }
 }
 

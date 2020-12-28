@@ -23,9 +23,7 @@ describe('SkillsComponent', () => {
       ],
       providers: [
         MockProvider(DialogService),
-        MockProvider(DynamicDialogRef), {
-          close: (event) => {}
-        },
+        MockProvider(DynamicDialogRef),
         MockProvider(DynamicDialogConfig)
       ]
     })
@@ -44,10 +42,5 @@ describe('SkillsComponent', () => {
 
   it('should not have skills after construction', () => {
     expect(component.skills).toBeUndefined();
-  });
-
-  it('Should send event on RowSelect', () => {
-
-    expect(true).toBeTrue();
   });
 });

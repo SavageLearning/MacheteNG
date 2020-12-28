@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ScheduleRule } from './shared/index';
 import { environment } from '../../environments/environment';
+import { of } from 'rxjs';
 
 @Injectable()
 export class ScheduleRulesService {
@@ -29,7 +30,7 @@ export class ScheduleRulesService {
 
   getScheduleRules(): Observable<ScheduleRule[]> {
     if (this.isNotStale()) {
-      return Observable.of(this.rules);
+      return of(this.rules);
     }
 
     return this.http.get(this.uriBase, { withCredentials: true }).pipe(

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TransportProvider } from './shared/';
+import { of } from 'rxjs';
 
 @Injectable()
 export class TransportProvidersService {
@@ -30,7 +31,7 @@ export class TransportProvidersService {
   getTransportProviders(): Observable<TransportProvider[]> {
     if (this.isNotStale()) {
       console.log('returning cache', this.providersAge);
-      return Observable.of(this.providers);
+      return of(this.providers);
     }
 
     return this.http.get(this.uriBase, { withCredentials: true }).pipe(

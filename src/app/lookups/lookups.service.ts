@@ -1,5 +1,5 @@
 
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 import { first, mergeMap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -57,7 +57,7 @@ export class LookupsService {
         this.lookupsSource.next(this.lookups);
         this.storeLookups();
 
-        return Observable.of(res['data'] as Lookup[]);
+        return of(res['data'] as Lookup[]);
       });
   }
 

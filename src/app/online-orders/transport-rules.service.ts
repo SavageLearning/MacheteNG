@@ -1,5 +1,5 @@
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -30,7 +30,7 @@ export class TransportRulesService {
   getTransportRules(): Observable<TransportRule[]> {
     if (this.isNotStale()) {
       console.log('returning cache', this.rulesAge);
-      return Observable.of(this.rules);
+      return of(this.rules);
     }
 
     return this.http.get(this.uriBase, { withCredentials: true }).pipe(

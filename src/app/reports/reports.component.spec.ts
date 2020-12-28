@@ -15,15 +15,16 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ReportsService } from './reports.service';
 import { Report } from './models/report';
+import { of } from 'rxjs';
 
 class ReportsServiceSpy {
   getReportList = jasmine.createSpy('getReportList')
     .and.callFake(
-      () => Observable.of(new Array<Report>())
+      () => of(new Array<Report>())
     );
   getReportData = jasmine.createSpy('')
     .and.callFake(
-      () => Observable.of(new Array<any>())
+      () => of(new Array<any>())
     );
 }
 
