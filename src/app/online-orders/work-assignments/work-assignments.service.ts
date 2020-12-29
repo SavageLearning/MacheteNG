@@ -140,7 +140,7 @@ export class WorkAssignmentsService {
 
   getTransportRule(): TransportRule {
     const order = this.workOrder;
-    if (order === null || order === undefined) {
+    if (order == null || order === undefined) {
       console.log('OrderService returned an undefined order');
       return null;
     }
@@ -150,19 +150,19 @@ export class WorkAssignmentsService {
     }
 
     const provider: TransportProvider = this.transports.find(f => f.id === order.transportProviderID);
-    if (provider === null || provider === undefined) {
+    if (provider == null || provider === undefined) {
       console.log('LookupService didn\'t return a valid lookup for transportProviderID: ', order);
       return null;
     }
 
     const rules = this.transportRules.filter(f => f.lookupKey === provider.key);
-    if (rules === null || rules === undefined) {
+    if (rules == null || rules === undefined) {
       throw new Error('No TransportRules match lookup key: ' + provider.key);
     }
 
     const result = rules.find(f => f.zipcodes.includes(order.zipcode) ||
                                    f.zipcodes.includes('*'));
-    if (result === null || result === undefined) {
+    if (result == null || result === undefined) {
       this.messageService.add({
         severity: 'warn',
         summary: `Zipcode ${order.zipcode} out of range`,
@@ -178,7 +178,7 @@ export class WorkAssignmentsService {
     // that then leads to no rule.
     // TODO: Handle too many ids exception
     let result = rule.costRules.find(r => id > r.minWorker && id <= r.maxWorker);
-    if (result === undefined || result === null) {
+    if (result === undefined || result == null) {
       throw new Error('work assignment id outside of cost rules');
     }
     return result.cost;

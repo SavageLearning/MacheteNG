@@ -162,7 +162,7 @@ export class WorkAssignmentsComponent implements OnInit, OnDestroy {
   selectSkill(skillId: number) {
     console.log('selectSkill.skillId:' + String(skillId));
     const skill = this.skills.filter(f => f.id === Number(skillId)).shift();
-    if (skill === null || skill === undefined) {
+    if (skill == null || skill === undefined) {
       throw new Error('Can\'t find selected skill in component\'s list');
     }
     this.selectedSkill = skill;

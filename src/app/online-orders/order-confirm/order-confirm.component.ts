@@ -41,7 +41,7 @@ export class OrderConfirmComponent implements OnInit {
       console.log('ngOnInit->combineLatest.subscribe', l, o, wa);
       this.order = o;
       if (o.transportProviderID > 0) {
-        this.transportLabel = l.find(ll => ll.id === o.transportProviderID).text;
+        this.transportLabel = l.find(ll => ll.id === Number(o.transportProviderID)).text;
         }
       if (wa != null && wa.length > 0) {
         // sums up the transport  costs

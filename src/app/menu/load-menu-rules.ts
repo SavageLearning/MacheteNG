@@ -93,7 +93,7 @@ export function loadMenuRules(authList: string[]): Array<MenuRule> {
     })
   ];
   // lambda-fu
-  if (authList === null || authList === undefined) {
+  if (authList == null || authList === undefined) {
     return new Array<MenuRule>();
   }
   return rules.filter(rule => rule.authorizedRoles.findIndex(role => authList.findIndex(auth => auth === role) > -1) > -1);

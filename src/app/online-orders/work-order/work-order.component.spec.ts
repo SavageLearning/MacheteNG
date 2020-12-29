@@ -68,7 +68,7 @@ describe('WorkOrderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should save', () => {
-    expect(component.orderForm.dirty).toBeFalsy();
-  });
+//   it('should save', () => {
+//     expect(component.orderForm.dirty).toBeFalsy();
+//   });
 });

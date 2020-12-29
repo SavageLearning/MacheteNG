@@ -19,7 +19,7 @@ export function transportAvailabilityValidator(rules: TransportProvider[], field
       const transportProviderID = control.parent.get('transportProviderID').value;
       if (!dateTimeofWork || !transportProviderID) return null;
 
-      let provider = rules.find(f => f.id === transportProviderID);
+      let provider = rules.find(f => f.id === Number(transportProviderID));
       let day = provider.availabilityRules.find(a => a.day === moment(dateTimeofWork).day())
       if(!day.available) {
         return {transportAvailability: `${provider.text} not available on ${moment(dateTimeofWork).format('dddd')}.`}

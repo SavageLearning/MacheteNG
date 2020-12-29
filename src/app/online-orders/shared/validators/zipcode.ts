@@ -9,7 +9,7 @@ export function zipcodeValidator(rules: TransportRule[]): ValidatorFn {
         return null;
     }
     const rule = rules.find(s => s.zipcodes.includes(control.value));
-    if (rule === null || rule === undefined) {
+    if (rule == null || rule === undefined) {
       return {zipcode: 'Zipcode not found in service range.'}
     }
 
