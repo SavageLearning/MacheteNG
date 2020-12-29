@@ -46,14 +46,7 @@ describe('OnlineOrdersComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
-        OnlineOrdersComponent,
-        IntroductionComponent,
-        IntroductionComponent,
-        WorkOrderComponent,
-        WorkAssignmentsComponent,
-        OrderConfirmComponent,
-        OrderNotFoundComponent,
-        SkillsComponent
+
        ],
       imports: [
         StepsModule,
