@@ -90,7 +90,17 @@ export function loadMenuRules(authList: string[]): Array<MenuRule> {
           authorizedRoles: [LRole.ADMIN]
         })
       ]
-    })
+    }),
+    new MenuRule({
+      id: 14,
+      label: 'Workers',
+      icon: 'assignment_ind',
+      routerLink: ['/workers'],
+      authorizedRoles: [
+        LRole.ADMIN,
+        LRole.MANAGER
+      ]
+    }),
   ];
   // lambda-fu
   if (authList == null || authList === undefined) {

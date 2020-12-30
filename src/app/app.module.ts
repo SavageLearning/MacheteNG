@@ -24,6 +24,7 @@ import { ReportsModule } from './reports/reports.module';
 import { ExportsModule } from './exports/exports.module';
 import { MyWorkOrdersModule } from './my-work-orders/my-work-orders.module';
 import { EmployersModule } from './employers/employers.module';
+import { WorkersModule } from './workers/workers.module';
 import { GlobalErrorHandler } from './shared/global-error-handler';
 import { LoggingService } from './shared/services/logging.service';
 import { TransportProvidersService } from './online-orders/transport-providers.service';
@@ -50,6 +51,7 @@ import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highli
     ExportsModule,
     MyWorkOrdersModule,
     EmployersModule,
+    WorkersModule,
     AppRoutingModule,
     HighlightModule,
     ToastModule
