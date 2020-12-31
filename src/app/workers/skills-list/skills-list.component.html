@@ -23,14 +23,20 @@
     >
         <ng-template pTemplate="caption">
              <!-- Table toolbar -->
-             <div class="p-d-flex p-flex-column p-ai-start p-flex-md-row p-jc-between card c-bg-surface-c p-shadow-5">
+             <div class="card p-d-flex p-flex-column p-flex-md-row p-ai-start p-jc-between c-bg-surface-c p-shadow-5">
                 <div>
                     <span class="p-input-icon-left p-ml-auto">
                         <i class="pi pi-search"></i>
-                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                        <input
+                            pInputText
+                            type="text"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Search keyword"
+                            style="max-width: 220px;"
+                        />
                     </span>
                 </div>
-                <div class="p-d-flex p-ai-center">
+                <div class="p-d-flex p-flex-column p-flex-md-row p-md-ai-center p-jc-start">
                     <p-toggleButton 
                         [(ngModel)]="specialtyFilterOn"
                         (onChange)="dt.filter($event.checked ? true : null, 'speciality', 'equals')"
