@@ -7,16 +7,11 @@ import { WorkersComponent } from './workers.component';
 
 @NgModule({
   declarations: [
-    WorkersComponent
+    WorkersComponent,
   ],
   imports: [
     CommonModule,
     WorkersRoutingModule,
   ]
 })
-export class WorkersModule {
-  // Diagnostic only: inspect router configuration
-  constructor() {
-    console.log('.ctor: WorkersModule');
-  }
- }
+export class WorkersModule {}

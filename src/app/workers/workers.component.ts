@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Skill } from '../shared/models/skill';
+import { WorkersService } from './workers.service';
 
 @Component({
   selector: 'app-workers',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private workerService: WorkersService) { }
 
   ngOnInit(): void {
+    this.workerService.getSkills()
+      .subscribe((response: Skill[]) => console.table(response));
   }
 
 }
