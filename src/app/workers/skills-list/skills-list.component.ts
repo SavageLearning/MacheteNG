@@ -1,3 +1,5 @@
+/* eslint-disable brace-style */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
 import { Skill } from '../../shared/models/skill';
@@ -40,7 +42,7 @@ export class SkillsListComponent implements OnInit {
     this.workerService.getSkills()
       .subscribe((response: Skill[]) => {
         this.skills = response;
-        console.table(this.skills);
+        // console.table(this.skills);
       });
   }
 
@@ -48,18 +50,8 @@ export class SkillsListComponent implements OnInit {
     console.log(id);
   }
 
-  filterTable() {
-    if (this.activeFilterOn) {
-      this.table.filter(this.activeFilterOn, 'active', 'equals');
-    } else {
-      this.table.clear();
-    }
-
-    if (this.specialtyFilterOn) {
-      this.table.filter(this.specialtyFilterOn, 'speciality', 'equals');
-    } else {
-      this.table.clear();
-    }
+  logFilterChanges(filters: any) {
+    console.table(filters);
   }
 
   showHelpDialog() {

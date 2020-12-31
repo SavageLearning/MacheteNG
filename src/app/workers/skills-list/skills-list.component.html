@@ -1,26 +1,6 @@
 <p-card
     header="Skills"
-    styleClass="p-mt-2">
-    <p-toolbar styleClass="c-bg-surface-c p-mb-2">
-        <div class="p-d-flex p-flex-column p-flex-md-row">
-            <p-toggleButton 
-                [(ngModel)]="specialtyFilterOn"
-                (onChange)="filterTable()"
-                [onLabel]="filterSepecialtyOpt.labelOn"
-                [offLabel]="filterSepecialtyOpt.labelOff"
-                [onIcon]="filterSepecialtyOpt.iconOn" 
-                [offIcon]="filterSepecialtyOpt.iconOff">
-            </p-toggleButton>
-            <p-toggleButton 
-                [(ngModel)]="activeFilterOn"
-                (onChange)="filterTable()"
-                [onLabel]="filterActiveOpt.labelOn"
-                [offLabel]="filterActiveOpt.labelOff"
-                [onIcon]="filterActiveOpt.iconOn" 
-                [offIcon]="filterActiveOpt.iconOff">
-            </p-toggleButton>
-        </div>
-    </p-toolbar>
+    styleClass="p-mt-2 p-shadow-5">
     
     <!-- Called by the specialty header button -->
     <p-dialog header="Help" [(visible)]="display">
@@ -39,13 +19,35 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [rowsPerPageOptions]="[10,25,50]"
         [globalFilterFields]="['text_EN','subcategory','speciality','ltrCode','skillDescriptionEn']"
+        (onFilter)="logFilterChanges(dt.filters)"
     >
         <ng-template pTemplate="caption">
-            <div class="p-d-flex">
-                <span class="p-input-icon-left p-ml-auto">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
-                </span>
+             <!-- Table toolbar -->
+             <div class="p-d-flex p-flex-column p-ai-start p-flex-md-row p-jc-between card c-bg-surface-c p-shadow-5">
+                <div>
+                    <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                    </span>
+                </div>
+                <div class="p-d-flex p-ai-center">
+                    <p-toggleButton 
+                        [(ngModel)]="specialtyFilterOn"
+                        (onChange)="dt.filter($event.checked ? true : null, 'speciality', 'equals')"
+                        [onLabel]="filterSepecialtyOpt.labelOn"
+                        [offLabel]="filterSepecialtyOpt.labelOff"
+                        [onIcon]="filterSepecialtyOpt.iconOn" 
+                        [offIcon]="filterSepecialtyOpt.iconOff">
+                    </p-toggleButton>
+                    <p-toggleButton 
+                        [(ngModel)]="activeFilterOn"
+                        (onChange)="dt.filter($event.checked ? true : null, 'active', 'equals')"
+                        [onLabel]="filterActiveOpt.labelOn"
+                        [offLabel]="filterActiveOpt.labelOff"
+                        [onIcon]="filterActiveOpt.iconOn" 
+                        [offIcon]="filterActiveOpt.iconOff">
+                    </p-toggleButton>
+                </div>
             </div>
         </ng-template>
         <ng-template pTemplate="header">
@@ -69,18 +71,18 @@
                     {{rowData.subcategory}}
                 </td>
                 <td>
-                    <span class="p-column-title">Specialty</span>
-                    <div class="p-jc-start p-ai-center">
+                    <div class="p-d-flex p-jc-start p-ai-start p-ai-md-center">
+                        <span class="p-column-title">Specialty</span>
                         <span class="p-pr-2" *ngIf="!rowData.speciality">{{rowData.speciality}}</span>
                         <span *ngIf="rowData.speciality">
-                            <p-button type="button" (click)="workersInSKill(rowData.ID)" icon="pi pi-external-link" iconPos="right" label="{{rowData.speciality}}"></p-button>
+                            <p-button (click)="workersInSKill(rowData.ID)" icon="pi pi-external-link" iconPos="right" label="{{rowData.speciality}}"></p-button>
                             <p-button styleClass="p-button-help" (click)="showHelpDialog()" icon="pi pi-question-circle"></p-button>
                         </span>
                     </div>
                 </td>                
                 <td>
                     <span class="p-column-title">Code</span>
-                    {{rowData.ltrCode}}
+                    <span class="p-badge p-badge-lg p-badge-info" *ngIf="rowData.ltrCode">{{rowData.ltrCode}}</span>
                 </td>               
                 <td>
                     <span class="p-column-title">Description</span>

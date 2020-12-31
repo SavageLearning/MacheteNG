@@ -12,7 +12,6 @@ import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { ToolbarModule } from 'primeng/toolbar';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DialogModule } from 'primeng/dialog';
 
@@ -31,7 +30,6 @@ import { DialogModule } from 'primeng/dialog';
     TableModule,
     ButtonModule,
     InputTextModule,
-    ToolbarModule,
     ToggleButtonModule,
     FormsModule,
     DialogModule
