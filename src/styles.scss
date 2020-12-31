@@ -64,7 +64,7 @@
   margin-bottom: 1rem;
 }
 
-//custome card header
+//custom card header
 .c-card-header {
   font-size: 1.2rem;
   font-weight: 700;
@@ -72,7 +72,7 @@
   text-transform: uppercase;
 }
 
-// Invloce Lable
+// Invoice Lable
 .c-invoice-label {
   margin-bottom: 0.5rem;
   font-weight: 700;
@@ -87,4 +87,8 @@
   border-left: solid var(--primary-color);
   border-width: 1rem;
   padding-left: 1rem;
+}
+
+.c-bg-surface-c {
+  background: var(--surface-c);
 }
