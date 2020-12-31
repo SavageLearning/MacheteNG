@@ -12,7 +12,6 @@ import { WorkersService } from '../workers.service';
 })
 export class SkillsListComponent implements OnInit {
   //Skills List
-  @ViewChild('dt') table: Table;
   skills: Skill[];
 
   // table controls
@@ -40,10 +39,14 @@ export class SkillsListComponent implements OnInit {
 
   loadSkills(): void {
     this.workerService.getSkills()
-      .subscribe((response: Skill[]) => {
-        this.skills = response;
-        // console.table(this.skills);
-      });
+      .subscribe(
+        //sucess
+        (response: Skill[]) => {
+          this.skills = response;
+          // console.table(this.skills);
+        },
+        // error
+        (err) => console.log(err));
   }
 
   workersInSKill(id: number): void {

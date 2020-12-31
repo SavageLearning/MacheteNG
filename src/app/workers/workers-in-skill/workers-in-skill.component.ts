@@ -8,14 +8,34 @@ import { WorkersService } from '../workers.service';
   styleUrls: ['./workers-in-skill.component.css']
 })
 export class WorkersInSkillComponent implements OnInit {
-  endpointQueryParam: string;
+  // workers list
+  workers: Worker[];
+
+  // route
+  endpointQueryParam: number;
 
   constructor(
     private route: ActivatedRoute,
-   ) { }
+    private workerService: WorkersService
+  ) { }
 
+  loadWorkersInSkill(skillId: number) {
+    this.workerService.getWorkersInSkill(skillId)
+      .subscribe(
+        //success
+        (response: Worker[]) => {
+          this.workers = response;
+          console.table(this.workers);
+        },
+        // error
+        (err) => console.log(err)
+      );
+  }
+
+  // Lifecycle
   ngOnInit(): void {
-    this.endpointQueryParam = this.route.snapshot.paramMap.get('id');
+    this.endpointQueryParam = Number(this.route.snapshot.paramMap.get('id'));
+    this.loadWorkersInSkill(this.endpointQueryParam);
     console.log(this.endpointQueryParam);
   }
 

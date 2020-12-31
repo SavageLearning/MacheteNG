@@ -8,12 +8,18 @@ import { Skill } from '../shared/models/skill';
   providedIn: 'root'
 })
 export class WorkersService {
-  private uri = environment.dataUrl + '/api/workers/skills';
+  private uri = environment.dataUrl + '/api/workers';
 
 
   constructor(private http: HttpClient) { }
 
   getSkills(): Observable<Skill[]> {
-    return this.http.get<Skill[]>(this.uri, { withCredentials: true });
+    return this.http
+      .get<Skill[]>(`${this.uri}/skills`, { withCredentials: true });
+  }
+
+  getWorkersInSkill(skillId: number): Observable<Worker[]> {
+    return this.http
+      .get<Worker[]>(`${this.uri}/in-skill?skillId=${skillId}`, { withCredentials: true });
   }
 }
