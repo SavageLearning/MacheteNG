@@ -6,6 +6,7 @@ import { AuthGuardService } from '../shared';
 import { SkillsListComponent } from './skills-list/skills-list.component';
 import { WorkersInSkillComponent } from './workers-in-skill/workers-in-skill.component';
 
+// all routes in this module are prefixed by workers/
 const workersRoute: Routes = [
   {
     path: 'workers',
@@ -16,12 +17,18 @@ const workersRoute: Routes = [
       {
         path: 'skills',
         component: SkillsListComponent,
-        canLoad: [AuthGuardService]
+        canLoad: [AuthGuardService],
+        canActivate: [AuthGuardService]
       },
       {
         path: 'in-skill/:id',
         component: WorkersInSkillComponent,
-        canLoad: [AuthGuardService]
+        canLoad: [AuthGuardService],
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: '**',
+        redirectTo: ''
       }
     ]
   }

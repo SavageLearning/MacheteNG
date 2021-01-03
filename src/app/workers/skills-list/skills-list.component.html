@@ -19,7 +19,6 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [rowsPerPageOptions]="[10,25,50]"
         [globalFilterFields]="['text_EN','subcategory','speciality','ltrCode','skillDescriptionEn']"
-        (onFilter)="logFilterChanges(dt.filters)"
     >
         <ng-template pTemplate="caption">
              <!-- Table toolbar -->
@@ -81,7 +80,7 @@
                         <span class="p-column-title">Specialty</span>
                         <span class="p-pr-2" *ngIf="!rowData.speciality">{{rowData.speciality}}</span>
                         <span *ngIf="rowData.speciality">
-                            <p-button (click)="workersInSKill(rowData.ID)" icon="pi pi-external-link" iconPos="right" label="{{rowData.speciality}}"></p-button>
+                            <p-button (click)="navigateToWorkersInSKill(rowData.ID)" icon="pi pi-external-link" iconPos="right" label="{{rowData.speciality}}"></p-button>
                             <p-button styleClass="p-button-help" (click)="showHelpDialog()" icon="pi pi-question-circle"></p-button>
                         </span>
                     </div>

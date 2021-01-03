@@ -8,7 +8,7 @@ import { Skill } from '../shared/models/skill';
   providedIn: 'root'
 })
 export class WorkersService {
-  private uri = environment.dataUrl + '/api/workers';
+  private uri = `${environment.dataUrl}/api/workers`;
 
 
   constructor(private http: HttpClient) { }

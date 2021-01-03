@@ -1,0 +1,128 @@
+<p-card
+    header="Workers in skill: {{skill?.text_EN | titlecase}}"
+    styleClass="p-mt-2 p-shadow-5">
+    
+    <!-- Called by the specialty header button -->
+    <!-- <p-dialog header="Help" [(visible)]="display">
+        Click on the button to the left to see a list of the
+        workers that have this skill as a specialty.
+    </p-dialog> -->
+
+    <p-table
+        #dt
+        [value]="workers"
+        [responsive]="true"
+        class="c-highlight-header"
+        styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"
+        [paginator]="true" [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]"
+        [globalFilterFields]="filterFields"
+    >
+        <ng-template pTemplate="caption">
+             <!-- Table toolbar -->
+             <div class="card p-d-flex p-flex-column p-flex-md-row p-ai-start p-jc-between c-bg-surface-c p-shadow-5">
+                <div>
+                    <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input
+                            pInputText
+                            type="text"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Search keyword"
+                            style="max-width: 220px;"
+                        />
+                    </span>
+                </div>
+                <div class="p-d-flex p-flex-column p-flex-md-row p-md-ai-center p-jc-start">
+                    <!-- <p-toggleButton 
+                        [(ngModel)]="specialtyFilterOn"
+                        (onChange)="dt.filter($event.checked ? true : null, 'speciality', 'equals')"
+                        [onLabel]="filterSepecialtyOpt.labelOn"
+                        [offLabel]="filterSepecialtyOpt.labelOff"
+                        [onIcon]="filterSepecialtyOpt.iconOn" 
+                        [offIcon]="filterSepecialtyOpt.iconOff">
+                    </p-toggleButton>
+                    <p-toggleButton 
+                        [(ngModel)]="activeFilterOn"
+                        (onChange)="dt.filter($event.checked ? true : null, 'active', 'equals')"
+                        [onLabel]="filterActiveOpt.labelOn"
+                        [offLabel]="filterActiveOpt.labelOff"
+                        [onIcon]="filterActiveOpt.iconOn" 
+                        [offIcon]="filterActiveOpt.iconOff">
+                    </p-toggleButton> -->
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="firstname1">First Name | 1 <p-sortIcon field="firstname1"></p-sortIcon></th>
+                <th pSortableColumn="firstname2">First Name | 2 <p-sortIcon field="firstname2"></p-sortIcon></th>
+                <th pSortableColumn="lastname1">Last Name | 1 <p-sortIcon field="lastname1"></p-sortIcon></th>
+                <th pSortableColumn="lastname2">Last Name | 2 <p-sortIcon field="lastname2"></p-sortIcon></th>
+                <th pSortableColumn="dwccardnum">Member # <p-sortIcon field="dwccardnum"></p-sortIcon></th>
+                <th pSortableColumn="memberexpirationdate">Expires <p-sortIcon field="memberexpirationdate"></p-sortIcon></th>
+                <th pSortableColumn="memberStatusEN">Status <p-sortIcon field="memberStatusEN"></p-sortIcon></th>
+                <th pSortableColumn="driverslicense">Driver's License? <p-sortIcon field="driverslicense"></p-sortIcon></th>
+                <th pSortableColumn="carinsurance">Auto Insurance <p-sortIcon field="carinsurance"></p-sortIcon></th>
+                <th pSortableColumn="dateupdated">Updated <p-sortIcon field="dateupdated"></p-sortIcon></th>
+                <th pSortableColumn="skillCodes">Skills Code <p-sortIcon field="skillCodes"></p-sortIcon></th>
+                <th pSortableColumn="zipCode">Zip <p-sortIcon field="zipCode"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td>
+                    <span class="p-column-title">First Name | 1</span>
+                    {{rowData.firstname1}}
+                </td>
+                <td>
+                    <span class="p-column-title">First Name | 2</span>
+                    {{rowData.firstname2}}
+                </td>              
+                <td>
+                    <span class="p-column-title">Last Name | 1</span>
+                    {{rowData.lastname1}}
+                </td>               
+                <td>
+                    <span class="p-column-title">Last Name | 2</span>
+                    {{rowData.lastname2}}
+                </td>                
+                <td>
+                    <span class="p-column-title">Member #</span>
+                    {{rowData.dwccardnum}}
+                </td>
+                <td>
+                    <span class="p-column-title">Expires</span>
+                    {{rowData.memberexpirationdate | date:'shortDate'}}
+                </td>
+                <td>
+                    <span class="p-column-title">Status</span>
+                    {{rowData.memberStatusEN}}
+                </td>
+                <td>
+                    <span class="p-column-title">Driver's License</span>
+                    {{rowData.driverslicense}}
+                </td>
+                <td>
+                    <span class="p-column-title">Auto Insurance</span>
+                    {{rowData.carinsurance}}
+                </td>
+                <td>
+                    <span class="p-column-title">Updated</span>
+                    {{rowData.dateupdated | date:'M/d/yy h:mm a'}}
+                </td>
+                <td>
+                    <span class="p-column-title">Skills Code</span>
+                    {{rowData.SkillCodes}}
+                </td>
+                <td>
+                    <span class="p-column-title">Zip</span>
+                    {{rowData.ZipCode}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    
+</p-card>

@@ -1,6 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Table } from 'primeng/table';
 import { Skill } from '../../shared/models/skill';
 import { WorkersService } from '../workers.service';
@@ -35,6 +36,7 @@ export class SkillsListComponent implements OnInit {
 
   constructor(
     private workerService: WorkersService,
+    private router: Router
   ) { }
 
   loadSkills(): void {
@@ -49,12 +51,8 @@ export class SkillsListComponent implements OnInit {
         (err) => console.log(err));
   }
 
-  workersInSKill(id: number): void {
-    console.log(id);
-  }
-
-  logFilterChanges(filters: any) {
-    console.table(filters);
+  navigateToWorkersInSKill(id: number): void {
+    this.router.navigate([`/workers/in-skill/${id}`]);
   }
 
   showHelpDialog() {
