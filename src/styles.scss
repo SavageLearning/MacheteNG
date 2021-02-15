@@ -2,15 +2,18 @@
 // Global outlined input text styles //
 
 .p-float-label textarea ~ label {
-  top: 0rem;
+  top: 0;
 }
 
 // Global input styles End //
 
 // Responsive Table Styles
 
-.p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
-  display: none;
+.p-datatable-responsive .p-datatable-tbody > tr > td {
+    word-break: break-word;
+  & .p-column-title {
+    display: none;
+  }
 }
 
 .p-datatable-responsive .p-datatable-tbody > tr {
@@ -22,13 +25,19 @@
 }
 
 @media screen and (max-width: 40rem) {
+  .p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+    display: flex;
+    word-break: break-word;
+  }
   .p-datatable {
     tr {
       font-size: small;
+
       &:nth-child(odd) {
-        background: var(--surface-c); 
-        }
+        background: var(--surface-c);
+      }
     }
+
     &.p-datatable-responsive {
       .p-datatable-thead > tr > th,
       .p-datatable-tfoot > tr > td {
@@ -58,7 +67,7 @@
 
 .c-info-border {
   border: solid var(--surface-d);
-  border-width: 1;
+  border-width: 1px;
   border-radius: 5px;
   padding: 1.25rem 1rem;
   margin-bottom: 1rem;
