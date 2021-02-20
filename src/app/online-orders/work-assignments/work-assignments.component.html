@@ -118,16 +118,16 @@
               <label for="description">Additional info about job</label>
               <textarea autoResize="autoResize" formControlName="description" id="description" type="text" pInputTextarea></textarea>
             </div>
-          
+
           </div>
-  
+
           <div class="p-grid p-nogutter p-justify-end">
             <p-button
-              type="submit" 
-              [label]="newRequest ? 'Add Current Job to Your Request' : 'Save'" 
-              [disabled]="!requestForm.valid" 
-              (click)="onAddJobsToRequest()" 
-              [icon]="newRequest ? 'pi pi-plus' : 'pi pi-check'" 
+              type="submit"
+              [label]="newRequest ? 'Add Current Job to Your Request' : 'Save'"
+              [disabled]="!requestForm.valid"
+              (click)="onAddJobsToRequest()"
+              [icon]="newRequest ? 'pi pi-plus' : 'pi pi-check'"
               iconPos="right"
               styleClass="p-button-success">
             </p-button>
@@ -161,7 +161,7 @@
                 <small class="p-column-title">Hours Requested</small>
                 {{requestListItem.hours}}
               </td>
-              <td style="word-break: break-all;">
+              <td>
                 <small class="p-column-title">Notes</small>
                 {{requestListItem.description}}
               </td>
@@ -181,7 +181,7 @@
               </td>
               <td>
                 <div class="p-grid p-ai-start p-justify-end">
-                  <button class="p-mr-2" type="button" pButton pRipple (click)="editRequest(requestListItem)" icon="pi pi-pencil" class="p-button-rounded"></button>
+                  <button class="p-mr-2 p-button-rounded" type="button" pButton pRipple (click)="editRequest(requestListItem)" icon="pi pi-pencil"></button>
                   <button class="p-button-danger p-button-rounded" type="button" pButton pRipple (click)="deleteRequest(requestListItem)" icon="pi pi-trash"></button>
                 </div>
               </td>
@@ -190,18 +190,18 @@
         </p-table>
         <div class="p-grid p-ai-start p-justify-end p-mt-6">
           <p-button
-            (click)="onAddMoreJobs()" 
-            [disabled]="!hasRequests" 
+            (click)="onAddMoreJobs()"
+            [disabled]="!hasRequests"
             label="Add More Jobs"
-            icon="pi pi-plus" 
+            icon="pi pi-plus"
             iconPos="right"
             styleClass="p-button-success p-button-raised p-mr-2 p-mb-2 size">
           </p-button>
           <p-button
-            (click)="finalize()" 
-            [disabled]="!hasRequests" 
+            (click)="finalize()"
+            [disabled]="!hasRequests"
             label="Save and Continue"
-            icon="pi pi-angle-right" 
+            icon="pi pi-angle-right"
             iconPos="right"
             styleClass="p-button-raised size">
           </p-button>
