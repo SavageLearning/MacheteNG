@@ -103,7 +103,7 @@
       <label for="description">Description</label>
       <input pInputText id="description" [(ngModel)]="selectedReport.description" />
     </div>
-    <div class="p-field p-col-12">
+    <!-- <div class="p-field p-col-12">
       <p-dialog [(visible)]="this.showSqlSyntaxHelp">
         Use this syntax highlighting to help validate the sql query. 
         The syntax only highlights SQL keywords.
@@ -122,10 +122,13 @@
           </ng-template>
           <pre><code id="sqlHighlight" [highlight]="selectedReport.sqlquery" [lineNumbers]="true"></code></pre>
       </p-panel>      
-    </div>
-    <div class="p-field p-col-12 p-input-filled">
+    </div> -->
+    <!-- <div class="p-field p-col-12 p-input-filled">
       <label for="sqlquery">SQL Query</label>
       <textarea #inputSql pInputTextarea  id="sqlquery" [(ngModel)]="selectedReport.sqlquery" [rows]="sqlStringRowCount" [style]="{'height':'100%'}" spellcheck="false"></textarea>
+    </div> -->
+    <div class="p-field p-col-12 p-input-filled">
+      <app-editor></app-editor>
     </div>
   </div>
 </div>

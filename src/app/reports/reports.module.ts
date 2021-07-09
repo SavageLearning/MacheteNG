@@ -18,12 +18,16 @@ import { TooltipModule } from 'primeng/tooltip';
 import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { HighlightModule } from 'ngx-highlightjs';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { PanelModule } from 'primeng/panel';
+import { EditorComponent } from './editor/editor.component';
+
 
 
 @NgModule({
   declarations: [
-    ReportsComponent
+    ReportsComponent,
+    EditorComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,8 @@ import { PanelModule } from 'primeng/panel';
     MenubarModule,
     InputTextModule,
     HighlightModule,
-    PanelModule
+    PanelModule,
+    MonacoEditorModule.forRoot() // use forRoot() in main app module only.
   ],
   bootstrap: []
 })

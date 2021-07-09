@@ -26,5 +26,8 @@
   "files": [
     "main.ts",
     "polyfills.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "enableIvy": true
+  }
 }
