@@ -173,28 +173,24 @@
             </small>
           </div>
 
-        <!-- <div class="ui-g-12" *ngIf="engReqToggle">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="englishRequiredNote">Please describe English requirement</label>
+          <div class="p-field p-col-12 p-input-filled" *ngIf="orderForm.controls['englishRequired'].value">
+            <span class="p-float-label">
+              <textarea
+                rows="5"
+                autoResize="autoResize"
+                formControlName="englishRequiredNote"
+                id="englishRequiredNote"
+                pInputTextarea>
+              </textarea>
+              <label for="englishRequiredNote">Please describe English requirement</label>
+            </span>
+            <small class="p-invalid" *ngIf="!orderForm.controls['englishRequiredNote'].valid && showErrors">
+              {{formErrors.englishRequiredNote}}
+            </small>
           </div>
-<!-- 
-          <div class="ui-g-12">
-            <div class="ui-g-12 ui-md-4 ui-g-nopad">
-              <label for="transportProviderID">Transport method</label>
-            </div>
-            <div class="ui-g-12 ui-md-8 ui-g-nopad">
-              <span class="md-inputfield">
-                <p-dropdown id="transportProviderID" [options]="transportMethodsDropDown" formControlName="transportProviderID"></p-dropdown>
-              </span>
-            </div>
-          </div>
-        </div> -->
-        <div class="ui-g-12">
-          <div class="ui-g-12 ui-md-4 ui-g-nopad">
-            <label for="transportProviderID">Transport method</label>
-          </div>
-          <div class="ui-g-12 ui-md-8 ui-g-nopad">
-            <span class="md-inputfield">
+
+          <div class="p-field p-col-12 p-input-filled">
+            <span class="p-float-label">
               <p-dropdown id="transportProviderID" [options]="transportMethodsDropDown" formControlName="transportProviderID"
                           [autoWidth]="false"></p-dropdown>
             </span>

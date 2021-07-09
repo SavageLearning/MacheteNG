@@ -17,6 +17,16 @@ import { TransportRulesService } from '../transport-rules.service';
 import { SkillRule } from '../shared/models/skill-rule';
 import { TransportProvidersService } from '../transport-providers.service';
 import { lengthValidator } from '../../shared/validators/length';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+import { SkillsComponent } from './skills/skills.component';
+
+enum MessageTypes {
+  ToastSkillSelection = 'ToastSkillSelection',
+  SuccessSkillSaved = 'SuccessSkillSaved'
+}
+
+
 @Component({
   selector: 'app-work-assignments',
   templateUrl: './work-assignments.component.html',
