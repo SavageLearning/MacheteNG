@@ -37,7 +37,7 @@ export class OrderConfirmComponent implements OnInit {
     const o$ = this.ordersService.getStream();
     const wa$ = this.assignmentService.getStream();
 
-    combineLatest([l$, o$, wa$]).subscribe(([l, o, wa]) => {
+    observableCombineLatest([l$, o$, wa$]).subscribe(([l, o, wa]) => {
       console.log('ngOnInit->combineLatest.subscribe', l, o, wa);
       this.order = o;
       if (o.transportProviderID > 0) {

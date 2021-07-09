@@ -8,7 +8,7 @@ import {WorkersService} from '../workers.service';
 import {ApiRequestParams} from '../models/api-request-params';
 import {ApiResponse} from '../models/api-response';
 import {Column} from '../models/column';
-import {LazyLoadEvent} from 'primeng/api';
+import {LazyLoadEvent} from 'primeng//api/lazyloadevent';
 import {debounceTime, delay, distinctUntilChanged, tap} from 'rxjs/operators';
 
 @Component({

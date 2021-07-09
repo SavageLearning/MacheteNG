@@ -118,6 +118,9 @@
               <label for="description">Additional info about job</label>
               <textarea autoResize="autoResize" formControlName="description" id="description" type="text" pInputTextarea></textarea>
             </div>
+            <small class="p-invalid" *ngIf="!requestForm.controls['description'].valid && showErrors">
+              {{formErrors.description}}
+            </small>
 
           </div>
 
