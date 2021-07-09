@@ -47,7 +47,7 @@
     "nanoscroller": "0.8.7",
     "ngx-highlightjs": "^4.1.4",
     "ngx-moment": "^5.0.0",
-    "ngx-monaco-editor": "^10.0.0-beta.1",
+    "ngx-monaco-editor": "^12.0.0",
     "ngx-print": "^1.2.1",
     "npm": "^6.14.13",
     "path": "^0.12.7",
