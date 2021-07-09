@@ -1,5 +1,5 @@
 import { AbstractControl, ValidatorFn, FormControl, FormBuilder, FormGroup } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ScheduleRule, TransportProvider, TransportProviderAvailability } from '..';
 import { transportAvailabilityValidator } from './transport-availability';
 import * as moment from 'moment/moment';

@@ -58,7 +58,7 @@ const appRoutes: Routes = [
     CommonModule,
     RouterModule.forRoot(
       appRoutes,
-      { preloadingStrategy: SelectivePreloadingStrategy }
+      { preloadingStrategy: SelectivePreloadingStrategy, relativeLinkResolution: 'legacy' }
     ),
     ButtonModule
 

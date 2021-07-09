@@ -50,11 +50,7 @@
                 "input": "src/scripts",
                 "output": "/"
               },
-              {
-                "glob": "**/*",
-                "input": "node_modules/ngx-monaco-editor/assets/monaco",
-                "output": "/assets/monaco/"
-              }            
+              { "glob": "**/*", "input": "node_modules/monaco-editor", "output": "assets/monaco-editor" }     
             ],
             "styles": [
               "node_modules/quill/dist/quill.core.css",
@@ -93,7 +89,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": true,
               "aot": true,
               "extractLicenses": true,
@@ -110,7 +105,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
