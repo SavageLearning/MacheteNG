@@ -28,7 +28,6 @@ import { WorkersModule } from './workers/workers.module';
 import { GlobalErrorHandler } from './shared/global-error-handler';
 import { LoggingService } from './shared/services/logging.service';
 import { TransportProvidersService } from './online-orders/transport-providers.service';
-import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 @NgModule({
@@ -54,7 +53,6 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     EmployersModule,
     WorkersModule,
     AppRoutingModule,
-    HighlightModule,
     ToastModule,
     MonacoEditorModule.forRoot() // use forRoot() in main app module only.
   ],
@@ -62,15 +60,6 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     AuthService,
     LoggingService,
     TransportProvidersService,
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        coreLibraryLoader: () => import('highlight.js/lib/core'),
-        lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
-        languages: {
-          sql: () => import('highlight.js/lib/languages/sql')}
-      }
-    }
   ],
   bootstrap: [AppComponent]
 })

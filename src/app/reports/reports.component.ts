@@ -28,7 +28,6 @@ export class ReportsComponent implements OnInit {
   reportList: Report[];
   reportsDropDown: SelectItem[];
   displayDescription = false;
-  displayDialog = false;
   cols: Column[];
   inputs: SearchInputs;
   sqlStringRowCount: number;
@@ -52,15 +51,15 @@ export class ReportsComponent implements OnInit {
     this.inputs = new SearchInputs();
   }
 
+  // child component emits event
+  onDoneWithSql(sql: string) {
+    this.selectedReport.sqlquery = sql;
+    // console.log(this.selectedReport.sqlquery, 'this.selectedReport.sqlquery');
+  }
+
   showDescription() {
     this.updateDescription();
     this.displayDescription = true;
-  }
-
-  copyInputMessage(inputElement) {
-    inputElement.select();
-    document.execCommand('copy');
-    inputElement.setSelectionRange(0, 0);
   }
 
   updateDescription() {
@@ -106,5 +105,10 @@ export class ReportsComponent implements OnInit {
   getExport(dt: Table) {
     dt.exportFilename = this.name + '_' + this.o.beginDate.toString() + '_to_' + this.o.endDate.toString();
     dt.exportCSV();
+  }
+
+  save() {
+    
+
   }
 }

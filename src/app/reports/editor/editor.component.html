@@ -1,6 +1,49 @@
+<div>
+  <ng-container *ngIf="!editing">
+    <div class="p-mb-2 p-mr-2"  style="width:fit-content;">
+      <button
+        class="p-button-info p-button-raised"
+        pButton
+        icon="pi pi-pencil"
+        iconPos="left"
+        label="Edit"
+        (click)="setEditMode()"
+      ></button>
+    </div>
+  </ng-container>
 
-<div style="height: 500px">
-  <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+  <ng-container *ngIf="editing">
+    <div class="p-mt-6">
+      <p-messages severity="info">
+        <ng-template pTemplate>
+          <i class="pi pi-pencil"></i>
+          <div class="p-ml-2">You Are Editing SQL</div>
+        </ng-template>
+      </p-messages>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="editing">
+    <div class="p-mb-2 p-mr-2" style="width:fit-content;">
+      <button
+        class="p-button-danger p-button-raised"
+        pButton
+        icon="pi pi-check"
+        iconPos="left"
+        label="Done with SQL"
+        (click)="doneWithSql(code)"
+      ></button>
+    </div>
+  </ng-container>
+
 </div>
+<ng-container *ngIf="editing">
+  <div style="height: 500px">
+    <ngx-monaco-editor
+      style="height: 100%"
+      [options]="editorOptions"
+      [(ngModel)]="code"
+    ></ngx-monaco-editor>
+  </div>
+</ng-container>
 <!-- <ngx-monaco-diff-editor [options]="options" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor> -->
-
