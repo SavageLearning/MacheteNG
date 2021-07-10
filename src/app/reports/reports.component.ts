@@ -109,6 +109,6 @@ export class ReportsComponent implements OnInit {
 
   save() {
     
-
+    console.log(this.selectedReport);
   }
 }

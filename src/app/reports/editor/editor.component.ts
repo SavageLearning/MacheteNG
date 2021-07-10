@@ -7,8 +7,7 @@ import { ReportsComponent } from "../reports.component";
   styleUrls: ["./editor.component.scss"],
 })
 export class EditorComponent implements OnInit {
-  editorOptions = { theme: "vs-dark", language: "sql" };
-  code : string = 'Loading';
+  editorOptions = { theme: "visual-studio", language: "sql" };
   editing: boolean = false;
 
   @Input() sql: string = "";
@@ -23,10 +22,6 @@ export class EditorComponent implements OnInit {
 
   setEditMode() {
     this.editing = true;
-  }
-
-  ngOnChanges(changes: ReportsComponent) {
-    this.code = this.sql;
   }
 
   ngOnInit(): void {}
