@@ -1,9 +1,25 @@
 <p-card styleClass="p-card-shadow p-mb-5" header="Reports">
+
   <div class="p-fluid p-formgrid p-grid"> 
-    <div class="p-field p-col-12 p-input-filled">
+    <!-- <div class="p-field p-col-12 p-input-filled">
       <label for="select-report">Select a report</label>
       <p-dropdown inputId="select-report" [options]="reportsDropDown" (onChange)="getView()" [(ngModel)]="selectedReportID" [filter]="true" styleClass="p-mr-2"></p-dropdown>
+    </div> -->
+
+    <div class="p-field p-grid p-jc-between p-ai-end p-lg-12">
+      <label class="p-col-12" for="hours">Select Report</label>
+      <div class="p-col-12">
+        <!-- Ineractive Reports List Dialog loads dynamically (ReportsListComponent)-->
+        <p-button
+          (click)="onShowReportsList()"
+          icon="pi pi-chart-bar"
+          label="{{selectedReportID}}"
+          styleClass="p-mr-2 p-button-raised">
+        </p-button>
+        <!-- <app-reports-list></app-reports-list> -->
+      </div>
     </div>
+
     <div *ngIf="inputs.memberNumber === true" class="p-field p-col-12 p-md-12 p-lg-4 p-input-filled">
       <label for="memberNumber">Member number</label>
       <input id="memberNumber" type="text" pInputText [(ngModel)]="o.memberNumber" (onBlur)="getView()" dataType="number"/>
@@ -21,18 +37,18 @@
     <!-- Responsive container -->
     <div class="p-d-flex p-flex-column p-flex-md-row">
       <div class="p-mb-2 p-mr-2">
-        <button pButton pRipple type="button" icon="pi pi-refresh" tooltipPosition="bottom" label="Refresh" (click)="getView()"></button>
+        <button pButton pRipple class="p-button-raised" icon="pi pi-refresh" tooltipPosition="bottom" label="Refresh" (click)="getView()"></button>
       </div>
     </div>
   </ng-template>
 </p-card>
 
-<p-card styleClass="p-card-shadow p-mb-5" header="Report Definitions">
+<p-card styleClass="p-card-shadow p-mb-5" header="{{selectedReportID}}">
   <p-inplace closable="closable" [style]="{'min-height':'33px'}">
     <ng-template pTemplate="display">
-        <div class="p-d-inline-flex p-ai-center" style="color:green;">
-          <span class="pi pi-table" style="vertical-align: middle; color:green;"></span>
-          <span class="p-ml-2">View</span>
+        <div class="p-d-inline-flex p-ai-center" style="color:#3F51B5;">
+          <span class="pi pi-pencil" style="vertical-align: middle; color:3F51B5;"></span>
+          <span class="p-ml-2">View Definition</span>
         </div>
     </ng-template>
     <ng-template pTemplate="content">

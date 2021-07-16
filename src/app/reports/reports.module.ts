@@ -22,13 +22,15 @@ import { MessagesModule } from 'primeng/messages';
 import { InplaceModule } from 'primeng/inplace';
 import { DividerModule } from 'primeng/divider';
 import { EditorComponent } from './editor/editor.component';
+import { ReportsListComponent } from './reports-list/reports-list.component';
 
 
 
 @NgModule({
   declarations: [
     ReportsComponent,
-    EditorComponent
+    EditorComponent,
+    ReportsListComponent
   ],
   imports: [
     CommonModule,

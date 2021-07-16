@@ -10,7 +10,7 @@ export class EditorComponent implements OnInit {
   editorOptions = { theme: "visual-studio", language: "sql" };
   editing: boolean = false;
 
-  @Input() sql: string = "";
+  @Input() sql: string;
   @Output() editedSql = new EventEmitter<string>();
 
   constructor() {}

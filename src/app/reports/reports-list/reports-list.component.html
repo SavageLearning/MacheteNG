@@ -1,0 +1,70 @@
+<p-table #dt 
+  [value]="reports" 
+  [paginator]="true" 
+  [rows]="4" 
+  [responsive]="true"
+  styleClass="p-datatable-striped"
+  [globalFilterFields]="['commonName','description','category','dateCreated', 'dateUpdated']"
+  selectionMode="single"
+  [(selection)]="selectedReport"
+  (onRowSelect)="onRowSelect($event)"
+  styleClass="p-datatable-responsive">
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex">
+        <span class="p-input-icon-left p-ml-auto p-input-filled">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+        </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+      <tr>
+          <th pSortableColumn="commonName">Name <p-sortIcon field="commonName"></p-sortIcon></th>
+          <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+          <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+          <th pSortableColumn="dateCreated">Created <p-sortIcon field="dateCreated"></p-sortIcon></th>
+          <th pSortableColumn="dateUpdated">Updated <p-sortIcon field="dateUpdated"></p-sortIcon></th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-reportItem>
+      <tr [pSelectableRow]="rowData">
+          <!-- <td>
+            <small class="p-column-title">Identifier</small>
+            <i class="pi pi-user"></i>
+            <span class="primary">
+              {{ reportItem.name}}
+            </span>
+          </td> -->
+          <td>
+            <small class="p-column-title">Name</small>
+            <span class="p-text-light">
+              {{ reportItem.commonName | titlecase  }}
+            </span>
+          </td>
+          <td>
+            <small class="p-column-title">Description</small>
+            <span class="p-text-light">
+              {{ reportItem.description }}
+            </span>
+          </td>
+          <td>
+            <small class="p-column-title">Category</small>
+            <span class="p-text-light">
+              {{ reportItem.category }}
+            </span>
+          </td>
+          <td>
+            <small class="p-column-title">Created</small>
+            <span class="p-text-light">
+              {{ reportItem.datecreated | date : 'short' }}
+            </span>
+          </td>
+          <td>
+            <small class="p-column-title">Updated</small>
+            <span class="p-text-light">
+              {{ reportItem.dateupdated  | date : 'short' }}
+            </span>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
